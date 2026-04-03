@@ -1,0 +1,72 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import painting1 from '../assets/images/painting.jfif';
+---
+
+<Layout title="Portfolio | Ella Maria Grosz - Contemporary Oil Painter" description="Explore the complete portfolio of Ella Maria Grosz, featuring oil paintings, mixed media works, and recent contemporary art pieces.">
+
+    <section id="portfolio" class="portfolio-page">
+        <div class="container">
+            <h1>Portfolio</h1>
+            <p class="portfolio-intro">Explore my complete collection of oil paintings, mixed media works, and recent pieces. Each artwork captures fleeting moments of light and shadow through rigorous classical technique.</p>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="oil">Oil Paintings</button>
+                <button class="filter-btn" data-filter="mixed">Mixed Media</button>
+                <button class="filter-btn" data-filter="recent">Recent</button>
+            </div>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-category="oil">
+                    <Image src={painting1} alt="Oil painting 1" width={800} height={600} />
+                    <div class="overlay">
+                        <h3>Painting Title 1</h3>
+                        <p>2023</p>
+                        <span class="status-tag status-sold">Sold</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mixed">
+                    <Image src={painting1} alt="Mixed media artwork 1" width={800} height={600} />
+                    <div class="overlay">
+                        <h3>Artwork Title 1</h3>
+                        <p>2023</p>
+                        <span class="status-tag status-price">$4,500</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="oil">
+                    <Image src={painting1} alt="Oil painting 2" width={800} height={600} />
+                    <div class="overlay">
+                        <h3>Painting Title 2</h3>
+                        <p>2022</p>
+                        <span class="status-tag status-price">$5,900</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="recent">
+                    <Image src={painting1} alt="Recent work 1" width={800} height={600} />
+                    <div class="overlay">
+                        <h3>Recent Title 1</h3>
+                        <p>2023</p>
+                        <span class="status-tag status-sold">Sold</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="oil">
+                    <Image src={painting1} alt="Oil painting 3" width={800} height={600} />
+                    <div class="overlay">
+                        <h3>Painting Title 3</h3>
+                        <p>2021</p>
+                        <span class="status-tag status-price">$7,200</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="mixed">
+                    <Image src={painting1} alt="Mixed media artwork 2" width={800} height={600} />
+                    <div class="overlay">
+                        <h3>Artwork Title 2</h3>
+                        <p>2022</p>
+                        <span class="status-tag status-sold">Sold</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</Layout>

@@ -1,0 +1,138 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../assets/images/plovdivBig.webp';
+import painting1 from '../assets/images/painting.jfif';
+---
+
+<Layout title="Ella Maria Grosz | Contemporary Oil Painter Portfolio" description="Ella Maria Grosz is a contemporary oil painter based in London, specializing in layered oil paintings that capture fleeting moments of light and shadow. Explore her portfolio of oil paintings and mixed media works.">
+
+<section class="hero" id="hero">
+    <div class="container">
+        <div class="hero-image-container">
+            <Image src={heroImg} alt="Plovdiv 2023" class="hero-image" />
+        </div>
+        <div class="hero-caption-gallery">
+            <div class="caption-text">
+                <h2>Plovdiv, 2023</h2>
+                <p>Featured Oil Painting by Ella Maria Grosz</p>
+            </div>
+            <div class="caption-link">
+                <a href="#" data-tooltip="This painting captures the essence of Plovdiv's ancient architecture and vibrant street life through layered oil techniques. Oil on canvas, 120x80cm, 2023.">
+                    View Details <span>→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2>Portfolio</h2>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="oil">Oil Paintings</button>
+            <button class="filter-btn" data-filter="mixed">Mixed Media</button>
+            <button class="filter-btn" data-filter="recent">Recent</button>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item" data-category="oil">
+                <Image src={painting1} alt="Oil painting 1" width={800} height={600} />
+                <div class="overlay">
+                    <h3>Painting Title 1</h3>
+                    <p>2023</p>
+                    <span class="status-tag status-sold">Sold</span>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="mixed">
+                <Image src={painting1} alt="Oil painting 1" width={800} height={600} />
+                <div class="overlay">
+                    <h3>Artwork Title 1</h3>
+                    <p>2023</p>
+                    <span class="status-tag status-price">$4,200</span>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="oil">
+                <Image src={painting1} alt="Oil painting 2" width={800} height={600} />
+                <div class="overlay">
+                    <h3>Painting Title 2</h3>
+                    <p>2022</p>
+                    <span class="status-tag status-price">$5,800</span>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="oil">
+                <Image src={painting1} alt="Oil painting 3" width={800} height={600} />
+                <div class="overlay">
+                    <h3>Painting Title 3</h3>
+                    <p>2022</p>
+                    <span class="status-tag status-sold">Sold</span>
+                </div>
+            </div>
+            <div class="portfolio-item" data-category="oil">
+                <Image src={painting1} alt="Oil painting 4" width={800} height={600} />
+                <div class="overlay">
+                    <h3>Painting Title 4</h3>
+                    <p>2022</p>
+                    <span class="status-tag status-price">$6,300</span>
+                </div>
+            </div>
+        </div>
+        <div class="portfolio-link">
+            <a href="/portfolio" class="view-full-portfolio">View Full Portfolio</a>
+        </div>
+    </div>
+</section>
+
+<section id="news" class="news">
+    <div class="container">
+        <div class="news-header">
+            <h2>Latest News</h2>
+            <a href="#" aria-label="View news archive">Archive</a>
+        </div>
+        <div class="news-list">
+            <article class="news-item">
+                <img data-src="./images/art-gallery-exhibition.jpg" alt="Art gallery exhibition" loading="lazy">
+                <div class="news-content">
+                    <span class="category">Exhibition</span>
+                    <h3>Solo Exhibition: The Modern Muse at London Gallery</h3>
+                    <p>Opening this October, Ella Maria Grosz presents a new body of work exploring the intersection of traditional technique and digital ephemera.</p>
+                    <p class="date">October 12 — November 20, 2023</p>
+                </div>
+            </article>
+            <article class="news-item">
+                <img data-src="./images/artist-studio.jpg" alt="Artist in studio" loading="lazy">
+                <div class="news-content">
+                    <span class="category">Press</span>
+                    <h3>Featured Artist in Art Quarterly: Studio Visit</h3>
+                    <p>An in-depth interview with the artist on his evolving process and the shift towards larger format canvases in the current series.</p>
+                    <p class="date">September 2023 Issue</p>
+                </div>
+            </article>
+            <article class="news-item">
+                <img data-src="./images/oil-painting-detail.jpg" alt="Oil painting detail" loading="lazy">
+                <div class="news-content">
+                    <span class="category">New Work</span>
+                    <h3>Release of 'Substrata' Limited Edition Series</h3>
+                    <p>A limited set of 25 hand-finished giclée prints from the 'Substrata' series will be available exclusively through the studio.</p>
+                    <p class="date">Release Date: Nov 05</p>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-content">
+            <h2>Quiet reflections in oil and linen.</h2>
+            <p>Based in London, Ella Maria Grosz's practice is defined by a meticulous approach to layered oil painting. Her work seeks to capture the fleeting moments of light and shadow that define our domestic spaces, elevating the mundane to the monumental through rigorous classical technique.</p>
+            <p>Across studio-based series and curated exhibitions, she explores the tension between memory and material, using subtle palette shifts and layered brushwork to create immersive compositions that resonate at both intimate and grand scales.</p>
+            <div class="about-links">
+                <a href="#" aria-label="Read full biography">Read Biography</a>
+                <a href="#" aria-label="View curriculum vitae">View Curriculum Vitae</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</Layout>
