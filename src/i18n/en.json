@@ -1,0 +1,190 @@
+{
+  "meta": {
+    "keywords": "oil painter, contemporary art, Ella Maria Grosz, London artist, oil paintings, mixed media, art portfolio",
+    "defaultDescription": "Ella Maria Grosz is a contemporary oil painter based in London, specializing in layered oil paintings that capture fleeting moments of light and shadow.",
+    "ogDescription": "Explore the portfolio of Ella Maria Grosz, a contemporary oil painter capturing fleeting moments through classical technique."
+  },
+  "nav": {
+    "home": "Home",
+    "portfolio": "Portfolio",
+    "about": "About",
+    "press": "Press & Publications",
+    "exhibitions": "Exhibitions"
+  },
+  "lang": {
+    "switchTo": "Switch language",
+    "en": "English",
+    "de": "Deutsch"
+  },
+  "common": {
+    "inquire": "Inquire",
+    "inquireAria": "Inquire about artwork",
+    "inquireEmailSubject": "Inquiry about Artwork",
+    "viewDetails": "View Details",
+    "viewFullPortfolio": "View Full Portfolio",
+    "filterAll": "All",
+    "filterOil": "Oil Paintings",
+    "filterMixed": "Mixed Media",
+    "filterRecent": "Recent",
+    "sold": "Sold",
+    "archive": "Archive",
+    "archiveAria": "View news archive"
+  },
+  "footer": {
+    "copyright": "© 2023 All Rights Reserved",
+    "social": "Social",
+    "instagramAria": "Instagram",
+    "studio": "Studio",
+    "emailAria": "Send email"
+  },
+  "home": {
+    "title": "Ella Maria Grosz | Contemporary Oil Painter Portfolio",
+    "description": "Ella Maria Grosz is a contemporary oil painter based in London, specializing in layered oil paintings that capture fleeting moments of light and shadow. Explore her portfolio of oil paintings and mixed media works.",
+    "hero": {
+      "imageAlt": "Plovdiv 2023",
+      "heading": "Plovdiv, 2023",
+      "subheading": "Featured Oil Painting by Ella Maria Grosz",
+      "tooltip": "This painting captures the essence of Plovdiv's ancient architecture and vibrant street life through layered oil techniques. Oil on canvas, 120x80cm, 2023."
+    },
+    "portfolio": {
+      "heading": "Portfolio"
+    },
+    "portfolioItems": [
+      { "category": "oil", "title": "Painting Title 1", "year": "2023", "status": "sold", "price": "", "imageAlt": "Oil painting 1" },
+      { "category": "mixed", "title": "Artwork Title 1", "year": "2023", "status": "price", "price": "$4,200", "imageAlt": "Oil painting 1" },
+      { "category": "oil", "title": "Painting Title 2", "year": "2022", "status": "price", "price": "$5,800", "imageAlt": "Oil painting 2" },
+      { "category": "oil", "title": "Painting Title 3", "year": "2022", "status": "sold", "price": "", "imageAlt": "Oil painting 3" },
+      { "category": "oil", "title": "Painting Title 4", "year": "2022", "status": "price", "price": "$6,300", "imageAlt": "Oil painting 4" }
+    ],
+    "news": {
+      "heading": "Latest News"
+    },
+    "newsItems": [
+      {
+        "category": "Exhibition",
+        "title": "Solo Exhibition: The Modern Muse at London Gallery",
+        "excerpt": "Opening this October, Ella Maria Grosz presents a new body of work exploring the intersection of traditional technique and digital ephemera.",
+        "date": "October 12 — November 20, 2023",
+        "imageAlt": "Art gallery exhibition",
+        "imageSrc": "./images/art-gallery-exhibition.jpg"
+      },
+      {
+        "category": "Press",
+        "title": "Featured Artist in Art Quarterly: Studio Visit",
+        "excerpt": "An in-depth interview with the artist on his evolving process and the shift towards larger format canvases in the current series.",
+        "date": "September 2023 Issue",
+        "imageAlt": "Artist in studio",
+        "imageSrc": "./images/artist-studio.jpg"
+      },
+      {
+        "category": "New Work",
+        "title": "Release of 'Substrata' Limited Edition Series",
+        "excerpt": "A limited set of 25 hand-finished giclée prints from the 'Substrata' series will be available exclusively through the studio.",
+        "date": "Release Date: Nov 05",
+        "imageAlt": "Oil painting detail",
+        "imageSrc": "./images/oil-painting-detail.jpg"
+      }
+    ],
+    "about": {
+      "heading": "Quiet reflections in oil and linen.",
+      "p1": "Based in London, Ella Maria Grosz's practice is defined by a meticulous approach to layered oil painting. Her work seeks to capture the fleeting moments of light and shadow that define our domestic spaces, elevating the mundane to the monumental through rigorous classical technique.",
+      "p2": "Across studio-based series and curated exhibitions, she explores the tension between memory and material, using subtle palette shifts and layered brushwork to create immersive compositions that resonate at both intimate and grand scales.",
+      "pressAria": "Read full biography",
+      "exhibitionsAria": "View curriculum vitae"
+    }
+  },
+  "portfolioPage": {
+    "title": "Portfolio | Ella Maria Grosz - Contemporary Oil Painter",
+    "description": "Explore the complete portfolio of Ella Maria Grosz, featuring oil paintings, mixed media works, and recent contemporary art pieces.",
+    "heading": "Portfolio",
+    "intro": "Explore my complete collection of oil paintings, mixed media works, and recent pieces. Each artwork captures fleeting moments of light and shadow through rigorous classical technique.",
+    "items": [
+      { "category": "oil", "title": "Painting Title 1", "year": "2023", "status": "sold", "price": "", "imageAlt": "Oil painting 1" },
+      { "category": "mixed", "title": "Artwork Title 1", "year": "2023", "status": "price", "price": "$4,500", "imageAlt": "Mixed media artwork 1" },
+      { "category": "oil", "title": "Painting Title 2", "year": "2022", "status": "price", "price": "$5,900", "imageAlt": "Oil painting 2" },
+      { "category": "recent", "title": "Recent Title 1", "year": "2023", "status": "sold", "price": "", "imageAlt": "Recent work 1" },
+      { "category": "oil", "title": "Painting Title 3", "year": "2021", "status": "price", "price": "$7,200", "imageAlt": "Oil painting 3" },
+      { "category": "mixed", "title": "Artwork Title 2", "year": "2022", "status": "sold", "price": "", "imageAlt": "Mixed media artwork 2" }
+    ]
+  },
+  "pressPage": {
+    "title": "Press & Publications | Ella Maria Grosz - Contemporary Oil Painter",
+    "description": "Press releases, publications, and media coverage of Ella Maria Grosz, contemporary oil painter featured in art journals and galleries.",
+    "heading": "Press & Publications",
+    "intro": "Featured in major art publications, interviews, and press releases showcasing Ella Maria Grosz's artistic practice and contemporary contributions to the oil painting landscape.",
+    "items": [
+      {
+        "category": "Publication",
+        "title": "Featured in Art Quarterly Magazine",
+        "excerpt": "An in-depth interview exploring Ella Maria Grosz's evolving artistic practice and the shift towards larger format canvases in her current series.",
+        "date": "September 2023 Issue",
+        "imageAlt": "Artist in studio",
+        "imageSrc": "./images/artist-studio.jpg"
+      },
+      {
+        "category": "Press Release",
+        "title": "Artist Selected for International Contemporary Art Fair",
+        "excerpt": "Ella Maria Grosz has been selected to exhibit her latest works at the prestigious International Contemporary Art Fair, showcasing pieces from 2023-2024.",
+        "date": "October 2023",
+        "imageAlt": "Art gallery space",
+        "imageSrc": "./images/art-gallery-exhibition.jpg"
+      },
+      {
+        "category": "Feature Article",
+        "title": "The Modern Painter: Profile on Contemporary Oil Techniques",
+        "excerpt": "A comprehensive feature covering Ella Maria Grosz's methodology and the renaissance of traditional oil painting in contemporary art.",
+        "date": "August 2023",
+        "imageAlt": "Detail of oil painting",
+        "imageSrc": "./images/oil-painting-detail.jpg"
+      },
+      {
+        "category": "Interview",
+        "title": "Studio Visit: Exploring Light and Shadow with Ella Maria Grosz",
+        "excerpt": "An exclusive studio visit and conversation about the artist's process, inspirations, and vision for the future of her artistic practice.",
+        "date": "July 2023",
+        "imageAlt": "Studio work",
+        "imageSrc": "./images/og-image.jpg"
+      }
+    ]
+  },
+  "exhibitionsPage": {
+    "title": "Exhibitions | Ella Maria Grosz - Contemporary Oil Painter",
+    "description": "Exhibitions and gallery shows featuring Ella Maria Grosz's contemporary oil paintings. View upcoming and past exhibitions.",
+    "heading": "Exhibitions",
+    "intro": "Explore Ella Maria Grosz's exhibition history spanning gallery shows, institutions, and international art fairs showcasing her contemporary oil paintings.",
+    "items": [
+      {
+        "category": "Current Exhibition",
+        "title": "The Modern Muse - Solo Exhibition at London Contemporary Gallery",
+        "excerpt": "A major solo presentation exploring the intersection of traditional oil painting techniques and contemporary visual language through large-scale canvases.",
+        "date": "October 12 — November 20, 2024",
+        "imageAlt": "Gallery exhibition space",
+        "imageSrc": "./images/art-gallery-exhibition.jpg"
+      },
+      {
+        "category": "Upcoming",
+        "title": "International Contemporary Art Fair - Amsterdam",
+        "excerpt": "Ella Maria Grosz will present selected works from her 2023-2024 series at the prestigious international contemporary art fair.",
+        "date": "December 2024",
+        "imageAlt": "Artist studio view",
+        "imageSrc": "./images/artist-studio.jpg"
+      },
+      {
+        "category": "Past Exhibition",
+        "title": "Substrata Series - Limited Edition Release",
+        "excerpt": "A curated exhibition featuring the complete Substrata series with 25 hand-finished giclée prints and original oil studies.",
+        "date": "May — June 2024",
+        "imageAlt": "Oil painting detail",
+        "imageSrc": "./images/oil-painting-detail.jpg"
+      },
+      {
+        "category": "Past Exhibition",
+        "title": "Emerging Voices in Contemporary Painting",
+        "excerpt": "Group exhibition highlighting contemporary painters redefining the boundaries of traditional oil painting through innovative techniques and concepts.",
+        "date": "February — March 2024",
+        "imageAlt": "Exhibition opening",
+        "imageSrc": "./images/og-image.jpg"
+      }
+    ]
+  }
+}

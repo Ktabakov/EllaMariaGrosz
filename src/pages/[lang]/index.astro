@@ -1,0 +1,108 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import heroImg from '../../assets/images/plovdivBig.webp';
+import painting1 from '../../assets/images/painting.jfif';
+import { locales, isLocale, type Locale } from '../../i18n/locales';
+import { getMessages } from '../../i18n';
+import { localizedHref } from '../../i18n/paths';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang: langParam } = Astro.params;
+if (!isLocale(langParam ?? '')) {
+  return Astro.redirect('/en/');
+}
+const lang = langParam as Locale;
+const m = getMessages(lang);
+---
+
+<Layout lang={lang} title={m.home.title} description={m.home.description}>
+
+<section class="hero" id="hero">
+    <div class="container">
+        <div class="hero-image-container">
+            <Image src={heroImg} alt={m.home.hero.imageAlt} class="hero-image" />
+        </div>
+        <div class="hero-caption-gallery">
+            <div class="caption-text">
+                <h2>{m.home.hero.heading}</h2>
+                <p>{m.home.hero.subheading}</p>
+            </div>
+            <div class="caption-link">
+                <a href="#" data-tooltip={m.home.hero.tooltip}>
+                    {m.common.viewDetails} <span>→</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2>{m.home.portfolio.heading}</h2>
+        <div class="filters">
+            <button class="filter-btn active" data-filter="all">{m.common.filterAll}</button>
+            <button class="filter-btn" data-filter="oil">{m.common.filterOil}</button>
+            <button class="filter-btn" data-filter="mixed">{m.common.filterMixed}</button>
+            <button class="filter-btn" data-filter="recent">{m.common.filterRecent}</button>
+        </div>
+        <div class="portfolio-grid">
+            {m.home.portfolioItems.map((item) => (
+                <div class="portfolio-item" data-category={item.category}>
+                    <Image src={painting1} alt={item.imageAlt} width={800} height={600} />
+                    <div class="overlay">
+                        <h3>{item.title}</h3>
+                        <p>{item.year}</p>
+                        <span class:list={['status-tag', item.status === 'sold' ? 'status-sold' : 'status-price']}>
+                            {item.status === 'sold' ? m.common.sold : item.price}
+                        </span>
+                    </div>
+                </div>
+            ))}
+        </div>
+        <div class="portfolio-link">
+            <a href={localizedHref(lang, 'portfolio')} class="view-full-portfolio">{m.common.viewFullPortfolio}</a>
+        </div>
+    </div>
+</section>
+
+<section id="news" class="news">
+    <div class="container">
+        <div class="news-header">
+            <h2>{m.home.news.heading}</h2>
+            <a href="#" aria-label={m.common.archiveAria}>{m.common.archive}</a>
+        </div>
+        <div class="news-list">
+            {m.home.newsItems.map((item) => (
+                <article class="news-item">
+                    <img data-src={item.imageSrc} alt={item.imageAlt} loading="lazy">
+                    <div class="news-content">
+                        <span class="category">{item.category}</span>
+                        <h3>{item.title}</h3>
+                        <p>{item.excerpt}</p>
+                        <p class="date">{item.date}</p>
+                    </div>
+                </article>
+            ))}
+        </div>
+    </div>
+</section>
+
+<section id="about" class="about">
+    <div class="container">
+        <div class="about-content">
+            <h2>{m.home.about.heading}</h2>
+            <p>{m.home.about.p1}</p>
+            <p>{m.home.about.p2}</p>
+            <div class="about-links">
+                <a href={localizedHref(lang, 'press')} aria-label={m.home.about.pressAria}>{m.nav.press}</a>
+                <a href={localizedHref(lang, 'exhibitions')} aria-label={m.home.about.exhibitionsAria}>{m.nav.exhibitions}</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+</Layout>

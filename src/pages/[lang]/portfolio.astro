@@ -1,0 +1,49 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { Image } from 'astro:assets';
+import painting1 from '../../assets/images/painting.jfif';
+import { locales, isLocale, type Locale } from '../../i18n/locales';
+import { getMessages } from '../../i18n';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang: langParam } = Astro.params;
+if (!isLocale(langParam ?? '')) {
+  return Astro.redirect('/en/portfolio');
+}
+const lang = langParam as Locale;
+const m = getMessages(lang);
+---
+
+<Layout lang={lang} title={m.portfolioPage.title} description={m.portfolioPage.description}>
+
+    <section id="portfolio" class="portfolio-page">
+        <div class="container">
+            <h1>{m.portfolioPage.heading}</h1>
+            <p class="portfolio-intro">{m.portfolioPage.intro}</p>
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">{m.common.filterAll}</button>
+                <button class="filter-btn" data-filter="oil">{m.common.filterOil}</button>
+                <button class="filter-btn" data-filter="mixed">{m.common.filterMixed}</button>
+                <button class="filter-btn" data-filter="recent">{m.common.filterRecent}</button>
+            </div>
+            <div class="portfolio-grid">
+                {m.portfolioPage.items.map((item) => (
+                    <div class="portfolio-item" data-category={item.category}>
+                        <Image src={painting1} alt={item.imageAlt} width={800} height={600} />
+                        <div class="overlay">
+                            <h3>{item.title}</h3>
+                            <p>{item.year}</p>
+                            <span class:list={['status-tag', item.status === 'sold' ? 'status-sold' : 'status-price']}>
+                                {item.status === 'sold' ? m.common.sold : item.price}
+                            </span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    </section>
+
+</Layout>

@@ -1,18 +1,37 @@
 ---
 import '../styles/style.css';
+import type { Locale } from '../i18n/locales';
+import { getMessages } from '../i18n';
+import { localizedHref, swapLocaleInPath } from '../i18n/paths';
 
 export interface Props {
+  lang: Locale;
   title: string;
   description?: string;
   image?: string;
 }
 
-const { title, description = "Ella Maria Grosz is a contemporary oil painter based in London, specializing in layered oil paintings that capture fleeting moments of light and shadow.", image = "/images/og-image.jpg" } = Astro.props;
+const {
+  lang,
+  title,
+  description,
+  image = '/images/og-image.jpg',
+} = Astro.props;
+
+const m = getMessages(lang);
+const metaDescription = description ?? m.meta.defaultDescription;
 const currentPath = Astro.url.pathname;
+const isHome = currentPath === `/${lang}` || currentPath === `/${lang}/`;
+const isPortfolio = currentPath.includes('/portfolio');
+const isPress = currentPath.includes('/press');
+const isExhibitions = currentPath.includes('/exhibitions');
+
+const enPath = swapLocaleInPath(currentPath, 'en');
+const dePath = swapLocaleInPath(currentPath, 'de');
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang}>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,13 +40,13 @@ const currentPath = Astro.url.pathname;
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
     <!-- SEO Meta Tags -->
-    <meta name="description" content={description}>
-    <meta name="keywords" content="oil painter, contemporary art, Ella Maria Grosz, London artist, oil paintings, mixed media, art portfolio">
+    <meta name="description" content={metaDescription}>
+    <meta name="keywords" content={m.meta.keywords}>
     <meta name="author" content="Ella Maria Grosz">
 
     <!-- Open Graph Tags -->
     <meta property="og:title" content={title}>
-    <meta property="og:description" content="Explore the portfolio of Ella Maria Grosz, a contemporary oil painter capturing fleeting moments through classical technique.">
+    <meta property="og:description" content={m.meta.ogDescription}>
     <meta property="og:image" content={image}>
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://ellamariagrosz.github.io">
@@ -35,10 +54,15 @@ const currentPath = Astro.url.pathname;
     <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={metaDescription}>
     <meta name="twitter:image" content={image}>
 
     <!-- Favicon -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site ?? Astro.url.origin).href} />
+    <link rel="alternate" hreflang="de" href={new URL(dePath, Astro.site ?? Astro.url.origin).href} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/en/', Astro.site ?? Astro.url.origin).href} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,18 +73,33 @@ const currentPath = Astro.url.pathname;
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href="/"><h1>Ella Maria Grosz</h1></a>
+                <a href={localizedHref(lang, '')}><h1>Ella Maria Grosz</h1></a>
             </div>
-            <nav class="nav">
+            <nav class="nav" aria-label="Main">
                 <ul>
-                    <li><a href="/#hero" class={currentPath === '/' ? 'active' : ''}>Home</a></li>
-                    <li><a href="/portfolio" class={currentPath === '/portfolio' ? 'active' : ''}>Portfolio</a></li>
-                    <li><a href="/#about" class={currentPath === '/#about' ? 'active' : ''}>About</a></li>
-                    <li><a href="/press" class={currentPath === '/press' ? 'active' : ''}>Press & Publications</a></li>
-                    <li><a href="/exhibitions" class={currentPath === '/exhibitions' ? 'active' : ''}>Exhibitions</a></li>
+                    <li><a href={`${localizedHref(lang, '')}#hero`} class={isHome ? 'active' : ''}>{m.nav.home}</a></li>
+                    <li><a href={localizedHref(lang, 'portfolio')} class={isPortfolio ? 'active' : ''}>{m.nav.portfolio}</a></li>
+                    <li><a href={`${localizedHref(lang, '')}#about`}>{m.nav.about}</a></li>
+                    <li><a href={localizedHref(lang, 'press')} class={isPress ? 'active' : ''}>{m.nav.press}</a></li>
+                    <li><a href={localizedHref(lang, 'exhibitions')} class={isExhibitions ? 'active' : ''}>{m.nav.exhibitions}</a></li>
                 </ul>
             </nav>
-            <a href="mailto:studio@ellamariagrosz.art?subject=Inquiry about Artwork" class="inquire-btn" aria-label="Inquire about artwork">Inquire</a>
+            <div class="header-actions">
+                <nav class="lang-switch" aria-label={m.lang.switchTo}>
+                    {lang === 'en' ? (
+                        <span class="lang-current" aria-current="true">EN</span>
+                    ) : (
+                        <a href={enPath} hreflang="en" lang="en">EN</a>
+                    )}
+                    <span class="lang-sep" aria-hidden="true">·</span>
+                    {lang === 'de' ? (
+                        <span class="lang-current" aria-current="true">DE</span>
+                    ) : (
+                        <a href={dePath} hreflang="de" lang="de">DE</a>
+                    )}
+                </nav>
+                <a href={`mailto:ellamariagross@web.de?subject=${encodeURIComponent(m.common.inquireEmailSubject)}`} class="inquire-btn" aria-label={m.common.inquireAria}>{m.common.inquire}</a>
+            </div>
         </div>
     </header>
 
@@ -73,31 +112,28 @@ const currentPath = Astro.url.pathname;
             <div class="footer-content">
                 <div class="footer-brand">
                     <h3>Ella Maria Grosz</h3>
-                    <p>&copy; 2023 All Rights Reserved</p>
+                    <p>{m.footer.copyright}</p>
                 </div>
 
                 <div class="footer-links">
                     <div class="social">
-                        <span>Social</span>
-                        <a href="https://instagram.com/ellamariagross" target="_blank" aria-label="Instagram">
+                        <span>{m.footer.social}</span>
+                        <a href="https://instagram.com/ellamariagross" target="_blank" rel="noopener noreferrer" aria-label={m.footer.instagramAria}>
                             <i class="fab fa-instagram"></i> Instagram
-                        </a>
-                        <a href="#" aria-label="Pinterest">
-                            <i class="fab fa-pinterest-p"></i> Pinterest
                         </a>
                     </div>
 
                     <div class="contact-info">
-                        <span>Studio</span>
-                        <p>Unit 4, Netil House<br>1 Westgate St, London</p>
-                        <a href="mailto:studio@ellamariagrosz.art">
-                            <i class="far fa-envelope"></i> studio@ellamariagrosz.art
+                        <span>{m.footer.studio}</span>
+                        <p>Schandauer Str. 64<br>01277 Dresden</p>
+                        <a href="mailto:ellamariagross@web.de">
+                            <i class="far fa-envelope"></i>ellamariagross@web.de
                         </a>
                     </div>
                 </div>
 
                 <div class="footer-actions">
-                    <a href="mailto:studio@ellamariagrosz.art" class="email-circle-btn" aria-label="Send email">
+                    <a href="mailto:ellamariagross@web.de" class="email-circle-btn" aria-label={m.footer.emailAria}>
                         <i class="fa-solid fa-paper-plane"></i>
                     </a>
                 </div>

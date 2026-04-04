@@ -145,6 +145,43 @@ button:hover {
     background-color: var(--accent-color);
 }
 
+.header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    flex-shrink: 0;
+}
+
+.lang-switch {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.lang-switch a {
+    color: var(--text-color);
+    opacity: 0.65;
+    transition: var(--transition);
+}
+
+.lang-switch a:hover {
+    color: var(--accent-color);
+    opacity: 1;
+}
+
+.lang-switch .lang-current {
+    color: var(--accent-color);
+}
+
+.lang-switch .lang-sep {
+    opacity: 0.35;
+    user-select: none;
+}
+
 .inquire-btn {
     background-color: var(--accent-color);
     color: var(--background-color);

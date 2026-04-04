@@ -1,0 +1,190 @@
+{
+  "meta": {
+    "keywords": "Ölmalerin, zeitgenössische Kunst, Ella Maria Grosz, Künstlerin London, Ölgemälde, Mixed Media, Kunstportfolio",
+    "defaultDescription": "Ella Maria Grosz ist eine zeitgenössische Ölmalerin mit Sitz in London; sie arbeitet mit geschichteten Ölgemälden, die flüchtige Momente von Licht und Schatten einfangen.",
+    "ogDescription": "Entdecken Sie das Portfolio von Ella Maria Grosz – eine zeitgenössische Ölmalerin, die flüchtige Momente mit klassischer Technik einfängt."
+  },
+  "nav": {
+    "home": "Start",
+    "portfolio": "Portfolio",
+    "about": "Über mich",
+    "press": "Presse & Publikationen",
+    "exhibitions": "Ausstellungen"
+  },
+  "lang": {
+    "switchTo": "Sprache wechseln",
+    "en": "English",
+    "de": "Deutsch"
+  },
+  "common": {
+    "inquire": "Anfrage",
+    "inquireAria": "Kunstwerk anfragen",
+    "inquireEmailSubject": "Anfrage zu einem Kunstwerk",
+    "viewDetails": "Details ansehen",
+    "viewFullPortfolio": "Gesamtes Portfolio ansehen",
+    "filterAll": "Alle",
+    "filterOil": "Ölgemälde",
+    "filterMixed": "Mixed Media",
+    "filterRecent": "Aktuell",
+    "sold": "Verkauft",
+    "archive": "Archiv",
+    "archiveAria": "News-Archiv ansehen"
+  },
+  "footer": {
+    "copyright": "© 2023 Alle Rechte vorbehalten",
+    "social": "Social Media",
+    "instagramAria": "Instagram",
+    "studio": "Atelier",
+    "emailAria": "E-Mail senden"
+  },
+  "home": {
+    "title": "Ella Maria Grosz | Portfolio – Zeitgenössische Ölmalerei",
+    "description": "Ella Maria Grosz ist eine zeitgenössische Ölmalerin mit Sitz in London; sie arbeitet mit geschichteten Ölgemälden, die flüchtige Momente von Licht und Schatten einfangen. Entdecken Sie ihr Portfolio aus Ölgemälden und Mixed-Media-Arbeiten.",
+    "hero": {
+      "imageAlt": "Plowdiw 2023",
+      "heading": "Plowdiw, 2023",
+      "subheading": "Ausgewähltes Ölgemälde von Ella Maria Grosz",
+      "tooltip": "Dieses Gemälde fängt die alte Architektur Plowdiws und das lebendige Straßenleben mit geschichteter Öltechnik ein. Öl auf Leinwand, 120×80 cm, 2023."
+    },
+    "portfolio": {
+      "heading": "Portfolio"
+    },
+    "portfolioItems": [
+      { "category": "oil", "title": "Gemäldetitel 1", "year": "2023", "status": "sold", "price": "", "imageAlt": "Ölgemälde 1" },
+      { "category": "mixed", "title": "Kunstwerktitel 1", "year": "2023", "status": "price", "price": "4.200 $", "imageAlt": "Ölgemälde 1" },
+      { "category": "oil", "title": "Gemäldetitel 2", "year": "2022", "status": "price", "price": "5.800 $", "imageAlt": "Ölgemälde 2" },
+      { "category": "oil", "title": "Gemäldetitel 3", "year": "2022", "status": "sold", "price": "", "imageAlt": "Ölgemälde 3" },
+      { "category": "oil", "title": "Gemäldetitel 4", "year": "2022", "status": "price", "price": "6.300 $", "imageAlt": "Ölgemälde 4" }
+    ],
+    "news": {
+      "heading": "Aktuelles"
+    },
+    "newsItems": [
+      {
+        "category": "Ausstellung",
+        "title": "Einzelausstellung: The Modern Muse in der London Gallery",
+        "excerpt": "Ab diesem Oktober präsentiert Ella Maria Grosz eine neue Werkgruppe, die die Schnittstelle zwischen traditioneller Technik und digitalem Ephemeren erkundet.",
+        "date": "12. Oktober — 20. November 2023",
+        "imageAlt": "Kunstgalerie-Ausstellung",
+        "imageSrc": "./images/art-gallery-exhibition.jpg"
+      },
+      {
+        "category": "Presse",
+        "title": "Künstlerin der Ausgabe in Art Quarterly: Atelierbesuch",
+        "excerpt": "Ein ausführliches Interview mit der Künstlerin über ihren sich wandelnden Prozess und den Schritt zu größeren Leinwänden in der aktuellen Serie.",
+        "date": "Ausgabe September 2023",
+        "imageAlt": "Künstlerin im Atelier",
+        "imageSrc": "./images/artist-studio.jpg"
+      },
+      {
+        "category": "Neue Arbeiten",
+        "title": "Erscheinen der limitierten Edition „Substrata“",
+        "excerpt": "Eine limitierte Auflage von 25 handüberarbeiteten Giclée-Drucken aus der Serie „Substrata“ ist exklusiv über das Atelier erhältlich.",
+        "date": "Erscheinung: 5. November",
+        "imageAlt": "Detail eines Ölgemäldes",
+        "imageSrc": "./images/oil-painting-detail.jpg"
+      }
+    ],
+    "about": {
+      "heading": "Leise Reflexionen in Öl und Leinen.",
+      "p1": "Mit Sitz in London ist Ella Maria Grosz’ Arbeit von einem sorgfältigen Umgang mit geschichteter Ölmalerei geprägt. Sie sucht die flüchtigen Momente von Licht und Schatten in unseren häuslichen Räumen einzufangen und hebt das Alltägliche durch strenge klassische Technik ins Monumentale.",
+      "p2": "In Atelier-Serien und kuratierten Ausstellungen erforscht sie die Spannung zwischen Erinnerung und Material – mit feinen Farbverschiebungen und geschichtetem Pinselstrich entstehen eintauchende Bildkompositionen, die intim wie im großen Maßstab wirken.",
+      "pressAria": "Presse und Publikationen lesen",
+      "exhibitionsAria": "Ausstellungen ansehen"
+    }
+  },
+  "portfolioPage": {
+    "title": "Portfolio | Ella Maria Grosz – Zeitgenössische Ölmalerei",
+    "description": "Das vollständige Portfolio von Ella Maria Grosz: Ölgemälde, Mixed Media und aktuelle zeitgenössische Arbeiten.",
+    "heading": "Portfolio",
+    "intro": "Entdecken Sie meine gesamte Sammlung aus Ölgemälden, Mixed-Media-Arbeiten und aktuellen Stücken. Jedes Werk fängt flüchtige Momente von Licht und Schatten mit strenger klassischer Technik ein.",
+    "items": [
+      { "category": "oil", "title": "Gemäldetitel 1", "year": "2023", "status": "sold", "price": "", "imageAlt": "Ölgemälde 1" },
+      { "category": "mixed", "title": "Kunstwerktitel 1", "year": "2023", "status": "price", "price": "4.500 $", "imageAlt": "Mixed-Media-Kunstwerk 1" },
+      { "category": "oil", "title": "Gemäldetitel 2", "year": "2022", "status": "price", "price": "5.900 $", "imageAlt": "Ölgemälde 2" },
+      { "category": "recent", "title": "Aktueller Titel 1", "year": "2023", "status": "sold", "price": "", "imageAlt": "Aktuelle Arbeit 1" },
+      { "category": "oil", "title": "Gemäldetitel 3", "year": "2021", "status": "price", "price": "7.200 $", "imageAlt": "Ölgemälde 3" },
+      { "category": "mixed", "title": "Kunstwerktitel 2", "year": "2022", "status": "sold", "price": "", "imageAlt": "Mixed-Media-Kunstwerk 2" }
+    ]
+  },
+  "pressPage": {
+    "title": "Presse & Publikationen | Ella Maria Grosz – Zeitgenössische Ölmalerei",
+    "description": "Pressemitteilungen, Publikationen und Medienberichte über Ella Maria Grosz, zeitgenössische Ölmalerin in Kunstzeitschriften und Galerien.",
+    "heading": "Presse & Publikationen",
+    "intro": "Präsent in bedeutenden Kunstpublikationen, Interviews und Pressemitteilungen – Einblicke in die künstlerische Praxis von Ella Maria Grosz und ihren Beitrag zur zeitgenössischen Ölmalerei.",
+    "items": [
+      {
+        "category": "Publikation",
+        "title": "Feature in Art Quarterly Magazine",
+        "excerpt": "Ein ausführliches Interview über die sich entwickelnde künstlerische Praxis und den Schritt zu größeren Leinwänden in der aktuellen Serie.",
+        "date": "Ausgabe September 2023",
+        "imageAlt": "Künstlerin im Atelier",
+        "imageSrc": "./images/artist-studio.jpg"
+      },
+      {
+        "category": "Pressemitteilung",
+        "title": "Auswahl für die Internationale Messe für zeitgenössische Kunst",
+        "excerpt": "Ella Maria Grosz wurde eingeladen, ihre neuesten Arbeiten auf der renommierten International Contemporary Art Fair zu zeigen – Werke aus 2023–2024.",
+        "date": "Oktober 2023",
+        "imageAlt": "Kunstgalerie",
+        "imageSrc": "./images/art-gallery-exhibition.jpg"
+      },
+      {
+        "category": "Feature-Artikel",
+        "title": "Die moderne Malerin: Profil zeitgenössischer Öltechnik",
+        "excerpt": "Ein umfassender Artikel über Ella Maria Grosz’ Methodik und die Wiederbelebung traditioneller Ölmalerei in der Gegenwartskunst.",
+        "date": "August 2023",
+        "imageAlt": "Detail eines Ölgemäldes",
+        "imageSrc": "./images/oil-painting-detail.jpg"
+      },
+      {
+        "category": "Interview",
+        "title": "Atelierbesuch: Licht und Schatten mit Ella Maria Grosz",
+        "excerpt": "Ein exklusiver Atelierbesuch und Gespräch über Arbeitsweise, Inspirationen und die Zukunft der künstlerischen Praxis.",
+        "date": "Juli 2023",
+        "imageAlt": "Atelierarbeit",
+        "imageSrc": "./images/og-image.jpg"
+      }
+    ]
+  },
+  "exhibitionsPage": {
+    "title": "Ausstellungen | Ella Maria Grosz – Zeitgenössische Ölmalerei",
+    "description": "Ausstellungen und Galerieschauen mit den zeitgenössischen Ölgemälden von Ella Maria Grosz. Aktuelle und vergangene Ausstellungen.",
+    "heading": "Ausstellungen",
+    "intro": "Die Ausstellungshistorie von Ella Maria Grosz: Galerien, Institutionen und internationale Kunstmessen mit ihren zeitgenössischen Ölgemälden.",
+    "items": [
+      {
+        "category": "Laufende Ausstellung",
+        "title": "The Modern Muse – Einzelausstellung in der London Contemporary Gallery",
+        "excerpt": "Eine große Einzelpräsentation zur Verbindung traditioneller Ölmalerei und zeitgenössischer Bildsprache in großformatigen Leinwänden.",
+        "date": "12. Oktober — 20. November 2024",
+        "imageAlt": "Galerieraum mit Ausstellung",
+        "imageSrc": "./images/art-gallery-exhibition.jpg"
+      },
+      {
+        "category": "Demnächst",
+        "title": "Internationale Messe für zeitgenössische Kunst – Amsterdam",
+        "excerpt": "Ella Maria Grosz zeigt ausgewählte Werke aus ihrer Serie 2023–2024 auf der renommierten internationalen Messe für zeitgenössische Kunst.",
+        "date": "Dezember 2024",
+        "imageAlt": "Blick ins Atelier",
+        "imageSrc": "./images/artist-studio.jpg"
+      },
+      {
+        "category": "Vergangene Ausstellung",
+        "title": "Serie „Substrata“ – Limitierte Edition",
+        "excerpt": "Eine kuratierte Ausstellung mit der kompletten Serie „Substrata“: 25 handüberarbeitete Giclée-Drucke und Ölstudien.",
+        "date": "Mai — Juni 2024",
+        "imageAlt": "Detail eines Ölgemäldes",
+        "imageSrc": "./images/oil-painting-detail.jpg"
+      },
+      {
+        "category": "Vergangene Ausstellung",
+        "title": "Emerging Voices in Contemporary Painting",
+        "excerpt": "Gruppenausstellung zeitgenössischer Malerinnen und Maler, die mit innovativen Techniken und Konzepten die Grenzen traditioneller Ölmalerei neu verhandeln.",
+        "date": "Februar — März 2024",
+        "imageAlt": "Ausstellungseröffnung",
+        "imageSrc": "./images/og-image.jpg"
+      }
+    ]
+  }
+}
