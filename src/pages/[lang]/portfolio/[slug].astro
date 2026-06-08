@@ -7,7 +7,7 @@ import { getMessages } from '../../../i18n';
 import { localizedHref } from '../../../i18n/paths';
 import { paintings } from '../../../data/paintings';
 import { getPaintingImage } from '../../../lib/images';
-import { formatPrice, formatDimensions } from '../../../lib/format';
+import { formatDimensions } from '../../../lib/format';
 import { site } from '../../../lib/site';
 
 export function getStaticPaths() {
@@ -38,13 +38,6 @@ const statusText =
     : painting.status === 'reserved'
       ? m.common.reserved
       : m.common.available;
-
-const priceText =
-  painting.status === 'available'
-    ? painting.price != null
-      ? formatPrice(painting.price, lang)
-      : m.common.priceOnRequest
-    : statusText;
 
 const subject = `${m.common.inquireAbout}: ${painting.title} (${painting.year})`;
 const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
@@ -89,9 +82,6 @@ const productJsonLd: Record<string, unknown> = {
     availability,
     priceCurrency: 'EUR',
     url: canonical,
-    ...(painting.price != null && painting.status === 'available'
-      ? { price: String(painting.price) }
-      : {}),
     seller: { '@type': 'Person', name: site.name },
   },
 };
@@ -146,7 +136,7 @@ const breadcrumbJsonLd = {
                             <dt>{m.artworkPage.statusLabel}</dt>
                             <dd>
                                 <span class:list={['status-tag', painting.status === 'available' ? 'status-price' : painting.status === 'reserved' ? 'status-reserved' : 'status-sold']}>
-                                    {priceText}
+                                    {statusText}
                                 </span>
                             </dd>
                         </div>
