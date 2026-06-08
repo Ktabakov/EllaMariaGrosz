@@ -1,11 +1,16 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
-import heroImg from '../../assets/images/plovdivBig.webp';
-import painting1 from '../../assets/images/painting.jfif';
+import PaintingCard from '../../components/PaintingCard.astro';
+import UpdateCard from '../../components/UpdateCard.astro';
 import { locales, isLocale, type Locale } from '../../i18n/locales';
 import { getMessages } from '../../i18n';
 import { localizedHref } from '../../i18n/paths';
+import { paintings } from '../../data/paintings';
+import { getFeaturedUpdates } from '../../data/updates';
+import { getPaintingImage } from '../../lib/images';
+import { formatDimensions } from '../../lib/format';
+import { site } from '../../lib/site';
 
 export function getStaticPaths() {
   return locales.map((lang) => ({ params: { lang } }));
@@ -17,79 +22,79 @@ if (!isLocale(langParam ?? '')) {
 }
 const lang = langParam as Locale;
 const m = getMessages(lang);
+
+const featured = paintings.filter((p) => p.featured);
+const hero = featured[0] ?? paintings[0];
+const heroImg = hero ? getPaintingImage(hero.image) : undefined;
+const heroDims = hero ? formatDimensions(hero) : null;
+const selected = (featured.length ? featured : paintings).slice(0, 6);
+const news = getFeaturedUpdates().slice(0, 3);
+const mailto = `mailto:${site.email}?subject=${encodeURIComponent(m.common.inquireEmailSubject)}`;
 ---
 
 <Layout lang={lang} title={m.home.title} description={m.home.description}>
 
 <section class="hero" id="hero">
-    <div class="container">
-        <div class="hero-image-container">
-            <Image src={heroImg} alt={m.home.hero.imageAlt} class="hero-image" />
-        </div>
-        <div class="hero-caption-gallery">
-            <div class="caption-text">
-                <h2>{m.home.hero.heading}</h2>
-                <p>{m.home.hero.subheading}</p>
+    <div class="container hero-grid">
+        <div class="hero-copy">
+            <p class="hero-kicker">{m.home.hero.kicker}</p>
+            <h1 class="hero-heading">{m.home.hero.heading}</h1>
+            <p class="hero-sub">{m.home.hero.subheading}</p>
+            <div class="hero-actions">
+                <a href={localizedHref(lang, 'portfolio')} class="btn btn-primary">{m.home.hero.cta}</a>
+                <a href={mailto} class="btn btn-ghost">{m.home.hero.ctaSecondary}</a>
             </div>
-            <div class="caption-link">
-                <a href="#" data-tooltip={m.home.hero.tooltip}>
-                    {m.common.viewDetails} <span>→</span>
+        </div>
+
+        {hero && (
+            <figure class="hero-figure">
+                <a href={`/${lang}/portfolio/${hero.slug}`} class="hero-image-link">
+                    {heroImg && (
+                        <Image src={heroImg} alt={`${hero.title}, ${m.common.medium[hero.medium]}, ${hero.year}`} widths={[600, 900, 1200]} sizes="(max-width: 900px) 92vw, 600px" loading="eager" class="hero-image" />
+                    )}
                 </a>
-            </div>
-        </div>
+                <figcaption class="hero-caption">
+                    <span class="hero-caption-label">{m.home.hero.featuredLabel}</span>
+                    <strong>{hero.title}</strong>
+                    <span>{m.common.medium[hero.medium]}{heroDims ? ` · ${heroDims}` : ''} · {hero.year}</span>
+                </figcaption>
+            </figure>
+        )}
     </div>
 </section>
 
 <section id="portfolio" class="portfolio">
     <div class="container">
-        <h2>{m.home.portfolio.heading}</h2>
-        <div class="filters">
-            <button class="filter-btn active" data-filter="all">{m.common.filterAll}</button>
-            <button class="filter-btn" data-filter="oil">{m.common.filterOil}</button>
-            <button class="filter-btn" data-filter="mixed">{m.common.filterMixed}</button>
-            <button class="filter-btn" data-filter="recent">{m.common.filterRecent}</button>
+        <div class="section-head">
+            <h2>{m.home.portfolio.heading}</h2>
+            <p>{m.home.portfolio.subheading}</p>
         </div>
         <div class="portfolio-grid">
-            {m.home.portfolioItems.map((item) => (
-                <div class="portfolio-item" data-category={item.category}>
-                    <Image src={painting1} alt={item.imageAlt} width={800} height={600} />
-                    <div class="overlay">
-                        <h3>{item.title}</h3>
-                        <p>{item.year}</p>
-                        <span class:list={['status-tag', item.status === 'sold' ? 'status-sold' : 'status-price']}>
-                            {item.status === 'sold' ? m.common.sold : item.price}
-                        </span>
-                    </div>
-                </div>
+            {selected.map((item, i) => (
+                <PaintingCard painting={item} lang={lang} loading={i < 3 ? 'eager' : 'lazy'} />
             ))}
         </div>
-        <div class="portfolio-link">
-            <a href={localizedHref(lang, 'portfolio')} class="view-full-portfolio">{m.common.viewFullPortfolio}</a>
+        <div class="section-cta">
+            <a href={localizedHref(lang, 'portfolio')} class="btn btn-primary">{m.common.viewFullPortfolio}</a>
         </div>
     </div>
 </section>
 
-<section id="news" class="news">
-    <div class="container">
-        <div class="news-header">
-            <h2>{m.home.news.heading}</h2>
-            <a href="#" aria-label={m.common.archiveAria}>{m.common.archive}</a>
+{news.length > 0 && (
+    <section id="news" class="news">
+        <div class="container">
+            <div class="news-header">
+                <h2>{m.home.news.heading}</h2>
+                <a href={localizedHref(lang, 'exhibitions')} aria-label={m.common.archiveAria}>{m.common.archive}</a>
+            </div>
+            <div class="news-list">
+                {news.map((entry) => (
+                    <UpdateCard entry={entry} lang={lang} />
+                ))}
+            </div>
         </div>
-        <div class="news-list">
-            {m.home.newsItems.map((item) => (
-                <article class="news-item">
-                    <img data-src={item.imageSrc} alt={item.imageAlt} loading="lazy">
-                    <div class="news-content">
-                        <span class="category">{item.category}</span>
-                        <h3>{item.title}</h3>
-                        <p>{item.excerpt}</p>
-                        <p class="date">{item.date}</p>
-                    </div>
-                </article>
-            ))}
-        </div>
-    </div>
-</section>
+    </section>
+)}
 
 <section id="about" class="about">
     <div class="container">
@@ -100,6 +105,7 @@ const m = getMessages(lang);
             <div class="about-links">
                 <a href={localizedHref(lang, 'press')} aria-label={m.home.about.pressAria}>{m.nav.press}</a>
                 <a href={localizedHref(lang, 'exhibitions')} aria-label={m.home.about.exhibitionsAria}>{m.nav.exhibitions}</a>
+                <a href={mailto}>{m.common.inquire}</a>
             </div>
         </div>
     </div>

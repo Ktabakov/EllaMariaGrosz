@@ -1,0 +1,177 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { Image, getImage } from 'astro:assets';
+import PaintingCard from '../../../components/PaintingCard.astro';
+import { locales, isLocale, type Locale } from '../../../i18n/locales';
+import { getMessages } from '../../../i18n';
+import { localizedHref } from '../../../i18n/paths';
+import { paintings } from '../../../data/paintings';
+import { getPaintingImage } from '../../../lib/images';
+import { formatPrice, formatDimensions } from '../../../lib/format';
+import { site } from '../../../lib/site';
+
+export function getStaticPaths() {
+  return locales.flatMap((lang) =>
+    paintings.map((painting) => ({
+      params: { lang, slug: painting.slug },
+      props: { painting },
+    })),
+  );
+}
+
+const { lang: langParam } = Astro.params;
+if (!isLocale(langParam ?? '')) {
+  return Astro.redirect('/en/portfolio');
+}
+const lang = langParam as Locale;
+const m = getMessages(lang);
+
+const { painting } = Astro.props;
+const img = getPaintingImage(painting.image);
+const mediumLabel = m.common.medium[painting.medium];
+const dims = formatDimensions(painting);
+const description = (lang === 'de' ? painting.description_de : painting.description) ?? painting.description;
+
+const statusText =
+  painting.status === 'sold'
+    ? m.common.sold
+    : painting.status === 'reserved'
+      ? m.common.reserved
+      : m.common.available;
+
+const priceText =
+  painting.status === 'available'
+    ? painting.price != null
+      ? formatPrice(painting.price, lang)
+      : m.common.priceOnRequest
+    : statusText;
+
+const subject = `${m.common.inquireAbout}: ${painting.title} (${painting.year})`;
+const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+
+const related = paintings.filter((p) => p.slug !== painting.slug).slice(0, 3);
+
+const pageTitle = `${painting.title} (${painting.year}) — ${mediumLabel} | ${site.name}`;
+const pageDescription =
+  description ??
+  `${painting.title}, ${mediumLabel}${dims ? `, ${dims}` : ''}, ${painting.year}. Original painting by ${site.name}, available from the Dresden studio.`;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
+
+// Absolute image URL for structured data.
+let schemaImage: string | undefined;
+if (img) {
+  const optimized = await getImage({ src: img, width: 1200 });
+  schemaImage = new URL(optimized.src, Astro.site ?? Astro.url.origin).href;
+}
+
+const availability =
+  painting.status === 'sold'
+    ? 'https://schema.org/SoldOut'
+    : painting.status === 'reserved'
+      ? 'https://schema.org/LimitedAvailability'
+      : 'https://schema.org/InStock';
+
+const productJsonLd: Record<string, unknown> = {
+  '@context': 'https://schema.org',
+  '@type': ['Product', 'VisualArtwork'],
+  name: painting.title,
+  ...(schemaImage ? { image: schemaImage } : {}),
+  description: pageDescription,
+  artform: 'Painting',
+  artMedium: mediumLabel,
+  ...(dims ? { width: `${painting.width} cm`, height: `${painting.height} cm` } : {}),
+  dateCreated: String(painting.year),
+  creator: { '@type': 'Person', name: site.name },
+  brand: { '@type': 'Person', name: site.name },
+  offers: {
+    '@type': 'Offer',
+    availability,
+    priceCurrency: 'EUR',
+    url: canonical,
+    ...(painting.price != null && painting.status === 'available'
+      ? { price: String(painting.price) }
+      : {}),
+    seller: { '@type': 'Person', name: site.name },
+  },
+};
+
+const breadcrumbJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: m.nav.portfolio, item: new URL(localizedHref(lang, 'portfolio'), Astro.site ?? Astro.url.origin).href },
+    { '@type': 'ListItem', position: 2, name: painting.title, item: canonical },
+  ],
+};
+---
+
+<Layout lang={lang} title={pageTitle} description={pageDescription} jsonLd={[productJsonLd, breadcrumbJsonLd]}>
+
+    <article class="artwork">
+        <div class="container">
+            <a href={localizedHref(lang, 'portfolio')} class="back-link">← {m.common.backToPortfolio}</a>
+
+            <div class="artwork-grid">
+                <div class="artwork-media">
+                    {img ? (
+                        <Image src={img} alt={`${painting.title}, ${mediumLabel}, ${painting.year}`} widths={[600, 900, 1400]} sizes="(max-width: 900px) 92vw, 60vw" loading="eager" />
+                    ) : (
+                        <div class="painting-card-placeholder large" aria-hidden="true"><span>{painting.title}</span></div>
+                    )}
+                </div>
+
+                <div class="artwork-info">
+                    <h1>{painting.title}</h1>
+                    <p class="artwork-year">{painting.year}</p>
+
+                    {description && <p class="artwork-desc">{description}</p>}
+
+                    <dl class="artwork-specs">
+                        <div>
+                            <dt>{m.artworkPage.mediumLabel}</dt>
+                            <dd>{mediumLabel}</dd>
+                        </div>
+                        {dims && (
+                            <div>
+                                <dt>{m.artworkPage.dimensionsLabel}</dt>
+                                <dd>{dims}</dd>
+                            </div>
+                        )}
+                        <div>
+                            <dt>{m.artworkPage.yearLabel}</dt>
+                            <dd>{painting.year}</dd>
+                        </div>
+                        <div>
+                            <dt>{m.artworkPage.statusLabel}</dt>
+                            <dd>
+                                <span class:list={['status-tag', painting.status === 'available' ? 'status-price' : painting.status === 'reserved' ? 'status-reserved' : 'status-sold']}>
+                                    {priceText}
+                                </span>
+                            </dd>
+                        </div>
+                    </dl>
+
+                    {painting.status !== 'sold' && (
+                        <div class="artwork-buy">
+                            <a href={mailto} class="btn btn-primary btn-block">{m.common.inquireToBuy}</a>
+                            <p class="artwork-note">{m.artworkPage.inquireNote}</p>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            {related.length > 0 && (
+                <section class="artwork-related">
+                    <h2>{m.artworkPage.relatedHeading}</h2>
+                    <div class="portfolio-grid">
+                        {related.map((item) => (
+                            <PaintingCard painting={item} lang={lang} />
+                        ))}
+                    </div>
+                </section>
+            )}
+        </div>
+    </article>
+
+</Layout>

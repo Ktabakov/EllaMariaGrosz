@@ -1,7 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
+import UpdateCard from '../../components/UpdateCard.astro';
 import { locales, isLocale, type Locale } from '../../i18n/locales';
 import { getMessages } from '../../i18n';
+import { getUpdates } from '../../data/updates';
 
 export function getStaticPaths() {
   return locales.map((lang) => ({ params: { lang } }));
@@ -13,28 +15,27 @@ if (!isLocale(langParam ?? '')) {
 }
 const lang = langParam as Locale;
 const m = getMessages(lang);
+const items = getUpdates('press');
 ---
 
 <Layout lang={lang} title={m.pressPage.title} description={m.pressPage.description}>
 
     <section class="portfolio-page">
         <div class="container">
-            <h1>{m.pressPage.heading}</h1>
-            <p class="portfolio-intro">{m.pressPage.intro}</p>
+            <header class="page-head">
+                <h1>{m.pressPage.heading}</h1>
+                <p class="page-intro">{m.pressPage.intro}</p>
+            </header>
 
-            <div class="news-list">
-                {m.pressPage.items.map((item) => (
-                    <article class="news-item">
-                        <img data-src={item.imageSrc} alt={item.imageAlt} loading="lazy">
-                        <div class="news-content">
-                            <span class="category">{item.category}</span>
-                            <h3>{item.title}</h3>
-                            <p>{item.excerpt}</p>
-                            <p class="date">{item.date}</p>
-                        </div>
-                    </article>
-                ))}
-            </div>
+            {items.length === 0 ? (
+                <p class="empty-state">{m.pressPage.empty}</p>
+            ) : (
+                <div class="news-list">
+                    {items.map((entry) => (
+                        <UpdateCard entry={entry} lang={lang} />
+                    ))}
+                </div>
+            )}
         </div>
     </section>
 

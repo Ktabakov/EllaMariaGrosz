@@ -1,9 +1,9 @@
 ---
 import Layout from '../../layouts/Layout.astro';
-import { Image } from 'astro:assets';
-import painting1 from '../../assets/images/painting.jfif';
+import PaintingCard from '../../components/PaintingCard.astro';
 import { locales, isLocale, type Locale } from '../../i18n/locales';
 import { getMessages } from '../../i18n';
+import { paintings } from '../../data/paintings';
 
 export function getStaticPaths() {
   return locales.map((lang) => ({ params: { lang } }));
@@ -15,34 +15,37 @@ if (!isLocale(langParam ?? '')) {
 }
 const lang = langParam as Locale;
 const m = getMessages(lang);
+
+const hasMixed = paintings.some((p) => p.medium === 'mixed');
+const hasRecent = paintings.some((p) => p.recent);
 ---
 
 <Layout lang={lang} title={m.portfolioPage.title} description={m.portfolioPage.description}>
 
     <section id="portfolio" class="portfolio-page">
         <div class="container">
-            <h1>{m.portfolioPage.heading}</h1>
-            <p class="portfolio-intro">{m.portfolioPage.intro}</p>
-            <div class="filters">
-                <button class="filter-btn active" data-filter="all">{m.common.filterAll}</button>
-                <button class="filter-btn" data-filter="oil">{m.common.filterOil}</button>
-                <button class="filter-btn" data-filter="mixed">{m.common.filterMixed}</button>
-                <button class="filter-btn" data-filter="recent">{m.common.filterRecent}</button>
-            </div>
-            <div class="portfolio-grid">
-                {m.portfolioPage.items.map((item) => (
-                    <div class="portfolio-item" data-category={item.category}>
-                        <Image src={painting1} alt={item.imageAlt} width={800} height={600} />
-                        <div class="overlay">
-                            <h3>{item.title}</h3>
-                            <p>{item.year}</p>
-                            <span class:list={['status-tag', item.status === 'sold' ? 'status-sold' : 'status-price']}>
-                                {item.status === 'sold' ? m.common.sold : item.price}
-                            </span>
-                        </div>
+            <header class="page-head">
+                <h1>{m.portfolioPage.heading}</h1>
+                <p class="page-intro">{m.portfolioPage.intro}</p>
+            </header>
+
+            {paintings.length === 0 ? (
+                <p class="empty-state">{m.portfolioPage.empty}</p>
+            ) : (
+                <>
+                    <div class="filters" role="tablist">
+                        <button class="filter-btn active" data-filter="all">{m.common.filterAll}</button>
+                        <button class="filter-btn" data-filter="oil">{m.common.filterOil}</button>
+                        {hasMixed && <button class="filter-btn" data-filter="mixed">{m.common.filterMixed}</button>}
+                        {hasRecent && <button class="filter-btn" data-filter="recent">{m.common.filterRecent}</button>}
                     </div>
-                ))}
-            </div>
+                    <div class="portfolio-grid">
+                        {paintings.map((item, i) => (
+                            <PaintingCard painting={item} lang={lang} loading={i < 4 ? 'eager' : 'lazy'} />
+                        ))}
+                    </div>
+                </>
+            )}
         </div>
     </section>
 

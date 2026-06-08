@@ -1,3 +1,28 @@
 ---
-return Astro.redirect('/en/', 302);
+// Root entry point. Instantly forwards visitors to a localized homepage
+// (German browsers → /de/, everyone else → /en/) while still carrying the
+// favicon and a canonical tag so the bare domain looks correct.
+const enHome = new URL('/en/', Astro.site ?? Astro.url.origin).href;
 ---
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ella Maria Grosz</title>
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="canonical" href={enHome}>
+    <meta http-equiv="refresh" content="0; url=/en/">
+    <script is:inline>
+        (function () {
+            var lang = (navigator.language || 'en').toLowerCase().indexOf('de') === 0 ? 'de' : 'en';
+            location.replace('/' + lang + '/');
+        })();
+    </script>
+</head>
+<body>
+    <p>Redirecting to <a href="/en/">Ella Maria Grosz</a>…</p>
+</body>
+</html>

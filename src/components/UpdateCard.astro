@@ -1,0 +1,34 @@
+---
+import { Image } from 'astro:assets';
+import type { Locale } from '../i18n/locales';
+import { getUpdateImage } from '../lib/images';
+import { pick, type UpdateEntry } from '../data/updates';
+
+interface Props {
+  entry: UpdateEntry;
+  lang: Locale;
+}
+
+const { entry, lang } = Astro.props;
+const img = getUpdateImage(entry.image);
+const title = pick(entry.title, lang);
+const category = pick(entry.category, lang);
+const excerpt = pick(entry.excerpt, lang);
+const date = pick(entry.date, lang);
+---
+
+<article class="update-card">
+  <div class="update-card-media">
+    {img ? (
+      <Image src={img} alt={title} widths={[400, 600]} sizes="(max-width: 700px) 90vw, 380px" loading="lazy" />
+    ) : (
+      <div class="update-card-placeholder" aria-hidden="true"></div>
+    )}
+  </div>
+  <div class="update-card-body">
+    <span class="category">{category}</span>
+    <h3>{entry.link ? <a href={entry.link} target="_blank" rel="noopener noreferrer">{title}</a> : title}</h3>
+    <p>{excerpt}</p>
+    <p class="date">{date}</p>
+  </div>
+</article>

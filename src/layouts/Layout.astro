@@ -3,24 +3,32 @@ import '../styles/style.css';
 import type { Locale } from '../i18n/locales';
 import { getMessages } from '../i18n';
 import { localizedHref, swapLocaleInPath } from '../i18n/paths';
+import { site, studioAddressLines } from '../lib/site';
 
 export interface Props {
   lang: Locale;
   title: string;
   description?: string;
   image?: string;
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const {
   lang,
   title,
   description,
-  image = '/images/og-image.jpg',
+  image,
+  jsonLd,
 } = Astro.props;
 
 const m = getMessages(lang);
 const metaDescription = description ?? m.meta.defaultDescription;
+
+const origin = (Astro.site ?? new URL(Astro.url.origin)).toString().replace(/\/$/, '');
 const currentPath = Astro.url.pathname;
+const canonical = new URL(currentPath, Astro.site ?? Astro.url.origin).href;
+const ogImage = new URL(image ?? '/og-image.webp', Astro.site ?? Astro.url.origin).href;
+
 const isHome = currentPath === `/${lang}` || currentPath === `/${lang}/`;
 const isPortfolio = currentPath.includes('/portfolio');
 const isPress = currentPath.includes('/press');
@@ -28,6 +36,38 @@ const isExhibitions = currentPath.includes('/exhibitions');
 
 const enPath = swapLocaleInPath(currentPath, 'en');
 const dePath = swapLocaleInPath(currentPath, 'de');
+
+const aboutHref = `${localizedHref(lang, '')}#about`;
+
+// Base structured data: the artist + the website.
+const baseJsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: site.name,
+    jobTitle: site.jobTitle,
+    url: `${origin}/${lang}/`,
+    email: `mailto:${site.email}`,
+    sameAs: [site.instagram],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: site.studio.street,
+      postalCode: site.studio.postalCode,
+      addressLocality: site.studio.city,
+      addressCountry: site.studio.countryCode,
+    },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: site.name,
+    url: origin,
+    inLanguage: lang,
+  },
+];
+
+const extraJsonLd = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const allJsonLd = [...baseJsonLd, ...extraJsonLd];
 ---
 
 <!DOCTYPE html>
@@ -39,27 +79,36 @@ const dePath = swapLocaleInPath(currentPath, 'de');
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-    <!-- SEO Meta Tags -->
+    <!-- SEO -->
     <meta name="description" content={metaDescription}>
     <meta name="keywords" content={m.meta.keywords}>
-    <meta name="author" content="Ella Maria Grosz">
+    <meta name="author" content={site.name}>
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href={canonical}>
 
-    <!-- Open Graph Tags -->
+    <!-- Open Graph -->
+    <meta property="og:site_name" content={site.name}>
     <meta property="og:title" content={title}>
     <meta property="og:description" content={m.meta.ogDescription}>
-    <meta property="og:image" content={image}>
+    <meta property="og:image" content={ogImage}>
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ellamariagrosz.github.io">
+    <meta property="og:url" content={canonical}>
+    <meta property="og:locale" content={lang === 'de' ? 'de_DE' : 'en_GB'}>
 
-    <!-- Twitter Cards -->
+    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content={title}>
     <meta name="twitter:description" content={metaDescription}>
-    <meta name="twitter:image" content={image}>
+    <meta name="twitter:image" content={ogImage}>
 
     <!-- Favicon -->
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 
+    <!-- Language alternates -->
     <link rel="alternate" hreflang="en" href={new URL(enPath, Astro.site ?? Astro.url.origin).href} />
     <link rel="alternate" hreflang="de" href={new URL(dePath, Astro.site ?? Astro.url.origin).href} />
     <link rel="alternate" hreflang="x-default" href={new URL('/en/', Astro.site ?? Astro.url.origin).href} />
@@ -67,43 +116,55 @@ const dePath = swapLocaleInPath(currentPath, 'de');
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <script type="application/ld+json" set:html={JSON.stringify(allJsonLd)} is:inline />
 </head>
 <body>
+    <a href="#main" class="skip-link">Skip to content</a>
+
     <header class="header">
         <div class="container">
             <div class="logo">
-                <a href={localizedHref(lang, '')}><h1>Ella Maria Grosz</h1></a>
+                <a href={localizedHref(lang, '')} aria-label={site.name}>{site.name}</a>
             </div>
-            <nav class="nav" aria-label="Main">
+
+            <button class="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label={m.common.menu}>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+
+            <nav class="nav" id="primary-nav" aria-label="Main">
                 <ul>
-                    <li><a href={`${localizedHref(lang, '')}#hero`} class={isHome ? 'active' : ''}>{m.nav.home}</a></li>
+                    <li><a href={localizedHref(lang, '')} class={isHome ? 'active' : ''}>{m.nav.home}</a></li>
                     <li><a href={localizedHref(lang, 'portfolio')} class={isPortfolio ? 'active' : ''}>{m.nav.portfolio}</a></li>
-                    <li><a href={`${localizedHref(lang, '')}#about`}>{m.nav.about}</a></li>
+                    <li><a href={aboutHref}>{m.nav.about}</a></li>
                     <li><a href={localizedHref(lang, 'press')} class={isPress ? 'active' : ''}>{m.nav.press}</a></li>
                     <li><a href={localizedHref(lang, 'exhibitions')} class={isExhibitions ? 'active' : ''}>{m.nav.exhibitions}</a></li>
                 </ul>
+
+                <div class="nav-meta">
+                    <nav class="lang-switch" aria-label={m.lang.switchTo}>
+                        {lang === 'en' ? (
+                            <span class="lang-current" aria-current="true">EN</span>
+                        ) : (
+                            <a href={enPath} hreflang="en" lang="en">EN</a>
+                        )}
+                        <span class="lang-sep" aria-hidden="true">·</span>
+                        {lang === 'de' ? (
+                            <span class="lang-current" aria-current="true">DE</span>
+                        ) : (
+                            <a href={dePath} hreflang="de" lang="de">DE</a>
+                        )}
+                    </nav>
+                    <a href={`mailto:${site.email}?subject=${encodeURIComponent(m.common.inquireEmailSubject)}`} class="inquire-btn">{m.common.inquire}</a>
+                </div>
             </nav>
-            <div class="header-actions">
-                <nav class="lang-switch" aria-label={m.lang.switchTo}>
-                    {lang === 'en' ? (
-                        <span class="lang-current" aria-current="true">EN</span>
-                    ) : (
-                        <a href={enPath} hreflang="en" lang="en">EN</a>
-                    )}
-                    <span class="lang-sep" aria-hidden="true">·</span>
-                    {lang === 'de' ? (
-                        <span class="lang-current" aria-current="true">DE</span>
-                    ) : (
-                        <a href={dePath} hreflang="de" lang="de">DE</a>
-                    )}
-                </nav>
-                <a href={`mailto:ellamariagross@web.de?subject=${encodeURIComponent(m.common.inquireEmailSubject)}`} class="inquire-btn" aria-label={m.common.inquireAria}>{m.common.inquire}</a>
-            </div>
         </div>
     </header>
 
-    <main>
+    <main id="main">
         <slot />
     </main>
 
@@ -111,33 +172,34 @@ const dePath = swapLocaleInPath(currentPath, 'de');
         <div class="container">
             <div class="footer-content">
                 <div class="footer-brand">
-                    <h3>Ella Maria Grosz</h3>
-                    <p>{m.footer.copyright}</p>
+                    <h2>{site.name}</h2>
+                    <p>{m.footer.tagline}</p>
                 </div>
 
                 <div class="footer-links">
-                    <div class="social">
+                    <div class="footer-col">
                         <span>{m.footer.social}</span>
-                        <a href="https://instagram.com/ellamariagross" target="_blank" rel="noopener noreferrer" aria-label={m.footer.instagramAria}>
+                        <a href={site.instagram} target="_blank" rel="noopener noreferrer" aria-label={m.footer.instagramAria}>
                             <i class="fab fa-instagram"></i> Instagram
                         </a>
                     </div>
 
-                    <div class="contact-info">
+                    <div class="footer-col">
                         <span>{m.footer.studio}</span>
-                        <p>Schandauer Str. 64<br>01277 Dresden</p>
-                        <a href="mailto:ellamariagross@web.de">
-                            <i class="far fa-envelope"></i>ellamariagross@web.de
+                        <p>{studioAddressLines[0]}<br>{studioAddressLines[1]}</p>
+                        <a href={`mailto:${site.email}`}>
+                            <i class="far fa-envelope"></i> {site.email}
                         </a>
                     </div>
                 </div>
 
                 <div class="footer-actions">
-                    <a href="mailto:ellamariagross@web.de" class="email-circle-btn" aria-label={m.footer.emailAria}>
+                    <a href={`mailto:${site.email}`} class="email-circle-btn" aria-label={m.footer.emailAria}>
                         <i class="fa-solid fa-paper-plane"></i>
                     </a>
                 </div>
             </div>
+            <p class="footer-copyright">{m.footer.copyright}</p>
         </div>
     </footer>
 

@@ -1,0 +1,51 @@
+---
+import { Image } from 'astro:assets';
+import type { Locale } from '../i18n/locales';
+import { getMessages } from '../i18n';
+import { getPaintingImage } from '../lib/images';
+import { formatPrice } from '../lib/format';
+import { paintingCategories, type Painting } from '../data/paintings';
+
+interface Props {
+  painting: Painting;
+  lang: Locale;
+  loading?: 'lazy' | 'eager';
+}
+
+const { painting, lang, loading = 'lazy' } = Astro.props;
+const m = getMessages(lang);
+const img = getPaintingImage(painting.image);
+const href = `/${lang}/portfolio/${painting.slug}`;
+const mediumLabel = m.common.medium[painting.medium];
+
+const statusText =
+  painting.status === 'sold'
+    ? m.common.sold
+    : painting.status === 'reserved'
+      ? m.common.reserved
+      : painting.price != null
+        ? formatPrice(painting.price, lang)
+        : m.common.priceOnRequest;
+---
+
+<a class="painting-card" href={href} data-category={paintingCategories(painting)} aria-label={`${painting.title} — ${m.common.viewArtwork}`}>
+  <div class="painting-card-media">
+    {img ? (
+      <Image src={img} alt={`${painting.title}, ${mediumLabel}, ${painting.year}`} widths={[400, 600, 800]} sizes="(max-width: 700px) 90vw, (max-width: 1100px) 45vw, 360px" loading={loading} />
+    ) : (
+      <div class="painting-card-placeholder" aria-hidden="true"><span>{painting.title}</span></div>
+    )}
+    <div class="painting-card-overlay">
+      <span class="view-cue">{m.common.viewArtwork} <span aria-hidden="true">→</span></span>
+    </div>
+  </div>
+  <div class="painting-card-info">
+    <div class="painting-card-titles">
+      <h3>{painting.title}</h3>
+      <p class="painting-card-meta">{mediumLabel} · {painting.year}</p>
+    </div>
+    <span class:list={['status-tag', painting.status === 'available' ? 'status-price' : painting.status === 'reserved' ? 'status-reserved' : 'status-sold']}>
+      {statusText}
+    </span>
+  </div>
+</a>

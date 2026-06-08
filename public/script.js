@@ -1,47 +1,60 @@
-// Lazy Loading Images
-function lazyLoadImages() {
-    const images = document.querySelectorAll('img[data-src]');
-    const imageObserver = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const img = entry.target;
-                img.src = img.dataset.src;
-                img.classList.add('loaded');
-                observer.unobserve(img);
-            }
-        });
-    });
+// Mobile navigation toggle
+function setupMobileNav() {
+  const toggle = document.querySelector('.nav-toggle');
+  const nav = document.querySelector('.nav');
+  if (!toggle || !nav) return;
 
-    images.forEach(img => imageObserver.observe(img));
+  const close = () => {
+    document.body.classList.remove('nav-open');
+    toggle.setAttribute('aria-expanded', 'false');
+  };
+
+  toggle.addEventListener('click', () => {
+    const isOpen = document.body.classList.toggle('nav-open');
+    toggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Close when a link is tapped
+  nav.querySelectorAll('a').forEach((link) => link.addEventListener('click', close));
+
+  // Close on Escape
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') close();
+  });
 }
 
-// Portfolio Filtering
+// Portfolio filtering (cards carry a space-separated data-category list)
 function setupPortfolioFilter() {
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const portfolioItems = document.querySelectorAll('.portfolio-item');
+  const buttons = document.querySelectorAll('.filter-btn');
+  const items = document.querySelectorAll('.painting-card');
+  if (!buttons.length || !items.length) return;
 
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Remove active class from all buttons
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            // Add active class to clicked button
-            button.classList.add('active');
+  buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+      buttons.forEach((b) => b.classList.remove('active'));
+      button.classList.add('active');
 
-            const filterValue = button.dataset.filter;
-
-            portfolioItems.forEach(item => {
-                if (filterValue === 'all' || item.dataset.category === filterValue) {
-                    item.style.display = 'block';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
-        });
+      const filter = button.dataset.filter;
+      items.forEach((item) => {
+        const cats = (item.dataset.category || '').split(/\s+/);
+        const show = filter === 'all' || cats.includes(filter);
+        item.classList.toggle('is-hidden', !show);
+      });
     });
+  });
 }
 
-// Initialize when DOM is loaded
+// Shrink header on scroll for a more refined feel
+function setupHeaderScroll() {
+  const header = document.querySelector('.header');
+  if (!header) return;
+  const onScroll = () => header.classList.toggle('is-scrolled', window.scrollY > 20);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
-    lazyLoadImages();
-    setupPortfolioFilter();
+  setupMobileNav();
+  setupPortfolioFilter();
+  setupHeaderScroll();
 });
