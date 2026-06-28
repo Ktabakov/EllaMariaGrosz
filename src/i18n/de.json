@@ -1,8 +1,8 @@
 {
   "meta": {
-    "keywords": "Ella Maria Grosz, Ölgemälde Dresden, zeitgenössische Malerin Dresden, Bilder kaufen, Kunst kaufen Dresden, Originalgemälde, Ölmalerei Dresden, Künstlerin Sachsen",
-    "defaultDescription": "Ella Maria Grosz ist eine zeitgenössische Ölmalerin aus Dresden. Entdecken und kaufen Sie originale Ölgemälde, die stille Momente von Licht und Schatten einfangen.",
-    "ogDescription": "Originale zeitgenössische Ölgemälde von Ella Maria Grosz, Dresden. Entdecken Sie die Sammlung und fragen Sie zum Kauf an."
+    "keywords": "Ella Maria Grosz, zeitgenössische figurative Malerei, surreale Ölmalerei, Originalgemälde, Bilder kaufen, Künstlerin Dresden, HfBK Dresden",
+    "defaultDescription": "Ella Maria Grosz ist eine zeitgenössische Malerin und schafft eindringliche, surreale figurative Ölgemälde – leere Schwimmbäder, traumhafte Interieurs und Figuren, die sich in Farbe auflösen. Entdecken und kaufen Sie originale Werke.",
+    "ogDescription": "Eindringliche, surreale figurative Ölgemälde von Ella Maria Grosz. Entdecken Sie die Sammlung und fragen Sie zum Kauf an."
   },
   "nav": {
     "home": "Start",
@@ -51,15 +51,15 @@
     "instagramAria": "Instagram",
     "studio": "Atelier",
     "emailAria": "E-Mail senden",
-    "tagline": "Originale zeitgenössische Ölgemälde, Dresden."
+    "tagline": "Surreale figurative Ölgemälde. Originalwerke."
   },
   "home": {
-    "title": "Ella Maria Grosz | Zeitgenössische Ölgemälde, Dresden",
-    "description": "Originale zeitgenössische Ölgemälde von Ella Maria Grosz aus Dresden. Entdecken Sie die Sammlung und fragen Sie zum Kauf an – Bilder, die Licht, Schatten und stille Momente einfangen.",
+    "title": "Ella Maria Grosz | Surreale figurative Ölgemälde",
+    "description": "Eindringliche, surreale figurative Ölgemälde von Ella Maria Grosz – leere Schwimmbäder, traumhafte Interieurs und Figuren, die sich in Farbe auflösen. Entdecken Sie die Sammlung und fragen Sie zum Kauf an.",
     "hero": {
-      "kicker": "Zeitgenössische Ölmalerin · Dresden",
+      "kicker": "Zeitgenössische figurative Malerin",
       "heading": "Ella Maria Grosz",
-      "subheading": "Geschichtete Ölgemälde, die Licht, Schatten und die Ruhe alltäglicher Momente bewahren.",
+      "subheading": "Surreale Ölgemälde von leeren Schwimmbädern, traumhaften Interieurs und Figuren, die sich in Farbe und Licht auflösen.",
       "cta": "Bilder ansehen",
       "ctaSecondary": "Anfragen",
       "featuredLabel": "Ausgewähltes Werk"
@@ -69,21 +69,24 @@
       "subheading": "Eine Auswahl aktueller Originale. Jedes Bild ist ein Unikat."
     },
     "news": {
-      "heading": "News & Ausstellungen"
+      "heading": "News & Ausstellungen",
+      "cta": "Alle Ausstellungen ansehen"
     },
     "about": {
-      "heading": "Leise Reflexionen in Öl und Leinen.",
-      "p1": "Mit Sitz in Dresden arbeitet Ella Maria Grosz in geschichteter Ölmalerei und baut jede Leinwand langsam auf, um das flüchtige Licht und den Schatten alltäglicher Szenen einzufangen. Ihre Arbeit hebt das Gewöhnliche durch geduldige, klassische Technik hervor.",
-      "p2": "In Atelierserien und Ausstellungen erforscht sie die Spannung zwischen Erinnerung und Material – feine Farbverschiebungen und geschichteter Pinselstrich bilden Kompositionen, die zugleich intim und weit wirken. Jedes Bild ist ein Original und direkt aus dem Atelier erhältlich.",
+      "heading": "Traumhafte Interieurs, in Öl gemalt.",
+      "p1": "Ella Maria Grosz schafft eindringliche, surreale figurative Malerei. Leere Schwimmbäder, Badezimmer und Schlafzimmer werden zu Bühnen, auf denen Figuren in goldener Flüssigkeit zerfließen, Fliesen glühen und gewöhnliche Räume ins Traumhafte kippen.",
+      "p2": "Ausgebildet an der HfBK Dresden und der Accademia di Belle Arti di Roma, bewegt sie sich zwischen vollendeten Ölgemälden, Sepia-Untermalungen und schnellen Studien auf Papier. Ihre Arbeiten wurden in ganz Deutschland sowie in Rom und Paris gezeigt. Jedes Bild ist ein Original und direkt von der Künstlerin erhältlich.",
+      "portraitAlt": "Ella Maria Grosz vor einem ihrer Bilder",
+      "studioAlt": "Im Atelier",
       "pressAria": "Presse und Publikationen lesen",
       "exhibitionsAria": "Ausstellungen ansehen"
     }
   },
   "portfolioPage": {
-    "title": "Bilder kaufen | Ella Maria Grosz — Ölmalerin, Dresden",
-    "description": "Originale Öl- und Mixed-Media-Bilder von Ella Maria Grosz, direkt aus dem Dresdner Atelier erhältlich. Größe, Preis und Verfügbarkeit zu jedem Werk.",
+    "title": "Bilder | Ella Maria Grosz — Surreale figurative Ölmalerei",
+    "description": "Originale surreale figurative Ölgemälde und Arbeiten auf Papier von Ella Maria Grosz, direkt von der Künstlerin erhältlich. Technik und Verfügbarkeit zu jedem Werk.",
     "heading": "Bilder",
-    "intro": "Originale Öl- und Mixed-Media-Bilder, direkt aus dem Atelier erhältlich. Jedes Werk ist ein Unikat – melden Sie sich zum Kauf oder für Fragen zu einem Bild.",
+    "intro": "Originale Ölgemälde und Arbeiten auf Papier. Jedes Werk ist ein Unikat – melden Sie sich zum Kauf oder für Fragen zu einem Bild.",
     "empty": "Neue Bilder folgen in Kürze. Schauen Sie gern wieder vorbei oder melden Sie sich."
   },
   "artworkPage": {
@@ -96,17 +99,21 @@
     "relatedHeading": "Weitere Bilder"
   },
   "pressPage": {
-    "title": "Presse | Ella Maria Grosz — Zeitgenössische Ölmalerin, Dresden",
-    "description": "Presse, Interviews und Publikationen über die Dresdner zeitgenössische Ölmalerin Ella Maria Grosz.",
+    "title": "Presse | Ella Maria Grosz — Zeitgenössische figurative Malerin",
+    "description": "Presse, Interviews und Publikationen über die zeitgenössische figurative Malerin Ella Maria Grosz.",
     "heading": "Presse",
-    "intro": "Interviews, Beiträge und Publikationen über die Arbeit und Atelierpraxis von Ella Maria Grosz.",
+    "intro": "Interviews, Beiträge und Publikationen über die Arbeit und Praxis von Ella Maria Grosz.",
     "empty": "Pressebeiträge erscheinen hier. Für Presseanfragen melden Sie sich gern."
   },
   "exhibitionsPage": {
-    "title": "Ausstellungen | Ella Maria Grosz — Ölmalerin, Dresden",
-    "description": "Aktuelle, kommende und vergangene Ausstellungen mit zeitgenössischen Ölgemälden von Ella Maria Grosz aus Dresden.",
+    "title": "Ausstellungen | Ella Maria Grosz — Zeitgenössische figurative Malerin",
+    "description": "Verzeichnis der Einzel- und Gruppenausstellungen von Ella Maria Grosz, 2018–2026, mit ausgewählten Ansichten – Dresden, Hamburg, Berlin, Rom und Paris.",
     "heading": "Ausstellungen",
-    "intro": "Aktuelle, kommende und vergangene Ausstellungen mit originalen Bildern.",
-    "empty": "Kommende Ausstellungen werden hier in Kürze angekündigt."
+    "intro": "Ein Verzeichnis der Einzel- und Gruppenausstellungen, von 2018 bis heute, mit einer Auswahl an Ausstellungsansichten.",
+    "empty": "Kommende Ausstellungen werden hier in Kürze angekündigt.",
+    "viewsTitle": "Ausstellungsverzeichnis mit ausgewählten Ansichten",
+    "listHeading": "Ausstellungen (Auswahl)",
+    "viewsHeading": "Ausgewählte Ansichten",
+    "moreViews": "Weitere Ansichten"
   }
 }

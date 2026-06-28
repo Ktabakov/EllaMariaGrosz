@@ -15,9 +15,6 @@ if (!isLocale(langParam ?? '')) {
 }
 const lang = langParam as Locale;
 const m = getMessages(lang);
-
-const hasMixed = paintings.some((p) => p.medium === 'mixed');
-const hasRecent = paintings.some((p) => p.recent);
 ---
 
 <Layout lang={lang} title={m.portfolioPage.title} description={m.portfolioPage.description}>
@@ -32,19 +29,11 @@ const hasRecent = paintings.some((p) => p.recent);
             {paintings.length === 0 ? (
                 <p class="empty-state">{m.portfolioPage.empty}</p>
             ) : (
-                <>
-                    <div class="filters" role="tablist">
-                        <button class="filter-btn active" data-filter="all">{m.common.filterAll}</button>
-                        <button class="filter-btn" data-filter="oil">{m.common.filterOil}</button>
-                        {hasMixed && <button class="filter-btn" data-filter="mixed">{m.common.filterMixed}</button>}
-                        {hasRecent && <button class="filter-btn" data-filter="recent">{m.common.filterRecent}</button>}
-                    </div>
-                    <div class="portfolio-grid">
-                        {paintings.map((item, i) => (
-                            <PaintingCard painting={item} lang={lang} loading={i < 4 ? 'eager' : 'lazy'} />
-                        ))}
-                    </div>
-                </>
+                <div class="portfolio-grid">
+                    {paintings.map((item, i) => (
+                        <PaintingCard painting={item} lang={lang} loading={i < 4 ? 'eager' : 'lazy'} />
+                    ))}
+                </div>
             )}
         </div>
     </section>

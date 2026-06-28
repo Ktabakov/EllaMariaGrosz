@@ -8,7 +8,7 @@ import { getMessages } from '../../i18n';
 import { localizedHref } from '../../i18n/paths';
 import { paintings } from '../../data/paintings';
 import { getFeaturedUpdates } from '../../data/updates';
-import { getPaintingImage } from '../../lib/images';
+import { getPaintingImage, getUpdateImage } from '../../lib/images';
 import { formatDimensions } from '../../lib/format';
 import { site } from '../../lib/site';
 
@@ -30,37 +30,32 @@ const heroDims = hero ? formatDimensions(hero) : null;
 const selected = (featured.length ? featured : paintings).slice(0, 6);
 const news = getFeaturedUpdates().slice(0, 3);
 const mailto = `mailto:${site.email}?subject=${encodeURIComponent(m.common.inquireEmailSubject)}`;
+const portraitImg = getUpdateImage('artist-portrait.webp');
 ---
 
 <Layout lang={lang} title={m.home.title} description={m.home.description}>
 
-<section class="hero" id="hero">
-    <div class="container hero-grid">
-        <div class="hero-copy">
-            <p class="hero-kicker">{m.home.hero.kicker}</p>
-            <h1 class="hero-heading">{m.home.hero.heading}</h1>
-            <p class="hero-sub">{m.home.hero.subheading}</p>
-            <div class="hero-actions">
-                <a href={localizedHref(lang, 'portfolio')} class="btn btn-primary">{m.home.hero.cta}</a>
-                <a href={mailto} class="btn btn-ghost">{m.home.hero.ctaSecondary}</a>
-            </div>
+<section class="hero-full" id="hero">
+    {heroImg && (
+        <Image src={heroImg} alt={`${hero.title}, ${m.common.medium[hero.medium]}, ${hero.year}`} widths={[900, 1400, 1920, 2400]} sizes="100vw" loading="eager" fetchpriority="high" class="hero-full-image" />
+    )}
+    <div class="hero-full-overlay"></div>
+    <div class="container hero-full-content">
+        <p class="hero-kicker">{m.home.hero.kicker}</p>
+        <h1 class="hero-full-heading">{m.home.hero.heading}</h1>
+        <p class="hero-full-sub">{m.home.hero.subheading}</p>
+        <div class="hero-actions">
+            <a href={localizedHref(lang, 'portfolio')} class="btn btn-primary">{m.home.hero.cta}</a>
+            <a href={mailto} class="btn btn-ghost btn-ghost-light">{m.home.hero.ctaSecondary}</a>
         </div>
-
-        {hero && (
-            <figure class="hero-figure">
-                <a href={`/${lang}/portfolio/${hero.slug}`} class="hero-image-link">
-                    {heroImg && (
-                        <Image src={heroImg} alt={`${hero.title}, ${m.common.medium[hero.medium]}, ${hero.year}`} widths={[600, 900, 1200]} sizes="(max-width: 900px) 92vw, 600px" loading="eager" class="hero-image" />
-                    )}
-                </a>
-                <figcaption class="hero-caption">
-                    <span class="hero-caption-label">{m.home.hero.featuredLabel}</span>
-                    <strong>{hero.title}</strong>
-                    <span>{m.common.medium[hero.medium]}{heroDims ? ` · ${heroDims}` : ''} · {hero.year}</span>
-                </figcaption>
-            </figure>
-        )}
     </div>
+    {hero && (
+        <a href={`/${lang}/portfolio/${hero.slug}`} class="hero-full-caption">
+            <span class="hero-caption-label">{m.home.hero.featuredLabel}</span>
+            <strong>{hero.title}</strong>
+            <span>{m.common.medium[hero.medium]}{heroDims ? ` · ${heroDims}` : ''} · {hero.year}</span>
+        </a>
+    )}
 </section>
 
 <section id="portfolio" class="portfolio">
@@ -92,23 +87,63 @@ const mailto = `mailto:${site.email}?subject=${encodeURIComponent(m.common.inqui
                     <UpdateCard entry={entry} lang={lang} />
                 ))}
             </div>
+            <div class="section-cta">
+                <a href={localizedHref(lang, 'exhibitions')} class="btn btn-primary">{m.home.news.cta}</a>
+            </div>
         </div>
     </section>
 )}
 
 <section id="about" class="about">
     <div class="container">
-        <div class="about-content">
-            <h2>{m.home.about.heading}</h2>
-            <p>{m.home.about.p1}</p>
-            <p>{m.home.about.p2}</p>
-            <div class="about-links">
-                <a href={localizedHref(lang, 'press')} aria-label={m.home.about.pressAria}>{m.nav.press}</a>
-                <a href={localizedHref(lang, 'exhibitions')} aria-label={m.home.about.exhibitionsAria}>{m.nav.exhibitions}</a>
-                <a href={mailto}>{m.common.inquire}</a>
+        <div class="about-layout">
+            {portraitImg && (
+                <figure class="about-portrait">
+                    <Image src={portraitImg} alt={m.home.about.portraitAlt} widths={[400, 600, 800]} sizes="(max-width: 800px) 90vw, 420px" loading="lazy" />
+                </figure>
+            )}
+            <div class="about-content">
+                <h2>{m.home.about.heading}</h2>
+                <p>{m.home.about.p1}</p>
+                <p>{m.home.about.p2}</p>
+                <div class="about-links">
+                    <a href={localizedHref(lang, 'press')} aria-label={m.home.about.pressAria}>{m.nav.press}</a>
+                    <a href={localizedHref(lang, 'exhibitions')} aria-label={m.home.about.exhibitionsAria}>{m.nav.exhibitions}</a>
+                    <a href={mailto}>{m.common.inquire}</a>
+                </div>
             </div>
         </div>
     </div>
 </section>
+
+<style>
+    .about-layout {
+        display: grid;
+        grid-template-columns: minmax(280px, 420px) 1fr;
+        gap: clamp(1.5rem, 5vw, 4rem);
+        align-items: center;
+    }
+
+    .about-portrait {
+        margin: 0;
+    }
+
+    .about-portrait :global(img) {
+        width: 100%;
+        height: auto;
+        display: block;
+        border-radius: 4px;
+    }
+
+    @media (max-width: 800px) {
+        .about-layout {
+            grid-template-columns: 1fr;
+        }
+
+        .about-portrait {
+            max-width: 420px;
+        }
+    }
+</style>
 
 </Layout>

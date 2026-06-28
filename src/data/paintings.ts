@@ -44,56 +44,186 @@ export interface Painting {
 
 export const paintings: Painting[] = [
   {
-    slug: 'plovdiv',
-    image: 'plovdiv.webp',
-    title: 'Plovdiv',
-    year: 2023,
+    slug: 'blue-room',
+    image: 'blue-bedroom.webp',
+    title: 'Blue Room',
+    year: 2025,
     medium: 'oil',
-    width: 120,
-    height: 80,
-    price: 2400,
     status: 'available',
     recent: true,
     featured: true,
     description:
-      'A layered oil study of Plovdiv\u2019s old town \u2014 warm stone, deep shadow and the quiet light of late afternoon.',
+      'A bedroom dissolving into deep blue, where a golden figure pours across the bed like liquid light. Memory and matter blur in a single dreamlike interior.',
     description_de:
-      'Eine vielschichtige Ölstudie der Altstadt von Plowdiw \u2014 warmer Stein, tiefer Schatten und das ruhige Licht des späten Nachmittags.',
+      'Ein Schlafzimmer, das in tiefes Blau zerfließt, während eine goldene Gestalt wie flüssiges Licht über das Bett strömt. Erinnerung und Materie verschwimmen in einem traumartigen Interieur.',
   },
   {
-    slug: 'study-i',
-    image: 'painting.jpg',
-    title: 'Study I',
-    year: 2023,
+    slug: 'poolside',
+    image: 'poolside.webp',
+    title: 'Poolside',
+    year: 2025,
     medium: 'oil',
-    width: 60,
-    height: 80,
-    price: 1200,
     status: 'available',
     recent: true,
     featured: true,
+    description:
+      'An empty indoor pool in green and ochre, a classical figure reclining at its edge. The tiled water holds a strange, suspended calm.',
+    description_de:
+      'Ein leeres Hallenbad in Grün und Ocker, am Rand eine ruhende klassische Gestalt. Das gekachelte Wasser bewahrt eine seltsame, schwebende Ruhe.',
   },
   {
-    slug: 'study-ii',
-    image: 'painting.jpg',
-    title: 'Study II',
-    year: 2022,
-    medium: 'mixed',
-    width: 50,
-    height: 50,
-    price: 900,
+    slug: 'reclining-pool',
+    image: 'reclining-pool.webp',
+    title: 'By the Water',
+    year: 2025,
+    medium: 'oil',
     status: 'available',
+    recent: true,
     featured: true,
+    description:
+      'A figure lies on yellow poolside tiles beside still blue water, the scene bursting at one edge into a tangle of pink and violet bloom.',
+    description_de:
+      'Eine Gestalt liegt auf gelben Beckenfliesen neben stillem blauem Wasser, während die Szene an einem Rand in ein Gewirr aus rosa und violetter Blüte aufbricht.',
   },
   {
-    slug: 'study-iii',
-    image: 'painting.jpg',
-    title: 'Study III',
+    slug: 'bathing',
+    image: 'bathroom.webp',
+    title: 'Bathing',
+    year: 2025,
+    medium: 'oil',
+    status: 'available',
+    recent: true,
+    featured: true,
+    description:
+      'A surreal bathroom where a ghostly white figure sinks into the tub. Soft, dissolving edges turn an ordinary room into something uncanny.',
+    description_de:
+      'Ein surreales Badezimmer, in dem eine gespenstische weiße Gestalt in der Wanne versinkt. Weiche, sich auflösende Konturen verwandeln einen gewöhnlichen Raum in etwas Unheimliches.',
+  },
+  {
+    slug: 'operating-theatre',
+    image: 'operating-room.webp',
+    title: 'Operating Theatre',
+    year: 2024,
+    medium: 'oil',
+    status: 'available',
+    recent: true,
+    featured: true,
+    description:
+      'A surreal operating room peopled by suited figures — a theatrical, dreamlike scene that hovers between ritual and clinic.',
+    description_de:
+      'Ein surrealer Operationssaal voller anzugtragender Gestalten – eine theatralische, traumhafte Szene zwischen Ritual und Klinik.',
+  },
+  {
+    slug: 'clinic',
+    image: 'clinic.webp',
+    title: 'Clinic',
+    year: 2024,
+    medium: 'oil',
+    status: 'available',
+    recent: true,
+    description:
+      'A second medical scene of suited figures gathered around an unseen procedure — composed with the cool strangeness of a remembered dream.',
+    description_de:
+      'Eine zweite medizinische Szene aus anzugtragenden Gestalten um einen unsichtbaren Eingriff – komponiert mit der kühlen Fremdheit eines erinnerten Traums.',
+  },
+  {
+    slug: 'mirror',
+    image: 'mirror-cat.webp',
+    title: 'Through the Mirror',
+    year: 2024,
+    medium: 'oil',
+    status: 'available',
+    recent: true,
+    featured: true,
+    description:
+      'A close, uneasy view: a pair of eyes caught in a gilt-framed mirror, wax-like flowers dripping at the edges and an orange cat watching from the green.',
+    description_de:
+      'Ein naher, beunruhigender Blick: ein Augenpaar im goldgerahmten Spiegel, an den Rändern tropfende wächserne Blüten und eine orangefarbene Katze, die aus dem Grün heraus beobachtet.',
+  },
+  {
+    slug: 'chandelier',
+    image: 'chandelier.webp',
+    title: 'Chandelier',
+    year: 2023,
+    medium: 'oil',
+    status: 'available',
+    description:
+      'A sepia underpainting of a chandelier interior, rendered almost as a memory — warm monochrome glazes building a hushed, half-lit room.',
+    description_de:
+      'Eine Sepia-Untermalung eines Interieurs mit Kronleuchter, fast wie eine Erinnerung wiedergegeben – warme monochrome Lasuren bauen einen stillen, halb erleuchteten Raum auf.',
+  },
+  {
+    slug: 'nude-on-canvas',
+    image: 'nude-on-canvas.webp',
+    title: 'Study in Sepia',
+    year: 2023,
+    medium: 'oil',
+    status: 'available',
+    description:
+      'A reclining nude laid down in sepia on raw, unprimed canvas — a quiet meditation on the figure stripped back to earth and line.',
+    description_de:
+      'Ein liegender Akt, in Sepia auf rohe, ungrundierte Leinwand gesetzt – eine stille Meditation über die auf Erde und Linie reduzierte Figur.',
+  },
+  {
+    slug: 'cowrie',
+    image: 'cowrie.webp',
+    title: 'Cowrie',
+    year: 2023,
+    medium: 'oil',
+    status: 'available',
+    description:
+      'A single cowrie shell resting against a field of blue — small, intimate and precisely observed.',
+    description_de:
+      'Eine einzelne Kaurimuschel vor einem Feld aus Blau – klein, intim und genau beobachtet.',
+  },
+  {
+    slug: 'blue-drape',
+    image: 'blue-drape.webp',
+    title: 'Blue Drape',
     year: 2022,
     medium: 'oil',
-    width: 70,
-    height: 90,
-    status: 'sold',
+    status: 'available',
+    description:
+      'A patterned blue cloth falls through a grey-green space laced with charcoal underdrawing — paint and drawing held in open tension.',
+    description_de:
+      'Ein gemustertes blaues Tuch fällt durch einen graugrünen Raum, durchzogen von einer Kohle-Untermalung – Malerei und Zeichnung in offener Spannung.',
+  },
+  {
+    slug: 'reclining-figure',
+    image: 'reclining-study.webp',
+    title: 'Reclining Figure',
+    year: 2022,
+    medium: 'oil',
+    status: 'available',
+    description:
+      'A loose oil study of a reclining figure in green, pink, turquoise and ochre — gestural, immediate and alive with colour.',
+    description_de:
+      'Eine lockere Ölstudie einer liegenden Gestalt in Grün, Rosa, Türkis und Ocker – gestisch, unmittelbar und voller Farbe.',
+  },
+  {
+    slug: 'big-cat',
+    image: 'big-cat-watercolour.webp',
+    title: 'Big Cat',
+    year: 2021,
+    medium: 'watercolor',
+    status: 'available',
+    description:
+      'A small watercolour of a great cat in cobalt blue, caught in a few swift, confident washes on cream paper.',
+    description_de:
+      'Ein kleines Aquarell einer Großkatze in Kobaltblau, in wenigen schnellen, sicheren Lasuren auf cremefarbenem Papier festgehalten.',
+  },
+  {
+    slug: 'pool-interior',
+    image: 'pool-interior.webp',
+    title: 'Pool Interior',
+    year: 2025,
+    medium: 'oil',
+    status: 'available',
+    recent: true,
+    description:
+      'Green and yellow flood an empty pool room — a ladder, a checkerboard floor and a classical figure share the same impossible light.',
+    description_de:
+      'Grün und Gelb durchfluten einen leeren Poolraum – eine Leiter, ein Schachbrettboden und eine klassische Gestalt teilen sich dasselbe unmögliche Licht.',
   },
 ];
 

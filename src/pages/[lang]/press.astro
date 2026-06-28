@@ -30,7 +30,7 @@ const items = getUpdates('press');
             {items.length === 0 ? (
                 <p class="empty-state">{m.pressPage.empty}</p>
             ) : (
-                <div class="news-list">
+                <div class="news-list press-list">
                     {items.map((entry) => (
                         <UpdateCard entry={entry} lang={lang} />
                     ))}

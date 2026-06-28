@@ -47,7 +47,7 @@ const related = paintings.filter((p) => p.slug !== painting.slug).slice(0, 3);
 const pageTitle = `${painting.title} (${painting.year}) — ${mediumLabel} | ${site.name}`;
 const pageDescription =
   description ??
-  `${painting.title}, ${mediumLabel}${dims ? `, ${dims}` : ''}, ${painting.year}. Original painting by ${site.name}, available from the Dresden studio.`;
+  `${painting.title}, ${mediumLabel}${dims ? `, ${dims}` : ''}, ${painting.year}. Original painting by ${site.name}, available directly from the artist.`;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
 

@@ -1,8 +1,8 @@
 {
   "meta": {
-    "keywords": "Ella Maria Grosz, oil paintings Dresden, contemporary painter Dresden, buy original paintings, German contemporary art, original oil painting, art for sale Dresden, Saxony artist",
-    "defaultDescription": "Ella Maria Grosz is a contemporary oil painter based in Dresden, Germany. Browse and buy original oil paintings that capture quiet moments of light and shadow.",
-    "ogDescription": "Original contemporary oil paintings by Ella Maria Grosz, Dresden. Explore the collection and inquire to purchase."
+    "keywords": "Ella Maria Grosz, contemporary figurative painting, surreal oil painting, German contemporary art, original oil painting, buy original paintings, Dresden artist, HfBK Dresden",
+    "defaultDescription": "Ella Maria Grosz is a contemporary painter making vivid, surreal figurative oil paintings — empty pools, dreamlike interiors and figures dissolving into colour. Browse and inquire to purchase original works.",
+    "ogDescription": "Vivid, surreal figurative oil paintings by Ella Maria Grosz. Explore the collection and inquire to purchase original works."
   },
   "nav": {
     "home": "Home",
@@ -51,15 +51,15 @@
     "instagramAria": "Instagram",
     "studio": "Studio",
     "emailAria": "Send an email",
-    "tagline": "Original contemporary oil paintings, Dresden."
+    "tagline": "Surreal figurative oil paintings. Original works."
   },
   "home": {
-    "title": "Ella Maria Grosz | Contemporary Oil Paintings, Dresden",
-    "description": "Original contemporary oil paintings by Ella Maria Grosz, based in Dresden, Germany. Browse the collection and inquire to purchase paintings that capture light, shadow and quiet moments.",
+    "title": "Ella Maria Grosz | Surreal Figurative Oil Paintings",
+    "description": "Vivid, surreal figurative oil paintings by Ella Maria Grosz — empty pools, dreamlike interiors and figures dissolving into colour. Browse the collection and inquire to purchase original works.",
     "hero": {
-      "kicker": "Contemporary oil painter · Dresden",
+      "kicker": "Contemporary figurative painter",
       "heading": "Ella Maria Grosz",
-      "subheading": "Layered oil paintings that hold light, shadow and the quiet of everyday moments.",
+      "subheading": "Surreal oil paintings of empty pools, dreamlike interiors and figures dissolving into colour and light.",
       "cta": "View the paintings",
       "ctaSecondary": "Inquire",
       "featuredLabel": "Featured work"
@@ -69,21 +69,24 @@
       "subheading": "A selection of recent original works. Each painting is one of a kind."
     },
     "news": {
-      "heading": "News & exhibitions"
+      "heading": "News & exhibitions",
+      "cta": "See all exhibitions"
     },
     "about": {
-      "heading": "Quiet reflections in oil and linen.",
-      "p1": "Based in Dresden, Ella Maria Grosz works in layered oil painting, building each canvas slowly to capture the fleeting light and shadow of everyday scenes. Her work elevates the ordinary through patient, classical technique.",
-      "p2": "Across studio series and exhibitions, she explores the tension between memory and material — subtle palette shifts and layered brushwork forming compositions that feel both intimate and expansive. Each painting is an original, available directly from the studio.",
+      "heading": "Dreamlike interiors, painted in oil.",
+      "p1": "Ella Maria Grosz makes vivid, surreal figurative paintings. Empty swimming pools, bathrooms and bedrooms become stages where figures melt into golden liquid, tiles glow, and ordinary rooms tip over into dream.",
+      "p2": "Trained at the HfBK Dresden and the Accademia di Belle Arti di Roma, she moves between fully resolved oil canvases, sepia underpaintings and quick studies on paper. Her work has been shown across Germany and in Rome and Paris. Each painting is an original, available directly from the artist.",
+      "portraitAlt": "Ella Maria Grosz in front of one of her paintings",
+      "studioAlt": "In the studio",
       "pressAria": "Read press and publications",
       "exhibitionsAria": "View exhibitions"
     }
   },
   "portfolioPage": {
-    "title": "Paintings for Sale | Ella Maria Grosz — Oil Painter, Dresden",
-    "description": "Browse original oil and mixed-media paintings by Ella Maria Grosz, available to purchase directly from her Dresden studio. Sizes, prices and availability listed for each work.",
+    "title": "Paintings | Ella Maria Grosz — Surreal Figurative Oil Painter",
+    "description": "Browse original surreal figurative oil paintings and works on paper by Ella Maria Grosz, available to purchase directly from the artist. Medium and availability listed for each work.",
     "heading": "Paintings",
-    "intro": "Original oil and mixed-media paintings, available directly from the studio. Each work is one of a kind — get in touch to purchase or to ask about a piece.",
+    "intro": "Original oil paintings and works on paper. Each piece is one of a kind — get in touch to purchase or to ask about a work.",
     "empty": "New paintings are being added soon. Please check back or get in touch."
   },
   "artworkPage": {
@@ -96,17 +99,21 @@
     "relatedHeading": "More paintings"
   },
   "pressPage": {
-    "title": "Press | Ella Maria Grosz — Contemporary Oil Painter, Dresden",
-    "description": "Press, interviews and publications featuring Dresden-based contemporary oil painter Ella Maria Grosz.",
+    "title": "Press | Ella Maria Grosz — Contemporary Figurative Painter",
+    "description": "Press, interviews and publications featuring contemporary figurative painter Ella Maria Grosz.",
     "heading": "Press",
-    "intro": "Interviews, features and publications about the work and studio practice of Ella Maria Grosz.",
+    "intro": "Interviews, features and publications about the work and practice of Ella Maria Grosz.",
     "empty": "Press features will be listed here. For press inquiries, please get in touch."
   },
   "exhibitionsPage": {
-    "title": "Exhibitions | Ella Maria Grosz — Oil Painter, Dresden",
-    "description": "Current, upcoming and past exhibitions featuring contemporary oil paintings by Ella Maria Grosz of Dresden, Germany.",
+    "title": "Exhibitions | Ella Maria Grosz — Contemporary Figurative Painter",
+    "description": "List of solo and group exhibitions by Ella Maria Grosz, 2018–2026, with selected installation views — Dresden, Hamburg, Berlin, Rome and Paris.",
     "heading": "Exhibitions",
-    "intro": "Current, upcoming and past exhibitions and shows featuring original paintings.",
-    "empty": "Upcoming exhibitions will be announced here soon."
+    "intro": "A list of solo and group exhibitions, 2018 to today, with a selection of installation views.",
+    "empty": "Upcoming exhibitions will be announced here soon.",
+    "viewsTitle": "Exhibitions with selected views",
+    "listHeading": "Exhibitions (selection)",
+    "viewsHeading": "Selected views",
+    "moreViews": "Further views"
   }
 }
