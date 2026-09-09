@@ -33,6 +33,7 @@ const isHome = currentPath === `/${lang}` || currentPath === `/${lang}/`;
 const isPortfolio = currentPath.includes('/portfolio');
 const isPress = currentPath.includes('/press');
 const isExhibitions = currentPath.includes('/exhibitions');
+const isContact = currentPath.includes('/contact');
 
 const enPath = swapLocaleInPath(currentPath, 'en');
 const dePath = swapLocaleInPath(currentPath, 'de');
@@ -139,9 +140,9 @@ const allJsonLd = [...baseJsonLd, ...extraJsonLd];
                 <ul>
                     <li><a href={localizedHref(lang, '')} class={isHome ? 'active' : ''}>{m.nav.home}</a></li>
                     <li><a href={localizedHref(lang, 'portfolio')} class={isPortfolio ? 'active' : ''}>{m.nav.portfolio}</a></li>
-                    <li><a href={aboutHref}>{m.nav.about}</a></li>
                     <li><a href={localizedHref(lang, 'press')} class={isPress ? 'active' : ''}>{m.nav.press}</a></li>
                     <li><a href={localizedHref(lang, 'exhibitions')} class={isExhibitions ? 'active' : ''}>{m.nav.exhibitions}</a></li>
+                    <li><a href={aboutHref}>{m.nav.about}</a></li>
                 </ul>
 
                 <div class="nav-meta">
@@ -158,7 +159,7 @@ const allJsonLd = [...baseJsonLd, ...extraJsonLd];
                             <a href={dePath} hreflang="de" lang="de">DE</a>
                         )}
                     </nav>
-                    <a href={`mailto:${site.email}?subject=${encodeURIComponent(m.common.inquireEmailSubject)}`} class="inquire-btn">{m.common.inquire}</a>
+                    <a href={localizedHref(lang, 'contact')} class={`inquire-btn ${isContact ? 'active' : ''}`}>{m.common.inquire}</a>
                 </div>
             </nav>
         </div>
@@ -173,7 +174,6 @@ const allJsonLd = [...baseJsonLd, ...extraJsonLd];
             <div class="footer-content">
                 <div class="footer-brand">
                     <h2>{site.name}</h2>
-                    <p>{m.footer.tagline}</p>
                 </div>
 
                 <div class="footer-links">
@@ -194,7 +194,7 @@ const allJsonLd = [...baseJsonLd, ...extraJsonLd];
                 </div>
 
                 <div class="footer-actions">
-                    <a href={`mailto:${site.email}`} class="email-circle-btn" aria-label={m.footer.emailAria}>
+                    <a href={localizedHref(lang, 'contact')} class="email-circle-btn" aria-label={m.footer.emailAria}>
                         <i class="fa-solid fa-paper-plane"></i>
                     </a>
                 </div>

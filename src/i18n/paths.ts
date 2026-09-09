@@ -1,7 +1,7 @@
 import type { Locale } from './locales';
 
 /** Path for a page under a locale, e.g. portfolio → `/en/portfolio` */
-export function localizedHref(lang: Locale, segment: '' | 'portfolio' | 'press' | 'exhibitions'): string {
+export function localizedHref(lang: Locale, segment: '' | 'portfolio' | 'press' | 'exhibitions' | 'contact'): string {
   if (segment === '') return `/${lang}/`;
   return `/${lang}/${segment}`;
 }

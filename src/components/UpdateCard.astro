@@ -11,6 +11,9 @@ interface Props {
 
 const { entry, lang } = Astro.props;
 const img = getUpdateImage(entry.image);
+const slides = (entry.images ?? [])
+  .map((file) => getUpdateImage(file))
+  .filter((i): i is NonNullable<typeof i> => Boolean(i));
 const title = pick(entry.title, lang);
 const category = pick(entry.category, lang);
 const excerpt = pick(entry.excerpt, lang);
@@ -20,7 +23,17 @@ const videoId = youTubeId(entry.video);
 
 <article class="update-card">
   <div class="update-card-media">
-    {img ? (
+    {slides.length > 1 ? (
+      <div class="update-card-carousel" data-carousel>
+        <div class="carousel-track" data-carousel-track>
+          {slides.map((slide, i) => (
+            <Image src={slide} alt={`${title} (${i + 1}/${slides.length})`} widths={[400, 600]} sizes="(max-width: 700px) 90vw, 380px" loading="lazy" class="carousel-slide" />
+          ))}
+        </div>
+        <button type="button" class="carousel-arrow carousel-prev" data-carousel-prev aria-label="Previous image">‹</button>
+        <button type="button" class="carousel-arrow carousel-next" data-carousel-next aria-label="Next image">›</button>
+      </div>
+    ) : img ? (
       <Image src={img} alt={title} widths={[400, 600]} sizes="(max-width: 700px) 90vw, 380px" loading="lazy" />
     ) : videoId ? (
       <a
@@ -46,7 +59,7 @@ const videoId = youTubeId(entry.video);
   <div class="update-card-body">
     <span class="category">{category}</span>
     <h3>{entry.link ? <a href={entry.link} target="_blank" rel="noopener noreferrer">{title}</a> : title}</h3>
-    <p>{excerpt}</p>
+    {excerpt && <p>{excerpt}</p>}
     <p class="date">{date}</p>
   </div>
 </article>

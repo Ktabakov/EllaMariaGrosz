@@ -98,6 +98,7 @@ export const exhibitions: Exhibition[] = [
     city: 'Dresden',
   },
   {
+    id: 'diplom-2025',
     year: '2025',
     type: 'group',
     title: 'Diplomausstellung HfBK Dresden',
@@ -111,6 +112,7 @@ export const exhibitions: Exhibition[] = [
     venue: 'Werbeagentur Oberüber Karger',
   },
   {
+    id: 'iwander-2024',
     year: '2024',
     type: 'group',
     title: '„I Wander All Night“',
@@ -155,7 +157,7 @@ export const exhibitions: Exhibition[] = [
   {
     year: '2018',
     type: 'award',
-    title: 'Europäische Siegerinnen „Jugend creativ“',
+    title: 'Europäische Siegerin „Jugend Creativ“',
     venue: '„Jugend creativ“',
     city: 'Paris',
   },
@@ -163,31 +165,27 @@ export const exhibitions: Exhibition[] = [
 
 /** Selected views ("ausgewählte Ansichten"), grouped per show via `exhibition`. */
 export const selectedViews: ExhibitionView[] = [
-  // 2026 — Drewes Galerie, Hamburg (group show)
-  { image: 'ex-view-1.webp', exhibition: 'drewes-2026', caption: { en: 'Installation view', de: 'Ausstellungsansicht' } },
-  { image: 'ex-view-2.webp', exhibition: 'drewes-2026', caption: { en: 'Installation view', de: 'Ausstellungsansicht' } },
-  { image: 'ex-view-3.webp', exhibition: 'drewes-2026', caption: { en: 'Installation view', de: 'Ausstellungsansicht' } },
-  { image: 'ex-view-4.webp', exhibition: 'drewes-2026', caption: { en: 'Installation view', de: 'Ausstellungsansicht' } },
-  { image: 'ex-work-1.webp', exhibition: 'drewes-2026', caption: { en: 'Work on view', de: 'Gezeigte Arbeit' } },
-  { image: 'ex-work-2.webp', exhibition: 'drewes-2026', caption: { en: 'Work on view', de: 'Gezeigte Arbeit' } },
+  // 2025 — Diplomausstellung HfBK Dresden (group show)
+  { image: 'ex-view-1.webp', exhibition: 'diplom-2025', caption: { en: 'Diplomausstellung HfBK Dresden, 2025', de: 'Diplomausstellung HfBK Dresden, 2025' } },
+  { image: 'ex-view-3.webp', exhibition: 'diplom-2025', caption: { en: 'Diplomausstellung HfBK Dresden, 2025', de: 'Diplomausstellung HfBK Dresden, 2025' } },
+  { image: 'ex-view-4.webp', exhibition: 'diplom-2025', caption: { en: 'Diplomausstellung HfBK Dresden, 2025', de: 'Diplomausstellung HfBK Dresden, 2025' } },
+  { image: 'ex-work-1.webp', exhibition: 'diplom-2025', caption: { en: 'Diplomausstellung HfBK Dresden, 2025', de: 'Diplomausstellung HfBK Dresden, 2025' } },
+  { image: 'ex-work-6.webp', exhibition: 'diplom-2025', caption: { en: 'Diplomausstellung HfBK Dresden, 2025', de: 'Diplomausstellung HfBK Dresden, 2025' } },
+  { image: 'ex-work-8.webp', exhibition: 'diplom-2025', caption: { en: 'Diplomausstellung HfBK Dresden, 2025', de: 'Diplomausstellung HfBK Dresden, 2025' } },
+
+  // 2026 — Drewes Galerie, Hamburg (group show): no photos yet, heading kept via id below
+
+  // 2024 — „I Wander All Night“, Kunstraum Kreuzberg / Bethanien, Berlin (group show)
+  { image: 'ex-work-3.webp', exhibition: 'iwander-2024', caption: { en: '„I Wander All Night“, Kunstraum Kreuzberg / Bethanien, Berlin, 2024', de: '„I Wander All Night“, Kunstraum Kreuzberg / Bethanien, Berlin, 2024' } },
+  { image: 'ex-work-4.webp', exhibition: 'iwander-2024', caption: { en: '„I Wander All Night“, Kunstraum Kreuzberg / Bethanien, Berlin, 2024', de: '„I Wander All Night“, Kunstraum Kreuzberg / Bethanien, Berlin, 2024' } },
+  { image: 'ex-work-5.webp', exhibition: 'iwander-2024', caption: { en: '„I Wander All Night“, Kunstraum Kreuzberg / Bethanien, Berlin, 2024', de: '„I Wander All Night“, Kunstraum Kreuzberg / Bethanien, Berlin, 2024' } },
 
   // 2025/2026 — „Ouvertüre“, Pentacon Galerie, Dresden (solo show)
-  {
-    image: 'opening-pentacon.webp',
-    exhibition: 'ouverture-2025',
-    caption: { en: 'Opening, Pentacon Galerie Dresden', de: 'Eröffnung, Pentacon Galerie Dresden' },
-  },
-  { image: 'ex-work-3.webp', exhibition: 'ouverture-2025', caption: { en: 'Work on view', de: 'Gezeigte Arbeit' } },
-  { image: 'ex-work-4.webp', exhibition: 'ouverture-2025', caption: { en: 'Work on view', de: 'Gezeigte Arbeit' } },
-  { image: 'ex-work-5.webp', exhibition: 'ouverture-2025', caption: { en: 'Work on view', de: 'Gezeigte Arbeit' } },
-  { image: 'ex-work-6.webp', exhibition: 'ouverture-2025', caption: { en: 'Work on view', de: 'Gezeigte Arbeit' } },
-  { image: 'ex-detail-1.webp', exhibition: 'ouverture-2025', caption: { en: 'Detail', de: 'Detail' } },
-  { image: 'ex-detail-2.webp', exhibition: 'ouverture-2025', caption: { en: 'Detail', de: 'Detail' } },
-
-  // Further views (not tied to a specific show)
-  { image: 'ex-work-7.webp', caption: { en: 'Work on view', de: 'Gezeigte Arbeit' } },
-  { image: 'ex-work-8.webp', caption: { en: 'Work on view', de: 'Gezeigte Arbeit' } },
-  { image: 'ex-detail-3.webp', caption: { en: 'Detail', de: 'Detail' } },
+  // (the opening portrait shot is used on the About page instead — see artist-portrait.webp)
+  { image: 'ex-detail-3.webp', exhibition: 'ouverture-2025', caption: { en: '„Ouvertüre“, Pentacon Galerie, Dresden, 2025/2026', de: '„Ouvertüre“, Pentacon Galerie, Dresden, 2025/2026' } },
+  { image: 'ex-detail-1.webp', exhibition: 'ouverture-2025', caption: { en: '„Ouvertüre“, Pentacon Galerie, Dresden, 2025/2026', de: '„Ouvertüre“, Pentacon Galerie, Dresden, 2025/2026' } },
+  { image: 'ex-detail-2.webp', exhibition: 'ouverture-2025', caption: { en: '„Ouvertüre“, Pentacon Galerie, Dresden, 2025/2026', de: '„Ouvertüre“, Pentacon Galerie, Dresden, 2025/2026' } },
+  { image: 'ex-work-7.webp', exhibition: 'ouverture-2025', caption: { en: '„Ouvertüre“, Pentacon Galerie, Dresden, 2025/2026', de: '„Ouvertüre“, Pentacon Galerie, Dresden, 2025/2026' } },
 ];
 
 export function pickLocalized(value: Localized, locale: Locale): string {
@@ -204,7 +202,27 @@ export function ungroupedViews(): ExhibitionView[] {
   return selectedViews.filter((v) => !v.exhibition);
 }
 
-/** Exhibitions that have at least one photo, in list order (newest first). */
+/**
+ * Exhibitions with an `id` — i.e. ones meant to get their own selected-views
+ * heading, whether or not photos are attached yet — in list order (newest first).
+ */
 export function exhibitionsWithViews(): Exhibition[] {
-  return exhibitions.filter((ex) => ex.id && viewsForExhibition(ex.id).length > 0);
+  return exhibitions.filter((ex) => ex.id);
+}
+
+/**
+ * Selected-view photos bucketed by the year their exhibition took place
+ * (a show spanning two years, e.g. '2025/2026', buckets under the first),
+ * newest year first. Used to show one plain year heading per group instead
+ * of repeating each show's title/venue.
+ */
+export function viewsByYear(): { year: string; views: ExhibitionView[] }[] {
+  const byYear = new Map<string, ExhibitionView[]>();
+  for (const ex of exhibitionsWithViews()) {
+    const yearKey = ex.year.match(/\d{4}/)?.[0] ?? ex.year;
+    byYear.set(yearKey, [...(byYear.get(yearKey) ?? []), ...viewsForExhibition(ex.id!)]);
+  }
+  return Array.from(byYear, ([year, views]) => ({ year, views })).sort(
+    (a, b) => Number(b.year) - Number(a.year)
+  );
 }

@@ -19,12 +19,8 @@ const href = `/${lang}/portfolio/${painting.slug}`;
 const medium = mediumLabel(painting, lang, m.common.medium[painting.medium]);
 const title = paintingTitle(painting, lang);
 
-const statusText =
-  painting.status === 'sold'
-    ? m.common.sold
-    : painting.status === 'reserved'
-      ? m.common.reserved
-      : null;
+// "Sold" isn't shown while browsing — only on the individual artwork page.
+const statusText = painting.status === 'reserved' ? m.common.reserved : null;
 ---
 
 <a class="painting-card" href={href} data-category={paintingCategories(painting)} aria-label={`${title} — ${m.common.viewArtwork}`}>

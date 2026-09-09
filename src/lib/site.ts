@@ -2,7 +2,7 @@
  * Edit these once and they update across the whole site + SEO data. */
 
 export const site = {
-  name: 'Ella Maria Grosz',
+  name: 'Ella Maria Gross',
   email: 'ellamariagross@web.de',
   instagram: 'https://instagram.com/ellamariagross',
   instagramHandle: '@ellamariagross',

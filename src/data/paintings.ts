@@ -23,8 +23,6 @@
  *    status      'available' | 'sold' | 'reserved'
  *    recent      true to show under the "Recent" filter (optional)
  *    featured    true to show on the home page (optional)
- *    description optional short text shown on the artwork page (EN)
- *    description_de optional German version of that text
  * ========================================================================== */
 
 export type PaintingMedium = 'oil' | 'mixed' | 'acrylic' | 'watercolor';
@@ -45,12 +43,54 @@ export interface Painting {
   status: PaintingStatus;
   recent?: boolean;
   featured?: boolean;
-  description?: string;
-  description_de?: string;
 }
 
 // Ordered newest → oldest by year, so the top of the portfolio grid shows recent work first.
 export const paintings: Painting[] = [
+  {
+    slug: 'femme-a-la-peau-bleue',
+    image: 'Femme à la peau bleue, Öl auf Leinwand, 140 x 180 cm, 2026.webp',
+    title: 'Femme à la peau bleue',
+    title_de: 'Femme à la peau bleue',
+    year: 2026,
+    medium: 'oil',
+    width: 140,
+    height: 180,
+    status: 'available',
+  },
+  {
+    slug: 'capita-flammea',
+    image: 'Capita flammea, Acryl auf Leinwand, 100 x 70 cm, 2027.webp',
+    title: 'Capita flammea',
+    title_de: 'Capita flammea',
+    year: 2026,
+    medium: 'acrylic',
+    width: 100,
+    height: 70,
+    status: 'available',
+  },
+  {
+    slug: 'kiss',
+    image: 'Kiss, Acryl auf Leinwand, 50 x 40 cm, 2027.webp',
+    title: 'Kiss',
+    title_de: 'Kiss',
+    year: 2026,
+    medium: 'acrylic',
+    width: 50,
+    height: 40,
+    status: 'available',
+  },
+  {
+    slug: 'utangatta',
+    image: 'Útangátta 2026.webp',
+    title: 'Útangátta',
+    title_de: 'Útangátta',
+    year: 2026,
+    medium: 'oil',
+    width: 170,
+    height: 200,
+    status: 'available',
+  },
   {
     slug: 'blue-room',
     image: 'blue-bedroom.webp',
@@ -63,33 +103,25 @@ export const paintings: Painting[] = [
     status: 'available',
     recent: true,
     featured: true,
-    description:
-      'A bedroom dissolving into deep blue, where a golden figure pours across the bed like liquid light. Memory and matter blur in a single dreamlike interior.',
-    description_de:
-      'Ein Schlafzimmer, das in tiefes Blau zerfließt, während eine goldene Gestalt wie flüssiges Licht über das Bett strömt. Erinnerung und Materie verschwimmen in einem traumartigen Interieur.',
   },
   {
     slug: 'poolside',
-    image: 'poolside.webp',
+    image: 'Synkope 2027.webp',
     title: 'Synkope',
     title_de: 'Synkope',
     year: 2025,
     medium: 'oil',
     width: 200,
     height: 250,
-    status: 'available',
+    status: 'sold',
     recent: true,
     featured: true,
-    description:
-      'An empty indoor pool in green and ochre, a classical figure reclining at its edge. The tiled water holds a strange, suspended calm.',
-    description_de:
-      'Ein leeres Hallenbad in Grün und Ocker, am Rand eine ruhende klassische Gestalt. Das gekachelte Wasser bewahrt eine seltsame, schwebende Ruhe.',
   },
   {
-    slug: 'nude-on-canvas',
-    image: 'nude-on-canvas.webp',
-    title: "Chekhov's gun |",
-    title_de: "Chekhov's gun |",
+    slug: 'chekhovs-gun-i',
+    image: 'Chekhov\'s gun I, Aquarellstift auf Leinwand, 40 x 30 cm, 2025.webp',
+    title: "Chekhov's gun I",
+    title_de: "Chekhov's gun I",
     year: 2025,
     medium: 'watercolor',
     mediumNote: 'Aquarelle pencil on canvas',
@@ -97,10 +129,32 @@ export const paintings: Painting[] = [
     width: 40,
     height: 30,
     status: 'available',
-    description:
-      'A reclining nude laid down in sepia on raw, unprimed canvas — a quiet meditation on the figure stripped back to earth and line.',
-    description_de:
-      'Ein liegender Akt, in Sepia auf rohe, ungrundierte Leinwand gesetzt – eine stille Meditation über die auf Erde und Linie reduzierte Figur.',
+  },
+  {
+    slug: 'chekhovs-gun-ii',
+    image: 'Chekhov\'s gun II, Aquarellstift auf Leinwand, 40 x 30, 2025.webp',
+    title: "Chekhov's gun II",
+    title_de: "Chekhov's gun II",
+    year: 2025,
+    medium: 'watercolor',
+    mediumNote: 'Aquarelle pencil on canvas',
+    mediumNote_de: 'Aquarellstift auf Leinwand',
+    width: 40,
+    height: 30,
+    status: 'available',
+  },
+  {
+    slug: 'nude-on-canvas',
+    image: 'nude-on-canvas.webp',
+    title: "Chekhov's gun III",
+    title_de: "Chekhov's gun III",
+    year: 2025,
+    medium: 'watercolor',
+    mediumNote: 'Aquarelle pencil on canvas',
+    mediumNote_de: 'Aquarellstift auf Leinwand',
+    width: 40,
+    height: 30,
+    status: 'available',
   },
   {
     slug: 'cowrie',
@@ -112,10 +166,6 @@ export const paintings: Painting[] = [
     width: 60,
     height: 80,
     status: 'available',
-    description:
-      'A single cowrie shell resting against a field of blue — small, intimate and precisely observed.',
-    description_de:
-      'Eine einzelne Kaurimuschel vor einem Feld aus Blau – klein, intim und genau beobachtet.',
   },
   {
     slug: 'chandelier',
@@ -127,10 +177,6 @@ export const paintings: Painting[] = [
     width: 140,
     height: 115,
     status: 'available',
-    description:
-      'A sepia underpainting of a chandelier interior, rendered almost as a memory — warm monochrome glazes building a hushed, half-lit room.',
-    description_de:
-      'Eine Sepia-Untermalung eines Interieurs mit Kronleuchter, fast wie eine Erinnerung wiedergegeben – warme monochrome Lasuren bauen einen stillen, halb erleuchteten Raum auf.',
   },
   {
     slug: 'reclining-figure',
@@ -144,10 +190,6 @@ export const paintings: Painting[] = [
     width: 29.7,
     height: 42,
     status: 'available',
-    description:
-      'A loose oil study of a reclining figure in green, pink, turquoise and ochre — gestural, immediate and alive with colour.',
-    description_de:
-      'Eine lockere Ölstudie einer liegenden Gestalt in Grün, Rosa, Türkis und Ocker – gestisch, unmittelbar und voller Farbe.',
   },
   {
     slug: 'big-cat',
@@ -163,6 +205,45 @@ export const paintings: Painting[] = [
     status: 'available',
   },
   {
+    slug: 'torso-i',
+    image: 'Torso |, Öl auf Papier auf Holz, 22 x 17 cm, 2024.webp',
+    title: 'Torso |',
+    title_de: 'Torso |',
+    year: 2024,
+    medium: 'oil',
+    mediumNote: 'Oil on paper on wood',
+    mediumNote_de: 'Öl auf Papier auf Holz',
+    width: 22,
+    height: 17,
+    status: 'available',
+  },
+  {
+    slug: 'torso-ii',
+    image: 'Torso ||, Öl auf Papier auf Holz, 22 x 17, 2024.webp',
+    title: 'Torso ||',
+    title_de: 'Torso ||',
+    year: 2024,
+    medium: 'oil',
+    mediumNote: 'Oil on paper on wood',
+    mediumNote_de: 'Öl auf Papier auf Holz',
+    width: 22,
+    height: 17,
+    status: 'available',
+  },
+  {
+    slug: 'warm-tears-taste-better',
+    image: 'Warm tears taste better, Acryl, Öl auf Leinwand, 180 x 210 cm, 2024.webp',
+    title: 'Warm tears taste better',
+    title_de: 'Warm tears taste better',
+    year: 2024,
+    medium: 'mixed',
+    mediumNote: 'Acrylic, oil on canvas',
+    mediumNote_de: 'Acryl, Öl auf Leinwand',
+    width: 180,
+    height: 210,
+    status: 'sold',
+  },
+  {
     slug: 'reclining-pool',
     image: 'reclining-pool.webp',
     title: 'Jetzt ist es Wasser, es gefriert',
@@ -171,13 +252,9 @@ export const paintings: Painting[] = [
     medium: 'oil',
     width: 140,
     height: 113,
-    status: 'available',
+    status: 'sold',
     recent: true,
     featured: true,
-    description:
-      'A figure lies on yellow poolside tiles beside still blue water, the scene bursting at one edge into a tangle of pink and violet bloom.',
-    description_de:
-      'Eine Gestalt liegt auf gelben Beckenfliesen neben stillem blauem Wasser, während die Szene an einem Rand in ein Gewirr aus rosa und violetter Blüte aufbricht.',
   },
   {
     slug: 'bathing',
@@ -188,13 +265,9 @@ export const paintings: Painting[] = [
     medium: 'oil',
     width: 145,
     height: 200,
-    status: 'available',
+    status: 'sold',
     recent: true,
     featured: true,
-    description:
-      'A surreal bathroom where a ghostly white figure sinks into the tub. Soft, dissolving edges turn an ordinary room into something uncanny.',
-    description_de:
-      'Ein surreales Badezimmer, in dem eine gespenstische weiße Gestalt in der Wanne versinkt. Weiche, sich auflösende Konturen verwandeln einen gewöhnlichen Raum in etwas Unheimliches.',
   },
   {
     slug: 'operating-theatre',
@@ -208,10 +281,6 @@ export const paintings: Painting[] = [
     status: 'available',
     recent: true,
     featured: true,
-    description:
-      'A surreal operating room peopled by suited figures — a theatrical, dreamlike scene that hovers between ritual and clinic.',
-    description_de:
-      'Ein surrealer Operationssaal voller anzugtragender Gestalten – eine theatralische, traumhafte Szene zwischen Ritual und Klinik.',
   },
 ];
 

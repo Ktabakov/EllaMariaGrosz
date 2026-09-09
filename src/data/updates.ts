@@ -25,6 +25,8 @@ export interface Localized {
 export interface UpdateEntry {
   kind: UpdateKind | UpdateKind[];
   image?: string;
+  /** Multiple photos — shown as an arrow-navigable slideshow instead of a single image. */
+  images?: string[];
   /** A YouTube watch/share URL — shows the video thumbnail + a play badge. */
   video?: string;
   /** Source name (e.g. 'Volksstimme', 'Instagram') shown on the placeholder. */
@@ -35,6 +37,8 @@ export interface UpdateEntry {
   excerpt: Localized;
   link?: string;
   featured?: boolean;
+  /** Shown in the "Upcoming" segment on the Exhibitions page. */
+  upcoming?: boolean;
 }
 
 export function pick(value: Localized, locale: Locale): string {
@@ -64,55 +68,27 @@ export const updates: UpdateEntry[] = [
   {
     kind: ['news', 'exhibition'],
     featured: true,
-    image: 'opening-pentacon.webp',
-    date: { en: '2025 / 2026', de: '2025 / 2026' },
-    category: { en: 'Solo exhibition', de: 'Einzelausstellung' },
+    upcoming: true,
+    image: 'ArtfairBerlin.webp',
+    date: { en: '10.–13. Sept. 2026', de: '10.–13. Sept. 2026' },
+    category: { en: 'Upcoming', de: 'Bevorstehend' },
     title: {
-      en: '„Ouvertüre“ — Pentacon Galerie, Dresden',
-      de: '„Ouvertüre“ — Pentacon Galerie, Dresden',
+      en: 'POSITIONS Berlin Art Fair',
+      de: 'POSITIONS Berlin Art Fair',
     },
     excerpt: {
-      en: 'A solo exhibition of new paintings at the Pentacon Galerie in Dresden.',
-      de: 'Eine Einzelausstellung mit neuen Bildern in der Pentacon Galerie Dresden.',
-    },
-  },
-  {
-    kind: ['news', 'exhibition'],
-    featured: true,
-    image: 'ex-view-1.webp',
-    date: { en: '2026', de: '2026' },
-    category: { en: 'Group exhibition', de: 'Gruppenausstellung' },
-    title: {
-      en: '„Floating Through Fragments“ — Drewes Galerie, Hamburg',
-      de: '„Floating Through Fragments“ — Drewes Galerie, Hamburg',
-    },
-    excerpt: {
-      en: 'A group exhibition at the Drewes Galerie in Hamburg.',
-      de: 'Eine Gruppenausstellung in der Drewes Galerie in Hamburg.',
-    },
-  },
-  {
-    kind: ['news', 'exhibition'],
-    featured: true,
-    image: 'ex-view-2.webp',
-    date: { en: '2025', de: '2025' },
-    category: { en: 'Group exhibition', de: 'Gruppenausstellung' },
-    title: {
-      en: 'Diploma Exhibition — HfBK Dresden',
-      de: 'Diplomausstellung — HfBK Dresden',
-    },
-    excerpt: {
-      en: 'New work shown in the graduation exhibition of the Dresden Academy of Fine Arts (HfBK).',
-      de: 'Neue Arbeiten in der Diplomausstellung der Hochschule für Bildende Künste Dresden (HfBK).',
+      en: 'Tempelhof Airport, Berlin — @positions.artfair',
+      de: 'Tempelhof Airport, Berlin — @positions.artfair',
     },
   },
   {
     kind: 'press',
+    featured: true,
     date: { en: '2025', de: '2025' },
     category: { en: 'Interview', de: 'Interview' },
     title: {
-      en: 'Interview with Ella Maria Grosz',
-      de: 'Interview mit Ella Maria Grosz',
+      en: 'Interview with Ella Maria Gross',
+      de: 'Interview mit Ella Maria Gross',
     },
     excerpt: {
       en: 'A video interview with the artist about her work and practice.',
@@ -120,6 +96,35 @@ export const updates: UpdateEntry[] = [
     },
     video: 'https://www.youtube.com/watch?v=ckkxiCSsQkQ',
     link: 'https://www.youtube.com/watch?v=ckkxiCSsQkQ',
+  },
+  {
+    kind: 'press',
+    images: ['Papenbreer 4.webp', 'Papenbreer 2.webp', 'Papenbreer 3.webp'],
+    date: { en: '2026', de: '2026' },
+    category: { en: 'Collaboration', de: 'Kollaboration' },
+    title: {
+      en: 'Collaboration Papenbreer X Ella Maria Gross',
+      de: 'Kollaboration Papenbreer X Ella Maria Gross',
+    },
+    excerpt: {
+      en: "For their new store opening in Dresden's old town at the beginning of 2026, fashion brand Papenbreer collaborated with Ella Maria Gross to create a graphic version of the brand's name. 500 cotton bags were printed depicting her design and handed out to guests of the event.",
+      de: 'Für die Eröffnung ihres neuen Stores in der Dresdner Altstadt Anfang 2026 kollaborierte die Modemarke Papenbreer mit Ella Maria Gross an einer grafischen Version des Markennamens. 500 Baumwolltaschen mit ihrem Design wurden bedruckt und an die Gäste der Veranstaltung verteilt.',
+    },
+  },
+  {
+    kind: ['news', 'exhibition'],
+    featured: true,
+    image: 'GalerieSchulz.webp',
+    date: { en: '23.06.2026 – 05.09.2026', de: '23.06.2026 – 05.09.2026' },
+    category: { en: 'Group exhibition', de: 'Gruppenausstellung' },
+    title: {
+      en: '„Leichtigkeit“ — Galerie Ines Schulz',
+      de: '„Leichtigkeit“ — Galerie Ines Schulz',
+    },
+    excerpt: {
+      en: '',
+      de: '',
+    },
   },
   {
     kind: 'press',
@@ -175,4 +180,8 @@ export function getUpdates(kind: UpdateKind, locale?: Locale): UpdateEntry[] {
 
 export function getFeaturedUpdates(): UpdateEntry[] {
   return updates.filter((u) => u.featured);
+}
+
+export function getUpcomingUpdates(): UpdateEntry[] {
+  return updates.filter((u) => u.upcoming);
 }

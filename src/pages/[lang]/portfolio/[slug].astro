@@ -31,7 +31,6 @@ const img = getPaintingImage(painting.image);
 const medium = mediumLabel(painting, lang, m.common.medium[painting.medium]);
 const dims = formatDimensions(painting, lang);
 const title = paintingTitle(painting, lang);
-const description = (lang === 'de' ? painting.description_de : painting.description) ?? painting.description;
 
 const statusText =
   painting.status === 'sold'
@@ -40,15 +39,12 @@ const statusText =
       ? m.common.reserved
       : m.common.available;
 
-const subject = `${m.common.inquireAbout}: ${title} (${painting.year})`;
-const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
+const contactHref = localizedHref(lang, 'contact');
 
 const related = paintings.filter((p) => p.slug !== painting.slug).slice(0, 3);
 
 const pageTitle = `${title} (${painting.year}) — ${medium} | ${site.name}`;
-const pageDescription =
-  description ??
-  `${title}, ${medium}${dims ? `, ${dims}` : ''}, ${painting.year}. Original painting by ${site.name}, available directly from the artist.`;
+const pageDescription = `${title}, ${medium}${dims ? `, ${dims}` : ''}, ${painting.year}. Original painting by ${site.name}, available directly from the artist.`;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
 
@@ -116,8 +112,6 @@ const breadcrumbJsonLd = {
                     <h1>{title}</h1>
                     <p class="artwork-year">{painting.year}</p>
 
-                    {description && <p class="artwork-desc">{description}</p>}
-
                     <dl class="artwork-specs">
                         <div>
                             <dt>{m.artworkPage.mediumLabel}</dt>
@@ -145,7 +139,7 @@ const breadcrumbJsonLd = {
 
                     {painting.status !== 'sold' && (
                         <div class="artwork-buy">
-                            <a href={mailto} class="btn btn-primary btn-block">{m.common.inquireToBuy}</a>
+                            <a href={contactHref} class="btn btn-light btn-sm">{m.common.inquire}</a>
                             <p class="artwork-note">{m.artworkPage.inquireNote}</p>
                         </div>
                     )}

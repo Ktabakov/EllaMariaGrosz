@@ -8,9 +8,9 @@ import { getMessages } from '../../i18n';
 import { localizedHref } from '../../i18n/paths';
 import { paintings } from '../../data/paintings';
 import { getFeaturedUpdates } from '../../data/updates';
+import { vitae } from '../../data/vitae';
 import { getPaintingImage, getUpdateImage } from '../../lib/images';
 import { formatDimensions, paintingTitle, mediumLabel } from '../../lib/format';
-import { site } from '../../lib/site';
 
 export function getStaticPaths() {
   return locales.map((lang) => ({ params: { lang } }));
@@ -31,7 +31,7 @@ const heroTitle = hero ? paintingTitle(hero, lang) : '';
 const heroMedium = hero ? mediumLabel(hero, lang, m.common.medium[hero.medium]) : '';
 const selected = (featured.length ? featured : paintings).slice(0, 6);
 const news = getFeaturedUpdates().slice(0, 3);
-const mailto = `mailto:${site.email}?subject=${encodeURIComponent(m.common.inquireEmailSubject)}`;
+const contactHref = localizedHref(lang, 'contact');
 const portraitImg = getUpdateImage('artist-portrait.webp');
 ---
 
@@ -43,12 +43,11 @@ const portraitImg = getUpdateImage('artist-portrait.webp');
     )}
     <div class="hero-full-overlay"></div>
     <div class="container hero-full-content">
-        <p class="hero-kicker">{m.home.hero.kicker}</p>
         <h1 class="hero-full-heading">{m.home.hero.heading}</h1>
         <p class="hero-full-sub">{m.home.hero.subheading}</p>
         <div class="hero-actions">
             <a href={localizedHref(lang, 'portfolio')} class="btn btn-primary">{m.home.hero.cta}</a>
-            <a href={mailto} class="btn btn-ghost btn-ghost-light">{m.home.hero.ctaSecondary}</a>
+            <a href={contactHref} class="btn btn-ghost btn-ghost-light">{m.home.hero.ctaSecondary}</a>
         </div>
     </div>
     {hero && (
@@ -64,7 +63,6 @@ const portraitImg = getUpdateImage('artist-portrait.webp');
     <div class="container">
         <div class="section-head">
             <h2>{m.home.portfolio.heading}</h2>
-            <p>{m.home.portfolio.subheading}</p>
         </div>
         <div class="portfolio-grid">
             {selected.map((item, i) => (
@@ -109,10 +107,25 @@ const portraitImg = getUpdateImage('artist-portrait.webp');
                 <p>{m.home.about.p1}</p>
                 <p>{m.home.about.p2}</p>
                 <p>{m.home.about.p3}</p>
+
+                {vitae.length > 0 && (
+                    <div class="vitae">
+                        <h3 class="vitae-heading">{m.home.about.vitaeHeading}</h3>
+                        <ul class="vitae-list">
+                            {vitae.map((entry) => (
+                                <li class="vitae-row">
+                                    <span class="vitae-year">{entry.year}</span>
+                                    <span class="vitae-detail">{entry.detail}</span>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+
                 <div class="about-links">
                     <a href={localizedHref(lang, 'press')} aria-label={m.home.about.pressAria}>{m.nav.press}</a>
                     <a href={localizedHref(lang, 'exhibitions')} aria-label={m.home.about.exhibitionsAria}>{m.nav.exhibitions}</a>
-                    <a href={mailto}>{m.common.inquire}</a>
+                    <a href={contactHref}>{m.common.inquire}</a>
                 </div>
             </div>
         </div>
@@ -145,6 +158,58 @@ const portraitImg = getUpdateImage('artist-portrait.webp');
 
         .about-portrait {
             max-width: 420px;
+            margin: 0 auto;
+        }
+    }
+
+    /* ---- Vitae timeline under the artist text ---- */
+    .vitae {
+        margin-top: var(--space-lg);
+        padding-top: var(--space-lg);
+        border-top: 1px solid var(--line, rgba(0, 0, 0, 0.12));
+    }
+
+    .vitae-heading {
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        opacity: 0.6;
+        margin-bottom: var(--space-sm);
+    }
+
+    .vitae-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    .vitae-row {
+        display: grid;
+        grid-template-columns: minmax(7rem, auto) 1fr;
+        gap: 0.5rem 1.25rem;
+        padding: 0.6rem 0;
+        border-bottom: 1px solid var(--line-soft, rgba(0, 0, 0, 0.07));
+        font-size: 0.95rem;
+    }
+
+    .vitae-row:last-child {
+        border-bottom: none;
+    }
+
+    .vitae-year {
+        font-weight: 600;
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+    }
+
+    .vitae-detail {
+        color: var(--muted);
+    }
+
+    @media (max-width: 540px) {
+        .vitae-row {
+            grid-template-columns: 1fr;
+            gap: 0.15rem;
         }
     }
 </style>

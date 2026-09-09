@@ -1,15 +1,16 @@
 {
   "meta": {
-    "keywords": "Ella Maria Grosz, contemporary figurative painting, surreal oil painting, German contemporary art, original oil painting, buy original paintings, Dresden artist, HfBK Dresden",
-    "defaultDescription": "Ella Maria Grosz is a contemporary painter making vivid, surreal figurative oil paintings — empty pools, dreamlike interiors and figures dissolving into colour. Browse and inquire to purchase original works.",
-    "ogDescription": "Vivid, surreal figurative oil paintings by Ella Maria Grosz. Explore the collection and inquire to purchase original works."
+    "keywords": "Ella Maria Gross, contemporary figurative painting, surreal oil painting, German contemporary art, original oil painting, buy original paintings, Dresden artist, HfBK Dresden",
+    "defaultDescription": "Ella Maria Gross is a contemporary painter making vivid, surreal figurative oil paintings — empty pools, dreamlike interiors and figures dissolving into colour. Browse and inquire to purchase original works.",
+    "ogDescription": "Vivid, surreal figurative oil paintings by Ella Maria Gross. Explore the collection and inquire to purchase original works."
   },
   "nav": {
     "home": "Home",
     "portfolio": "Paintings",
     "about": "About",
-    "press": "Press",
-    "exhibitions": "Exhibitions"
+    "press": "News",
+    "exhibitions": "Exhibitions",
+    "contact": "Contact"
   },
   "lang": {
     "switchTo": "Switch language",
@@ -26,6 +27,7 @@
     "viewArtwork": "View painting",
     "viewFullPortfolio": "View all paintings",
     "backToPortfolio": "Back to paintings",
+    "back": "Back",
     "filterAll": "All",
     "filterOil": "Oil",
     "filterMixed": "Mixed media",
@@ -46,7 +48,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 Ella Maria Grosz. All rights reserved.",
+    "copyright": "© 2025 Ella Maria Gross. All rights reserved.",
     "social": "Follow",
     "instagramAria": "Instagram",
     "studio": "Studio",
@@ -54,11 +56,11 @@
     "tagline": "Figurative oil paintings. Original works."
   },
   "home": {
-    "title": "Ella Maria Grosz | Surreal Figurative Oil Paintings",
-    "description": "Vivid, surreal figurative oil paintings by Ella Maria Grosz — empty pools, dreamlike interiors and figures dissolving into colour. Browse the collection and inquire to purchase original works.",
+    "title": "Ella Maria Gross | Surreal Figurative Oil Paintings",
+    "description": "Vivid, surreal figurative oil paintings by Ella Maria Gross — empty pools, dreamlike interiors and figures dissolving into colour. Browse the collection and inquire to purchase original works.",
     "hero": {
       "kicker": "Contemporary figurative painter",
-      "heading": "Ella Maria Grosz",
+      "heading": "Ella Maria Gross",
       "subheading": "Oil paintings between the visible and the remembered, the experienced and the imagined.",
       "cta": "View the paintings",
       "ctaSecondary": "Inquire",
@@ -74,20 +76,21 @@
     },
     "about": {
       "heading": "Between perception, memory and imagination.",
-      "p1": "Ella Maria Grosz's painting navigates the tension between perception, memory and imagination, with the female figure often at its core. Her work emerges where the visible meets the remembered, the experienced meets the imagined — where reality, dream and imagination submerge into one another. She is drawn not only to the symbolism of dreams but to their process: the constant transformation of images, meanings and inner states, as boundaries between inside and outside, body and environment, subject and world begin to dissolve, opening new spaces of possibility.",
-      "p2": "Grosz does not treat the image as a document of a fixed state, but as a living, permeable space in which memory, perception and imagination continually encounter and renegotiate one another. This gives rise to visual worlds that make the fleeting and the changeable tangible, lending visual form to the often silent processes of inner movement.",
+      "p1": "Ella Maria Gross's painting navigates the tension between perception, memory and imagination, with the female figure often at its core. Her work emerges where the visible meets the remembered, the experienced meets the imagined — where reality, dream and imagination submerge into one another. She is drawn not only to the symbolism of dreams but to their process: the constant transformation of images, meanings and inner states, as boundaries between inside and outside, body and environment, subject and world begin to dissolve, opening new spaces of possibility.",
+      "p2": "Gross does not treat the image as a document of a fixed state, but as a living, permeable space in which memory, perception and imagination continually encounter and renegotiate one another. This gives rise to visual worlds that make the fleeting and the changeable tangible, lending visual form to the often silent processes of inner movement.",
       "p3": "Trained at the HfBK Dresden, she moves between fully resolved oil canvases, sepia underpaintings and quick studies on paper. Her work has been shown across Germany, as well as in Rome and Paris.",
-      "portraitAlt": "Ella Maria Grosz in front of one of her paintings",
+      "vitaeHeading": "Vitae",
+      "portraitAlt": "Ella Maria Gross in front of one of her paintings",
       "studioAlt": "In the studio",
       "pressAria": "Read press and publications",
       "exhibitionsAria": "View exhibitions"
     }
   },
   "portfolioPage": {
-    "title": "Paintings | Ella Maria Grosz — Surreal Figurative Oil Painter",
-    "description": "Browse original surreal figurative oil paintings and works on paper by Ella Maria Grosz, available to purchase directly from the artist. Medium and availability listed for each work.",
+    "title": "Paintings | Ella Maria Gross — Surreal Figurative Oil Painter",
+    "description": "Browse original surreal figurative oil paintings and works on paper by Ella Maria Gross, available to purchase directly from the artist. Medium and availability listed for each work.",
     "heading": "Paintings",
-    "intro": "Original oil paintings and works on paper. Each piece is one of a kind — get in touch to purchase or to ask about a work.",
+    "intro": "Original paintings and works on paper.",
     "empty": "New paintings are being added soon. Please check back or get in touch."
   },
   "artworkPage": {
@@ -96,25 +99,35 @@
     "dimensionsLabel": "Dimensions",
     "priceLabel": "Price",
     "statusLabel": "Availability",
-    "inquireNote": "Interested in this painting? Send a message and you'll receive a reply with full details, shipping and purchase information.",
+    "inquireNote": "Interested? Send a message to inquire.",
     "relatedHeading": "More paintings"
   },
   "pressPage": {
-    "title": "Press | Ella Maria Grosz — Contemporary Figurative Painter",
-    "description": "Press, interviews and publications featuring contemporary figurative painter Ella Maria Grosz.",
-    "heading": "Press",
-    "intro": "Interviews, features and publications about the work and practice of Ella Maria Grosz.",
+    "title": "News | Ella Maria Gross — Contemporary Figurative Painter",
+    "description": "Press, interviews and publications featuring contemporary figurative painter Ella Maria Gross.",
+    "heading": "News",
+    "intro": "Interviews, features and publications about the work and practice of Ella Maria Gross.",
     "empty": "Press features will be listed here. For press inquiries, please get in touch."
   },
   "exhibitionsPage": {
-    "title": "Exhibitions | Ella Maria Grosz — Contemporary Figurative Painter",
-    "description": "List of solo and group exhibitions by Ella Maria Grosz, 2018–2026, with selected installation views — Dresden, Hamburg, Berlin, Rome and Paris.",
+    "title": "Exhibitions | Ella Maria Gross — Contemporary Figurative Painter",
+    "description": "List of solo and group exhibitions by Ella Maria Gross, 2018–2026, with selected installation views — Dresden, Hamburg, Berlin, Rome and Paris.",
     "heading": "Exhibitions",
     "intro": "A list of solo and group exhibitions, 2018 to today, with a selection of installation views.",
     "empty": "Upcoming exhibitions will be announced here soon.",
+    "upcomingHeading": "Upcoming",
     "viewsTitle": "Exhibitions with selected views",
     "listHeading": "Exhibitions (selection)",
     "viewsHeading": "Selected views",
     "moreViews": "Further views"
+  },
+  "contactPage": {
+    "title": "Contact | Ella Maria Gross — Contemporary Figurative Painter",
+    "description": "Get in touch with Ella Maria Gross about a painting, exhibition or press inquiry.",
+    "heading": "Contact",
+    "nameLabel": "Name",
+    "emailLabel": "Email",
+    "messageLabel": "Message",
+    "send": "Send"
   }
 }

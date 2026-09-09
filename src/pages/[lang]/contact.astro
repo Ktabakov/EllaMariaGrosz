@@ -1,0 +1,120 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { locales, isLocale, type Locale } from '../../i18n/locales';
+import { getMessages } from '../../i18n';
+import { localizedHref } from '../../i18n/paths';
+import { site } from '../../lib/site';
+
+export function getStaticPaths() {
+  return locales.map((lang) => ({ params: { lang } }));
+}
+
+const { lang: langParam } = Astro.params;
+if (!isLocale(langParam ?? '')) {
+  return Astro.redirect('/en/contact');
+}
+const lang = langParam as Locale;
+const m = getMessages(lang);
+---
+
+<Layout lang={lang} title={m.contactPage.title} description={m.contactPage.description}>
+
+    <section class="portfolio-page contact-page">
+        <div class="container">
+            <a href={localizedHref(lang, '')} class="back-link contact-back" data-back>← {m.common.back}</a>
+
+            <header class="page-head">
+                <h1>{m.contactPage.heading}</h1>
+            </header>
+
+            <form class="contact-form" data-contact-email={site.email}>
+                <div class="form-field">
+                    <label for="contact-name">{m.contactPage.nameLabel}</label>
+                    <input type="text" id="contact-name" name="name" required />
+                </div>
+                <div class="form-field">
+                    <label for="contact-email">{m.contactPage.emailLabel}</label>
+                    <input type="email" id="contact-email" name="email" required />
+                </div>
+                <div class="form-field">
+                    <label for="contact-message">{m.contactPage.messageLabel}</label>
+                    <textarea id="contact-message" name="message" rows="6" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">{m.contactPage.send}</button>
+            </form>
+        </div>
+    </section>
+
+</Layout>
+
+<script>
+    document.querySelectorAll<HTMLFormElement>('.contact-form').forEach((form) => {
+        form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const email = form.dataset.contactEmail;
+            const name = (form.querySelector('#contact-name') as HTMLInputElement)?.value ?? '';
+            const from = (form.querySelector('#contact-email') as HTMLInputElement)?.value ?? '';
+            const message = (form.querySelector('#contact-message') as HTMLTextAreaElement)?.value ?? '';
+
+            const subject = `Message from ${name}`;
+            const body = `${message}\n\n—\n${name}\n${from}`;
+            window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        });
+    });
+</script>
+
+<style>
+    .contact-back {
+        display: inline-block;
+        margin-bottom: var(--space-lg);
+    }
+
+    .contact-page .page-head {
+        margin-bottom: var(--space-xl);
+    }
+
+    .contact-form {
+        max-width: 32rem;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-lg);
+    }
+
+    .form-field {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .form-field label {
+        font-size: 0.78rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+    }
+
+    .form-field input,
+    .form-field textarea {
+        font-family: var(--font-body);
+        font-size: 1rem;
+        color: var(--ink);
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 0.85rem 1rem;
+        transition: var(--transition);
+        resize: vertical;
+    }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+        outline: none;
+        border-color: var(--accent);
+    }
+
+    .contact-form .btn {
+        align-self: flex-start;
+    }
+</style>

@@ -3,15 +3,17 @@ import Layout from '../../layouts/Layout.astro';
 import { Image } from 'astro:assets';
 import { locales, isLocale, type Locale } from '../../i18n/locales';
 import { getMessages } from '../../i18n';
+import { localizedHref } from '../../i18n/paths';
 import { getUpdateImage } from '../../lib/images';
 import {
   exhibitions,
   exhibitionTypeLabel,
   pickLocalized,
-  viewsForExhibition,
   ungroupedViews,
-  exhibitionsWithViews,
+  viewsByYear,
 } from '../../data/exhibitions';
+import { getUpcomingUpdates } from '../../data/updates';
+import UpdateCard from '../../components/UpdateCard.astro';
 
 export function getStaticPaths() {
   return locales.map((lang) => ({ params: { lang } }));
@@ -24,18 +26,20 @@ if (!isLocale(langParam ?? '')) {
 const lang = langParam as Locale;
 const m = getMessages(lang);
 
+const upcoming = getUpcomingUpdates();
+
 const withImg = (list: ReturnType<typeof viewsForExhibition>) =>
   list.map((v) => ({ ...v, img: getUpdateImage(v.image) })).filter((v) => v.img);
 
-// Photos grouped per exhibition (like the PDF), then a closing gallery.
-const groupedViews = exhibitionsWithViews().map((ex) => ({
-  exhibition: ex,
-  views: withImg(viewsForExhibition(ex.id!)),
-}));
+// Photos grouped by the year their exhibition took place, then a closing gallery.
+const yearGroups = viewsByYear().map((g) => ({ year: g.year, views: withImg(g.views) }));
 const extraViews = withImg(ungroupedViews());
 
-// A hero image for the top of the page: prefer the opening shot.
-const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
+// A hero image for the top of the page: the first 2024 photo ("I Wander All Night").
+const heroView =
+  yearGroups.find((g) => g.year === '2024')?.views[0] ??
+  yearGroups.flatMap((g) => g.views)[0] ??
+  extraViews[0];
 ---
 
 <Layout lang={lang} title={m.exhibitionsPage.title} description={m.exhibitionsPage.description}>
@@ -47,17 +51,30 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
             <div class="container exhibitions-hero-content">
                 <p class="hero-kicker">{m.nav.exhibitions}</p>
                 <h1 class="exhibitions-hero-title">{m.exhibitionsPage.viewsTitle}</h1>
-                <p class="exhibitions-hero-name">Ella Maria Groß</p>
+                <p class="exhibitions-hero-name">Ella Maria Gross</p>
             </div>
         </section>
     )}
 
     <section class="portfolio-page exhibitions-page">
         <div class="container">
+            <a href={localizedHref(lang, '')} class="back-link" data-back>← {m.common.back}</a>
+
             <header class="page-head">
                 {!heroView && <h1>{m.exhibitionsPage.heading}</h1>}
                 <p class="page-intro">{m.exhibitionsPage.intro}</p>
             </header>
+
+            {upcoming.length > 0 && (
+                <section class="upcoming-section" aria-labelledby="upcoming-heading">
+                    <h2 id="upcoming-heading" class="exhibition-list-heading">{m.exhibitionsPage.upcomingHeading}</h2>
+                    <div class="news-list press-list upcoming-list">
+                        {upcoming.map((entry) => (
+                            <UpdateCard entry={entry} lang={lang} />
+                        ))}
+                    </div>
+                </section>
+            )}
 
             <h2 class="exhibition-list-heading">{m.exhibitionsPage.listHeading}</h2>
             <ol class="exhibition-list">
@@ -78,18 +95,16 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
                 ))}
             </ol>
 
-            {(groupedViews.length > 0 || extraViews.length > 0) && (
+            {(yearGroups.length > 0 || extraViews.length > 0) && (
                 <section class="selected-views" aria-labelledby="views-heading">
                     <h2 id="views-heading" class="views-section-heading">{m.exhibitionsPage.viewsHeading}</h2>
 
-                    {groupedViews.map(({ exhibition: ex, views }) => (
-                        <div class="view-group">
-                            <h3 class="view-group-heading">
-                                <span class="view-group-year">{ex.year}</span>
-                                <span class="view-group-type">{pickLocalized(exhibitionTypeLabel[ex.type], lang)}</span>
-                                <span class="view-group-title">{ex.title}</span>
-                                <span class="view-group-venue">{ex.venue}{ex.city ? `, ${ex.city}` : ''}</span>
-                            </h3>
+                    {yearGroups.map(({ year, views }) => (
+                        <details class="view-group" open>
+                            <summary class="view-group-heading">
+                                <span class="view-group-year">{year}</span>
+                                <span class="view-group-toggle" aria-hidden="true"></span>
+                            </summary>
                             <div class="views-masonry">
                                 {views.map((v) => (
                                     <figure class="view-item">
@@ -98,14 +113,15 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
                                     </figure>
                                 ))}
                             </div>
-                        </div>
+                        </details>
                     ))}
 
                     {extraViews.length > 0 && (
-                        <div class="view-group">
-                            <h3 class="view-group-heading">
+                        <details class="view-group" open>
+                            <summary class="view-group-heading">
                                 <span class="view-group-title">{m.exhibitionsPage.moreViews}</span>
-                            </h3>
+                                <span class="view-group-toggle" aria-hidden="true"></span>
+                            </summary>
                             <div class="views-masonry">
                                 {extraViews.map((v) => (
                                     <figure class="view-item">
@@ -114,7 +130,7 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
                                     </figure>
                                 ))}
                             </div>
-                        </div>
+                        </details>
                     )}
                 </section>
             )}
@@ -124,6 +140,14 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
 </Layout>
 
 <style>
+    .upcoming-section {
+        margin-bottom: clamp(2.5rem, 6vw, 4rem);
+    }
+
+    .upcoming-list {
+        margin-top: 1.25rem;
+    }
+
     /* ---- Title hero (like the PDF cover) ---- */
     .exhibitions-hero {
         position: relative;
@@ -253,15 +277,20 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
 
     .view-group-heading {
         display: flex;
-        flex-wrap: wrap;
-        align-items: baseline;
-        gap: 0.5rem 0.7rem;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.7rem;
         font-size: 1.05rem;
         font-weight: 400;
-        padding-bottom: 0.7rem;
-        margin-bottom: 1.25rem;
+        padding: 0.4rem 0 0.7rem;
         border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.12));
+        cursor: pointer;
+        user-select: none;
+        list-style: none;
     }
+    .view-group-heading::-webkit-details-marker { display: none; }
+    .view-group-heading:hover { opacity: 0.75; }
+
     .view-group-year { font-weight: 700; font-variant-numeric: tabular-nums; }
     .view-group-type {
         font-size: 0.72rem;
@@ -271,6 +300,40 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
     }
     .view-group-title { font-weight: 600; }
     .view-group-venue { opacity: 0.7; }
+
+    /* ---- Folder-style open/close toggle (plain CSS plus/minus) ---- */
+    .view-group-toggle {
+        position: relative;
+        width: 0.9rem;
+        height: 0.9rem;
+        flex-shrink: 0;
+    }
+    .view-group-toggle::before,
+    .view-group-toggle::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: currentColor;
+        transform: translate(-50%, -50%);
+    }
+    .view-group-toggle::before {
+        width: 0.75rem;
+        height: 1.5px;
+    }
+    .view-group-toggle::after {
+        width: 1.5px;
+        height: 0.75rem;
+        transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+    details[open] > .view-group-heading .view-group-toggle::after {
+        transform: translate(-50%, -50%) rotate(90deg);
+        opacity: 0;
+    }
+
+    .view-group > .views-masonry {
+        margin-top: 1.25rem;
+    }
 
     /* ---- Masonry "tetris" packing so mixed aspect ratios sit flush ---- */
     .views-masonry {

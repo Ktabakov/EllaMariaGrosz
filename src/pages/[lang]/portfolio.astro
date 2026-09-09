@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import PaintingCard from '../../components/PaintingCard.astro';
 import { locales, isLocale, type Locale } from '../../i18n/locales';
 import { getMessages } from '../../i18n';
+import { localizedHref } from '../../i18n/paths';
 import { paintings } from '../../data/paintings';
 
 export function getStaticPaths() {
@@ -15,22 +16,27 @@ if (!isLocale(langParam ?? '')) {
 }
 const lang = langParam as Locale;
 const m = getMessages(lang);
+
+// Newest first, so the grid reads chronologically top-to-bottom as you scroll.
+const sortedPaintings = [...paintings].sort((a, b) => b.year - a.year);
 ---
 
 <Layout lang={lang} title={m.portfolioPage.title} description={m.portfolioPage.description}>
 
     <section id="portfolio" class="portfolio-page">
         <div class="container">
+            <a href={localizedHref(lang, '')} class="back-link" data-back>← {m.common.back}</a>
+
             <header class="page-head">
                 <h1>{m.portfolioPage.heading}</h1>
                 <p class="page-intro">{m.portfolioPage.intro}</p>
             </header>
 
-            {paintings.length === 0 ? (
+            {sortedPaintings.length === 0 ? (
                 <p class="empty-state">{m.portfolioPage.empty}</p>
             ) : (
                 <div class="portfolio-grid">
-                    {paintings.map((item, i) => (
+                    {sortedPaintings.map((item, i) => (
                         <PaintingCard painting={item} lang={lang} loading={i < 4 ? 'eager' : 'lazy'} />
                     ))}
                 </div>

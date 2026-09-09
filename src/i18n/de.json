@@ -1,15 +1,16 @@
 {
   "meta": {
-    "keywords": "Ella Maria Grosz, zeitgenössische figurative Malerei, surreale Ölmalerei, Originalgemälde, Bilder kaufen, Künstlerin Dresden, HfBK Dresden",
-    "defaultDescription": "Ella Maria Grosz ist eine zeitgenössische Malerin und schafft eindringliche, surreale figurative Ölgemälde – leere Schwimmbäder, traumhafte Interieurs und Figuren, die sich in Farbe auflösen. Entdecken und kaufen Sie originale Werke.",
-    "ogDescription": "Eindringliche, surreale figurative Ölgemälde von Ella Maria Grosz. Entdecken Sie die Sammlung und fragen Sie zum Kauf an."
+    "keywords": "Ella Maria Gross, zeitgenössische figurative Malerei, surreale Ölmalerei, Originalgemälde, Bilder kaufen, Künstlerin Dresden, HfBK Dresden",
+    "defaultDescription": "Ella Maria Gross ist eine zeitgenössische Malerin und schafft eindringliche, surreale figurative Ölgemälde – leere Schwimmbäder, traumhafte Interieurs und Figuren, die sich in Farbe auflösen. Entdecken und kaufen Sie originale Werke.",
+    "ogDescription": "Eindringliche, surreale figurative Ölgemälde von Ella Maria Gross. Entdecken Sie die Sammlung und fragen Sie zum Kauf an."
   },
   "nav": {
     "home": "Start",
     "portfolio": "Bilder",
     "about": "Über mich",
-    "press": "Presse",
-    "exhibitions": "Ausstellungen"
+    "press": "News",
+    "exhibitions": "Ausstellungen",
+    "contact": "Kontakt"
   },
   "lang": {
     "switchTo": "Sprache wechseln",
@@ -26,6 +27,7 @@
     "viewArtwork": "Bild ansehen",
     "viewFullPortfolio": "Alle Bilder ansehen",
     "backToPortfolio": "Zurück zu den Bildern",
+    "back": "Zurück",
     "filterAll": "Alle",
     "filterOil": "Öl",
     "filterMixed": "Mixed Media",
@@ -46,7 +48,7 @@
     }
   },
   "footer": {
-    "copyright": "© 2025 Ella Maria Grosz. Alle Rechte vorbehalten.",
+    "copyright": "© 2025 Ella Maria Gross. Alle Rechte vorbehalten.",
     "social": "Folgen",
     "instagramAria": "Instagram",
     "studio": "Atelier",
@@ -54,11 +56,11 @@
     "tagline": "Figurative Ölgemälde. Originalwerke."
   },
   "home": {
-    "title": "Ella Maria Grosz | Surreale figurative Ölgemälde",
-    "description": "Eindringliche, surreale figurative Ölgemälde von Ella Maria Grosz – leere Schwimmbäder, traumhafte Interieurs und Figuren, die sich in Farbe auflösen. Entdecken Sie die Sammlung und fragen Sie zum Kauf an.",
+    "title": "Ella Maria Gross | Surreale figurative Ölgemälde",
+    "description": "Eindringliche, surreale figurative Ölgemälde von Ella Maria Gross – leere Schwimmbäder, traumhafte Interieurs und Figuren, die sich in Farbe auflösen. Entdecken Sie die Sammlung und fragen Sie zum Kauf an.",
     "hero": {
       "kicker": "Zeitgenössische figurative Malerin",
-      "heading": "Ella Maria Grosz",
+      "heading": "Ella Maria Gross",
       "subheading": "Ölgemälde zwischen Sichtbarem und Erinnertem, Erlebtem und Erdachtem.",
       "cta": "Bilder ansehen",
       "ctaSecondary": "Anfragen",
@@ -74,20 +76,21 @@
     },
     "about": {
       "heading": "Zwischen Wahrnehmung, Erinnerung und Vorstellung.",
-      "p1": "Ella Maria Groszs Malerei bewegt sich im Spannungsfeld zwischen Wahrnehmung, Erinnerung und Vorstellung, wobei die weibliche Figur oft im Zentrum ihrer Bildwelten steht. Ihre Arbeiten entstehen im Raum zwischen dem Sichtbaren und dem Erinnerten, dem Erlebten und dem Imaginierten – dort, wo Wirklichkeit, Traum und Vorstellung ineinander übergehen. Ihr Interesse gilt dabei nicht der Symbolik der Träume, sondern ihrem prozesshaften Charakter: der ständigen Transformation von Bildern, Bedeutungen und inneren Zuständen. Grenzen zwischen Innen und Außen, Körper und Umgebung, Subjekt und Welt beginnen sich aufzulösen und öffnen neue Möglichkeitsräume.",
-      "p2": "Grosz begreift das Bild nicht als Dokument eines festen Zustands, sondern als einen lebendigen, durchlässigen Raum, in dem sich Erinnerung, Wahrnehmung und Vorstellung fortwährend begegnen und neu verhandeln. So entstehen Bildwelten, die das Flüchtige und Wandelbare spürbar machen und den oft stillen Prozessen innerer Bewegung eine sichtbare Form verleihen.",
+      "p1": "Ella Maria Gross' Malerei bewegt sich im Spannungsfeld zwischen Wahrnehmung, Erinnerung und Vorstellung, wobei die weibliche Figur oft im Zentrum ihrer Bildwelten steht. Ihre Arbeiten entstehen im Raum zwischen dem Sichtbaren und dem Erinnerten, dem Erlebten und dem Imaginierten – dort, wo Wirklichkeit, Traum und Vorstellung ineinander übergehen. Ihr Interesse gilt dabei nicht der Symbolik der Träume, sondern ihrem prozesshaften Charakter: der ständigen Transformation von Bildern, Bedeutungen und inneren Zuständen. Grenzen zwischen Innen und Außen, Körper und Umgebung, Subjekt und Welt beginnen sich aufzulösen und öffnen neue Möglichkeitsräume.",
+      "p2": "Gross begreift das Bild nicht als Dokument eines festen Zustands, sondern als einen lebendigen, durchlässigen Raum, in dem sich Erinnerung, Wahrnehmung und Vorstellung fortwährend begegnen und neu verhandeln. So entstehen Bildwelten, die das Flüchtige und Wandelbare spürbar machen und den oft stillen Prozessen innerer Bewegung eine sichtbare Form verleihen.",
       "p3": "Ausgebildet an der HfBK Dresden, bewegt sie sich zwischen vollendeten Ölgemälden, Sepia-Untermalungen und schnellen Studien auf Papier. Ihre Arbeiten wurden in Deutschland, sowie in Rom und Paris gezeigt.",
-      "portraitAlt": "Ella Maria Grosz vor einem ihrer Bilder",
+      "vitaeHeading": "Vitae",
+      "portraitAlt": "Ella Maria Gross vor einem ihrer Bilder",
       "studioAlt": "Im Atelier",
       "pressAria": "Presse und Publikationen lesen",
       "exhibitionsAria": "Ausstellungen ansehen"
     }
   },
   "portfolioPage": {
-    "title": "Bilder | Ella Maria Grosz — Surreale figurative Ölmalerei",
-    "description": "Originale surreale figurative Ölgemälde und Arbeiten auf Papier von Ella Maria Grosz, direkt von der Künstlerin erhältlich. Technik und Verfügbarkeit zu jedem Werk.",
+    "title": "Bilder | Ella Maria Gross — Surreale figurative Ölmalerei",
+    "description": "Originale surreale figurative Ölgemälde und Arbeiten auf Papier von Ella Maria Gross, direkt von der Künstlerin erhältlich. Technik und Verfügbarkeit zu jedem Werk.",
     "heading": "Bilder",
-    "intro": "Originale Ölgemälde und Arbeiten auf Papier. Jedes Werk ist ein Unikat – melden Sie sich zum Kauf oder für Fragen zu einem Bild.",
+    "intro": "Originale Gemälde und Arbeiten auf Papier.",
     "empty": "Neue Bilder folgen in Kürze. Schauen Sie gern wieder vorbei oder melden Sie sich."
   },
   "artworkPage": {
@@ -96,25 +99,35 @@
     "dimensionsLabel": "Maße",
     "priceLabel": "Preis",
     "statusLabel": "Verfügbarkeit",
-    "inquireNote": "Interesse an diesem Bild? Senden Sie eine Nachricht und Sie erhalten eine Antwort mit allen Details zu Versand und Kauf.",
+    "inquireNote": "Interesse? Senden Sie eine Nachricht.",
     "relatedHeading": "Weitere Bilder"
   },
   "pressPage": {
-    "title": "Presse | Ella Maria Grosz — Zeitgenössische figurative Malerin",
-    "description": "Presse, Interviews und Publikationen über die zeitgenössische figurative Malerin Ella Maria Grosz.",
-    "heading": "Presse",
-    "intro": "Interviews, Beiträge und Publikationen über die Arbeit und Praxis von Ella Maria Grosz.",
+    "title": "News | Ella Maria Gross — Zeitgenössische figurative Malerin",
+    "description": "Presse, Interviews und Publikationen über die zeitgenössische figurative Malerin Ella Maria Gross.",
+    "heading": "News",
+    "intro": "Interviews, Beiträge und Publikationen über die Arbeit und Praxis von Ella Maria Gross.",
     "empty": "Pressebeiträge erscheinen hier. Für Presseanfragen melden Sie sich gern."
   },
   "exhibitionsPage": {
-    "title": "Ausstellungen | Ella Maria Grosz — Zeitgenössische figurative Malerin",
-    "description": "Verzeichnis der Einzel- und Gruppenausstellungen von Ella Maria Grosz, 2018–2026, mit ausgewählten Ansichten – Dresden, Hamburg, Berlin, Rom und Paris.",
+    "title": "Ausstellungen | Ella Maria Gross — Zeitgenössische figurative Malerin",
+    "description": "Verzeichnis der Einzel- und Gruppenausstellungen von Ella Maria Gross, 2018–2026, mit ausgewählten Ansichten – Dresden, Hamburg, Berlin, Rom und Paris.",
     "heading": "Ausstellungen",
     "intro": "Ein Verzeichnis der Einzel- und Gruppenausstellungen, von 2018 bis heute, mit einer Auswahl an Ausstellungsansichten.",
     "empty": "Kommende Ausstellungen werden hier in Kürze angekündigt.",
+    "upcomingHeading": "Bevorstehend",
     "viewsTitle": "Ausstellungsverzeichnis mit ausgewählten Ansichten",
     "listHeading": "Ausstellungen (Auswahl)",
     "viewsHeading": "Ausgewählte Ansichten",
     "moreViews": "Weitere Ansichten"
+  },
+  "contactPage": {
+    "title": "Kontakt | Ella Maria Gross — Zeitgenössische figurative Malerin",
+    "description": "Kontaktieren Sie Ella Maria Gross zu einem Bild, einer Ausstellung oder einer Presseanfrage.",
+    "heading": "Kontakt",
+    "nameLabel": "Name",
+    "emailLabel": "E-Mail",
+    "messageLabel": "Nachricht",
+    "send": "Senden"
   }
 }

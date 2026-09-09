@@ -53,8 +53,42 @@ function setupHeaderScroll() {
   window.addEventListener('scroll', onScroll, { passive: true });
 }
 
+// [data-back] links: return to whatever page the visitor came from,
+// falling back to the link's own href when there's no usable history.
+function setupBackLinks() {
+  document.querySelectorAll('[data-back]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      if (window.history.length > 1 && document.referrer) {
+        event.preventDefault();
+        window.history.back();
+      }
+    });
+  });
+}
+
+// Multi-photo update cards: arrow buttons step the track one slide at a time.
+function setupCarousels() {
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector('[data-carousel-track]');
+    if (!track) return;
+
+    const step = (dir) => track.scrollBy({ left: track.clientWidth * dir, behavior: 'smooth' });
+
+    carousel.querySelector('[data-carousel-prev]')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      step(-1);
+    });
+    carousel.querySelector('[data-carousel-next]')?.addEventListener('click', (e) => {
+      e.preventDefault();
+      step(1);
+    });
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
   setupMobileNav();
   setupPortfolioFilter();
   setupHeaderScroll();
+  setupBackLinks();
+  setupCarousels();
 });

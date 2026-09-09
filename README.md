@@ -1,4 +1,4 @@
-# Ella Maria Grosz — Artist Portfolio
+# Ella Maria Gross — Artist Portfolio
 
 A fast, bilingual (English / German) portfolio website for selling original
 paintings, built with [Astro](https://astro.build/).
