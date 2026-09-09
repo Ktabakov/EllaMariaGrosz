@@ -8,7 +8,7 @@ import { getMessages } from '../../i18n';
 import { localizedHref } from '../../i18n/paths';
 import { paintings } from '../../data/paintings';
 import { getFeaturedUpdates } from '../../data/updates';
-import { vitae } from '../../data/vitae';
+import { vitae, pickLocalized as pickVitae } from '../../data/vitae';
 import { getPaintingImage, getUpdateImage } from '../../lib/images';
 import { formatDimensions, paintingTitle, mediumLabel } from '../../lib/format';
 
@@ -114,8 +114,8 @@ const portraitImg = getUpdateImage('artist-portrait.webp');
                         <ul class="vitae-list">
                             {vitae.map((entry) => (
                                 <li class="vitae-row">
-                                    <span class="vitae-year">{entry.year}</span>
-                                    <span class="vitae-detail">{entry.detail}</span>
+                                    <span class="vitae-year">{pickVitae(entry.year, lang)}</span>
+                                    <span class="vitae-detail">{pickVitae(entry.detail, lang)}</span>
                                 </li>
                             ))}
                         </ul>
