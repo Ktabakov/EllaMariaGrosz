@@ -51,7 +51,7 @@
     "instagramAria": "Instagram",
     "studio": "Studio",
     "emailAria": "Send an email",
-    "tagline": "Surreal figurative oil paintings. Original works."
+    "tagline": "Figurative oil paintings. Original works."
   },
   "home": {
     "title": "Ella Maria Grosz | Surreal Figurative Oil Paintings",
@@ -59,7 +59,7 @@
     "hero": {
       "kicker": "Contemporary figurative painter",
       "heading": "Ella Maria Grosz",
-      "subheading": "Surreal oil paintings of empty pools, dreamlike interiors and figures dissolving into colour and light.",
+      "subheading": "Oil paintings between the visible and the remembered, the experienced and the imagined.",
       "cta": "View the paintings",
       "ctaSecondary": "Inquire",
       "featuredLabel": "Featured work"
@@ -73,9 +73,10 @@
       "cta": "See all exhibitions"
     },
     "about": {
-      "heading": "Dreamlike interiors, painted in oil.",
-      "p1": "Ella Maria Grosz makes vivid, surreal figurative paintings. Empty swimming pools, bathrooms and bedrooms become stages where figures melt into golden liquid, tiles glow, and ordinary rooms tip over into dream.",
-      "p2": "Trained at the HfBK Dresden and the Accademia di Belle Arti di Roma, she moves between fully resolved oil canvases, sepia underpaintings and quick studies on paper. Her work has been shown across Germany and in Rome and Paris. Each painting is an original, available directly from the artist.",
+      "heading": "Between perception, memory and imagination.",
+      "p1": "Ella Maria Grosz's painting navigates the tension between perception, memory and imagination, with the female figure often at its core. Her work emerges where the visible meets the remembered, the experienced meets the imagined — where reality, dream and imagination submerge into one another. She is drawn not only to the symbolism of dreams but to their process: the constant transformation of images, meanings and inner states, as boundaries between inside and outside, body and environment, subject and world begin to dissolve, opening new spaces of possibility.",
+      "p2": "Grosz does not treat the image as a document of a fixed state, but as a living, permeable space in which memory, perception and imagination continually encounter and renegotiate one another. This gives rise to visual worlds that make the fleeting and the changeable tangible, lending visual form to the often silent processes of inner movement.",
+      "p3": "Trained at the HfBK Dresden, she moves between fully resolved oil canvases, sepia underpaintings and quick studies on paper. Her work has been shown across Germany, as well as in Rome and Paris.",
       "portraitAlt": "Ella Maria Grosz in front of one of her paintings",
       "studioAlt": "In the studio",
       "pressAria": "Read press and publications",

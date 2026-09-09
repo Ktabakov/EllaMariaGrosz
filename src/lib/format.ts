@@ -10,8 +10,28 @@ export function formatPrice(price: number, locale: Locale): string {
   }).format(price);
 }
 
-/** Dimensions string, e.g. "120 × 80 cm". */
-export function formatDimensions(p: Pick<Painting, 'width' | 'height'>): string | null {
+/** Dimensions string, e.g. "120 × 80 cm" (en) / "29,7 × 42 cm" (de). */
+export function formatDimensions(p: Pick<Painting, 'width' | 'height'>, locale: Locale = 'en'): string | null {
   if (!p.width || !p.height) return null;
-  return `${p.width} × ${p.height} cm`;
+  const nf = new Intl.NumberFormat(locale === 'de' ? 'de-DE' : 'en-GB');
+  return `${nf.format(p.width)} × ${nf.format(p.height)} cm`;
+}
+
+/** Painting title in the requested locale, falling back to the English title. */
+export function paintingTitle(p: Pick<Painting, 'title' | 'title_de'>, locale: Locale): string {
+  return (locale === 'de' ? p.title_de : p.title) ?? p.title;
+}
+
+/**
+ * Medium label for display. Uses the painting's own mediumNote (the exact
+ * support material, e.g. "Oil on paper on wood") when set, otherwise falls
+ * back to the generic category label (e.g. "Oil on canvas") passed in.
+ */
+export function mediumLabel(
+  p: Pick<Painting, 'mediumNote' | 'mediumNote_de'>,
+  locale: Locale,
+  genericLabel: string,
+): string {
+  const note = locale === 'de' ? p.mediumNote_de : p.mediumNote;
+  return note ?? genericLabel;
 }

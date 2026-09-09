@@ -11,9 +11,13 @@
  *  FIELDS:
  *    slug        unique URL id, lowercase-with-dashes (used in the web address)
  *    image       file name inside src/assets/images/paintings/
- *    title       artwork title (shown in both languages)
+ *    title       artwork title (English; used as fallback for German too)
+ *    title_de    optional German title (omit to reuse the English title)
  *    year        year painted
- *    medium      'oil' | 'mixed' | 'acrylic' | 'watercolor'
+ *    medium      'oil' | 'mixed' | 'acrylic' | 'watercolor' (used for the filter buttons)
+ *    mediumNote  optional exact support material shown instead of the generic
+ *                medium label, e.g. "Oil on paper on wood" (EN)
+ *    mediumNote_de optional German version of mediumNote
  *    width/height size in centimetres (optional but good for buyers + SEO)
  *    price       price in EUR as a number (omit or remove if sold / price on request)
  *    status      'available' | 'sold' | 'reserved'
@@ -30,8 +34,11 @@ export interface Painting {
   slug: string;
   image: string;
   title: string;
+  title_de?: string;
   year: number;
   medium: PaintingMedium;
+  mediumNote?: string;
+  mediumNote_de?: string;
   width?: number;
   height?: number;
   price?: number;
@@ -42,13 +49,17 @@ export interface Painting {
   description_de?: string;
 }
 
+// Ordered newest → oldest by year, so the top of the portfolio grid shows recent work first.
 export const paintings: Painting[] = [
   {
     slug: 'blue-room',
     image: 'blue-bedroom.webp',
-    title: 'Blue Room',
+    title: 'Presence in Absence',
+    title_de: 'Präsenz in Absenz',
     year: 2025,
     medium: 'oil',
+    width: 160,
+    height: 140,
     status: 'available',
     recent: true,
     featured: true,
@@ -60,9 +71,12 @@ export const paintings: Painting[] = [
   {
     slug: 'poolside',
     image: 'poolside.webp',
-    title: 'Poolside',
+    title: 'Synkope',
+    title_de: 'Synkope',
     year: 2025,
     medium: 'oil',
+    width: 200,
+    height: 250,
     status: 'available',
     recent: true,
     featured: true,
@@ -72,11 +86,91 @@ export const paintings: Painting[] = [
       'Ein leeres Hallenbad in Grün und Ocker, am Rand eine ruhende klassische Gestalt. Das gekachelte Wasser bewahrt eine seltsame, schwebende Ruhe.',
   },
   {
-    slug: 'reclining-pool',
-    image: 'reclining-pool.webp',
-    title: 'By the Water',
+    slug: 'nude-on-canvas',
+    image: 'nude-on-canvas.webp',
+    title: "Chekhov's gun |",
+    title_de: "Chekhov's gun |",
+    year: 2025,
+    medium: 'watercolor',
+    mediumNote: 'Aquarelle pencil on canvas',
+    mediumNote_de: 'Aquarellstift auf Leinwand',
+    width: 40,
+    height: 30,
+    status: 'available',
+    description:
+      'A reclining nude laid down in sepia on raw, unprimed canvas — a quiet meditation on the figure stripped back to earth and line.',
+    description_de:
+      'Ein liegender Akt, in Sepia auf rohe, ungrundierte Leinwand gesetzt – eine stille Meditation über die auf Erde und Linie reduzierte Figur.',
+  },
+  {
+    slug: 'cowrie',
+    image: 'cowrie.webp',
+    title: 'Embrace',
+    title_de: 'Embrace',
     year: 2025,
     medium: 'oil',
+    width: 60,
+    height: 80,
+    status: 'available',
+    description:
+      'A single cowrie shell resting against a field of blue — small, intimate and precisely observed.',
+    description_de:
+      'Eine einzelne Kaurimuschel vor einem Feld aus Blau – klein, intim und genau beobachtet.',
+  },
+  {
+    slug: 'chandelier',
+    image: 'chandelier.webp',
+    title: 'Babylon',
+    title_de: 'Babylon',
+    year: 2024,
+    medium: 'acrylic',
+    width: 140,
+    height: 115,
+    status: 'available',
+    description:
+      'A sepia underpainting of a chandelier interior, rendered almost as a memory — warm monochrome glazes building a hushed, half-lit room.',
+    description_de:
+      'Eine Sepia-Untermalung eines Interieurs mit Kronleuchter, fast wie eine Erinnerung wiedergegeben – warme monochrome Lasuren bauen einen stillen, halb erleuchteten Raum auf.',
+  },
+  {
+    slug: 'reclining-figure',
+    image: 'reclining-study.webp',
+    title: 'Running from a body',
+    title_de: 'Running from a body',
+    year: 2024,
+    medium: 'oil',
+    mediumNote: 'Oil on paper on wood',
+    mediumNote_de: 'Öl auf Papier auf Holz',
+    width: 29.7,
+    height: 42,
+    status: 'available',
+    description:
+      'A loose oil study of a reclining figure in green, pink, turquoise and ochre — gestural, immediate and alive with colour.',
+    description_de:
+      'Eine lockere Ölstudie einer liegenden Gestalt in Grün, Rosa, Türkis und Ocker – gestisch, unmittelbar und voller Farbe.',
+  },
+  {
+    slug: 'big-cat',
+    image: 'big-cat-watercolour.webp',
+    title: 'Anaemia',
+    title_de: 'Anaemia',
+    year: 2024,
+    medium: 'oil',
+    mediumNote: 'Oil on paper on wood',
+    mediumNote_de: 'Öl auf Papier auf Holz',
+    width: 29.7,
+    height: 42,
+    status: 'available',
+  },
+  {
+    slug: 'reclining-pool',
+    image: 'reclining-pool.webp',
+    title: 'Jetzt ist es Wasser, es gefriert',
+    title_de: 'Jetzt ist es Wasser, es gefriert',
+    year: 2023,
+    medium: 'oil',
+    width: 140,
+    height: 113,
     status: 'available',
     recent: true,
     featured: true,
@@ -88,9 +182,12 @@ export const paintings: Painting[] = [
   {
     slug: 'bathing',
     image: 'bathroom.webp',
-    title: 'Bathing',
-    year: 2025,
+    title: 'Solve et coagula',
+    title_de: 'Solve et coagula',
+    year: 2023,
     medium: 'oil',
+    width: 145,
+    height: 200,
     status: 'available',
     recent: true,
     featured: true,
@@ -102,9 +199,12 @@ export const paintings: Painting[] = [
   {
     slug: 'operating-theatre',
     image: 'operating-room.webp',
-    title: 'Operating Theatre',
-    year: 2024,
+    title: "Baby's infertility",
+    title_de: "Baby's infertility",
+    year: 2022,
     medium: 'oil',
+    width: 180,
+    height: 130,
     status: 'available',
     recent: true,
     featured: true,
@@ -112,118 +212,6 @@ export const paintings: Painting[] = [
       'A surreal operating room peopled by suited figures — a theatrical, dreamlike scene that hovers between ritual and clinic.',
     description_de:
       'Ein surrealer Operationssaal voller anzugtragender Gestalten – eine theatralische, traumhafte Szene zwischen Ritual und Klinik.',
-  },
-  {
-    slug: 'clinic',
-    image: 'clinic.webp',
-    title: 'Clinic',
-    year: 2024,
-    medium: 'oil',
-    status: 'available',
-    recent: true,
-    description:
-      'A second medical scene of suited figures gathered around an unseen procedure — composed with the cool strangeness of a remembered dream.',
-    description_de:
-      'Eine zweite medizinische Szene aus anzugtragenden Gestalten um einen unsichtbaren Eingriff – komponiert mit der kühlen Fremdheit eines erinnerten Traums.',
-  },
-  {
-    slug: 'mirror',
-    image: 'mirror-cat.webp',
-    title: 'Through the Mirror',
-    year: 2024,
-    medium: 'oil',
-    status: 'available',
-    recent: true,
-    featured: true,
-    description:
-      'A close, uneasy view: a pair of eyes caught in a gilt-framed mirror, wax-like flowers dripping at the edges and an orange cat watching from the green.',
-    description_de:
-      'Ein naher, beunruhigender Blick: ein Augenpaar im goldgerahmten Spiegel, an den Rändern tropfende wächserne Blüten und eine orangefarbene Katze, die aus dem Grün heraus beobachtet.',
-  },
-  {
-    slug: 'chandelier',
-    image: 'chandelier.webp',
-    title: 'Chandelier',
-    year: 2023,
-    medium: 'oil',
-    status: 'available',
-    description:
-      'A sepia underpainting of a chandelier interior, rendered almost as a memory — warm monochrome glazes building a hushed, half-lit room.',
-    description_de:
-      'Eine Sepia-Untermalung eines Interieurs mit Kronleuchter, fast wie eine Erinnerung wiedergegeben – warme monochrome Lasuren bauen einen stillen, halb erleuchteten Raum auf.',
-  },
-  {
-    slug: 'nude-on-canvas',
-    image: 'nude-on-canvas.webp',
-    title: 'Study in Sepia',
-    year: 2023,
-    medium: 'oil',
-    status: 'available',
-    description:
-      'A reclining nude laid down in sepia on raw, unprimed canvas — a quiet meditation on the figure stripped back to earth and line.',
-    description_de:
-      'Ein liegender Akt, in Sepia auf rohe, ungrundierte Leinwand gesetzt – eine stille Meditation über die auf Erde und Linie reduzierte Figur.',
-  },
-  {
-    slug: 'cowrie',
-    image: 'cowrie.webp',
-    title: 'Cowrie',
-    year: 2023,
-    medium: 'oil',
-    status: 'available',
-    description:
-      'A single cowrie shell resting against a field of blue — small, intimate and precisely observed.',
-    description_de:
-      'Eine einzelne Kaurimuschel vor einem Feld aus Blau – klein, intim und genau beobachtet.',
-  },
-  {
-    slug: 'blue-drape',
-    image: 'blue-drape.webp',
-    title: 'Blue Drape',
-    year: 2022,
-    medium: 'oil',
-    status: 'available',
-    description:
-      'A patterned blue cloth falls through a grey-green space laced with charcoal underdrawing — paint and drawing held in open tension.',
-    description_de:
-      'Ein gemustertes blaues Tuch fällt durch einen graugrünen Raum, durchzogen von einer Kohle-Untermalung – Malerei und Zeichnung in offener Spannung.',
-  },
-  {
-    slug: 'reclining-figure',
-    image: 'reclining-study.webp',
-    title: 'Reclining Figure',
-    year: 2022,
-    medium: 'oil',
-    status: 'available',
-    description:
-      'A loose oil study of a reclining figure in green, pink, turquoise and ochre — gestural, immediate and alive with colour.',
-    description_de:
-      'Eine lockere Ölstudie einer liegenden Gestalt in Grün, Rosa, Türkis und Ocker – gestisch, unmittelbar und voller Farbe.',
-  },
-  {
-    slug: 'big-cat',
-    image: 'big-cat-watercolour.webp',
-    title: 'Big Cat',
-    year: 2021,
-    medium: 'watercolor',
-    status: 'available',
-    description:
-      'A small watercolour of a great cat in cobalt blue, caught in a few swift, confident washes on cream paper.',
-    description_de:
-      'Ein kleines Aquarell einer Großkatze in Kobaltblau, in wenigen schnellen, sicheren Lasuren auf cremefarbenem Papier festgehalten.',
-  },
-  {
-    slug: 'pool-interior',
-    image: 'pool-interior.webp',
-    title: 'Pool Interior',
-    year: 2025,
-    medium: 'oil',
-    status: 'available',
-    recent: true,
-    description:
-      'Green and yellow flood an empty pool room — a ladder, a checkerboard floor and a classical figure share the same impossible light.',
-    description_de:
-      'Grün und Gelb durchfluten einen leeren Poolraum – eine Leiter, ein Schachbrettboden und eine klassische Gestalt teilen sich dasselbe unmögliche Licht.',
   },
 ];
 

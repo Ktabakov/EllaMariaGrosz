@@ -63,7 +63,10 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
             <ol class="exhibition-list">
                 {exhibitions.map((ex) => (
                     <li class="exhibition-row">
-                        <span class="exhibition-year">{ex.year}</span>
+                        <span class="exhibition-year">
+                            {ex.month && <span class="exhibition-month">{ex.month}</span>}
+                            <span class="exhibition-year-num">{ex.year}</span>
+                        </span>
                         <span class="exhibition-detail">
                             <span class="exhibition-type">{pickLocalized(exhibitionTypeLabel[ex.type], lang)}</span>
                             <span class="exhibition-title">{ex.title}</span>
@@ -190,16 +193,30 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
 
     .exhibition-row {
         display: grid;
-        grid-template-columns: 6.5rem 1fr;
+        grid-template-columns: 7.5rem 1fr;
         gap: 1.25rem;
         padding: 1.1rem 0;
         border-bottom: 1px solid var(--border, rgba(0, 0, 0, 0.12));
     }
 
     .exhibition-year {
+        display: flex;
+        flex-direction: column;
         font-variant-numeric: tabular-nums;
-        font-weight: 600;
+        line-height: 1.2;
         white-space: nowrap;
+    }
+
+    .exhibition-month {
+        font-size: 0.72rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        opacity: 0.6;
+    }
+
+    .exhibition-year-num {
+        font-weight: 600;
         opacity: 0.85;
     }
 
@@ -286,7 +303,7 @@ const heroView = groupedViews.flatMap((g) => g.views)[0] ?? extraViews[0];
 
     @media (max-width: 540px) {
         .exhibition-row {
-            grid-template-columns: 4.5rem 1fr;
+            grid-template-columns: 5.5rem 1fr;
             gap: 0.9rem;
         }
         .views-masonry { column-count: 1; }

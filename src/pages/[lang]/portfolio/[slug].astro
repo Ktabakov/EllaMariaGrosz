@@ -7,7 +7,7 @@ import { getMessages } from '../../../i18n';
 import { localizedHref } from '../../../i18n/paths';
 import { paintings } from '../../../data/paintings';
 import { getPaintingImage } from '../../../lib/images';
-import { formatDimensions } from '../../../lib/format';
+import { formatDimensions, paintingTitle, mediumLabel } from '../../../lib/format';
 import { site } from '../../../lib/site';
 
 export function getStaticPaths() {
@@ -28,8 +28,9 @@ const m = getMessages(lang);
 
 const { painting } = Astro.props;
 const img = getPaintingImage(painting.image);
-const mediumLabel = m.common.medium[painting.medium];
-const dims = formatDimensions(painting);
+const medium = mediumLabel(painting, lang, m.common.medium[painting.medium]);
+const dims = formatDimensions(painting, lang);
+const title = paintingTitle(painting, lang);
 const description = (lang === 'de' ? painting.description_de : painting.description) ?? painting.description;
 
 const statusText =
@@ -39,15 +40,15 @@ const statusText =
       ? m.common.reserved
       : m.common.available;
 
-const subject = `${m.common.inquireAbout}: ${painting.title} (${painting.year})`;
+const subject = `${m.common.inquireAbout}: ${title} (${painting.year})`;
 const mailto = `mailto:${site.email}?subject=${encodeURIComponent(subject)}`;
 
 const related = paintings.filter((p) => p.slug !== painting.slug).slice(0, 3);
 
-const pageTitle = `${painting.title} (${painting.year}) — ${mediumLabel} | ${site.name}`;
+const pageTitle = `${title} (${painting.year}) — ${medium} | ${site.name}`;
 const pageDescription =
   description ??
-  `${painting.title}, ${mediumLabel}${dims ? `, ${dims}` : ''}, ${painting.year}. Original painting by ${site.name}, available directly from the artist.`;
+  `${title}, ${medium}${dims ? `, ${dims}` : ''}, ${painting.year}. Original painting by ${site.name}, available directly from the artist.`;
 
 const canonical = new URL(Astro.url.pathname, Astro.site ?? Astro.url.origin).href;
 
@@ -68,11 +69,11 @@ const availability =
 const productJsonLd: Record<string, unknown> = {
   '@context': 'https://schema.org',
   '@type': ['Product', 'VisualArtwork'],
-  name: painting.title,
+  name: title,
   ...(schemaImage ? { image: schemaImage } : {}),
   description: pageDescription,
   artform: 'Painting',
-  artMedium: mediumLabel,
+  artMedium: medium,
   ...(dims ? { width: `${painting.width} cm`, height: `${painting.height} cm` } : {}),
   dateCreated: String(painting.year),
   creator: { '@type': 'Person', name: site.name },
@@ -91,7 +92,7 @@ const breadcrumbJsonLd = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: m.nav.portfolio, item: new URL(localizedHref(lang, 'portfolio'), Astro.site ?? Astro.url.origin).href },
-    { '@type': 'ListItem', position: 2, name: painting.title, item: canonical },
+    { '@type': 'ListItem', position: 2, name: title, item: canonical },
   ],
 };
 ---
@@ -105,14 +106,14 @@ const breadcrumbJsonLd = {
             <div class="artwork-grid">
                 <div class="artwork-media">
                     {img ? (
-                        <Image src={img} alt={`${painting.title}, ${mediumLabel}, ${painting.year}`} widths={[600, 900, 1400]} sizes="(max-width: 900px) 92vw, 60vw" loading="eager" />
+                        <Image src={img} alt={`${title}, ${medium}, ${painting.year}`} widths={[600, 900, 1400]} sizes="(max-width: 900px) 92vw, 60vw" loading="eager" />
                     ) : (
-                        <div class="painting-card-placeholder large" aria-hidden="true"><span>{painting.title}</span></div>
+                        <div class="painting-card-placeholder large" aria-hidden="true"><span>{title}</span></div>
                     )}
                 </div>
 
                 <div class="artwork-info">
-                    <h1>{painting.title}</h1>
+                    <h1>{title}</h1>
                     <p class="artwork-year">{painting.year}</p>
 
                     {description && <p class="artwork-desc">{description}</p>}
@@ -120,7 +121,7 @@ const breadcrumbJsonLd = {
                     <dl class="artwork-specs">
                         <div>
                             <dt>{m.artworkPage.mediumLabel}</dt>
-                            <dd>{mediumLabel}</dd>
+                            <dd>{medium}</dd>
                         </div>
                         {dims && (
                             <div>

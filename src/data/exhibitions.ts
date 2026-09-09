@@ -8,6 +8,8 @@
  *  TO ADD A SHOW: copy one block in `exhibitions` and fill it in. Newest first.
  *    id      short unique id, used to attach photos to this show (optional)
  *    year    display string for the year (e.g. '2025' or '2025/2026')
+ *    month   optional short month/range (e.g. 'Jun' or 'Jun–Sep'), shown as
+ *            its own line stacked above the year
  *    type    'solo' | 'group' | 'award'   (controls the small label)
  *    title   exhibition title (kept in the original language, shown as-is)
  *    venue   gallery / institution
@@ -32,6 +34,7 @@ export type ExhibitionType = 'solo' | 'group' | 'award';
 export interface Exhibition {
   id?: string;
   year: string;
+  month?: string;
   type: ExhibitionType;
   title: string;
   venue: string;
@@ -54,6 +57,30 @@ export const exhibitionTypeLabel: Record<ExhibitionType, Localized> = {
 
 /** Full list, newest first — transcribed from the Ausstellungsverzeichnis. */
 export const exhibitions: Exhibition[] = [
+  {
+    year: '2026',
+    month: 'Jun–Sep',
+    type: 'group',
+    title: '„Leichtigkeit“',
+    venue: 'Galerie Ines Schulz',
+    city: 'Dresden',
+  },
+  {
+    year: '2026',
+    month: 'Jun',
+    type: 'group',
+    title: '„Strömend“',
+    venue: 'Galerie Hermann',
+    city: 'Dresden',
+  },
+  {
+    year: '2026',
+    month: 'Apr–May',
+    type: 'group',
+    title: '„A Road, A Ribbon, A Dotted Line“',
+    venue: 'Kunstraum Kreuzberg / Bethanien',
+    city: 'Berlin',
+  },
   {
     id: 'drewes-2026',
     year: '2026',

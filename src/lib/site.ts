@@ -7,8 +7,8 @@ export const site = {
   instagram: 'https://instagram.com/ellamariagross',
   instagramHandle: '@ellamariagross',
   studio: {
-    street: 'Schandauer Str. 64',
-    postalCode: '01277',
+    street: 'Grossenhainer Straße 99',
+    postalCode: '01127',
     city: 'Dresden',
     country: 'Germany',
     countryCode: 'DE',

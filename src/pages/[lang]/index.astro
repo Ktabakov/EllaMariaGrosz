@@ -9,7 +9,7 @@ import { localizedHref } from '../../i18n/paths';
 import { paintings } from '../../data/paintings';
 import { getFeaturedUpdates } from '../../data/updates';
 import { getPaintingImage, getUpdateImage } from '../../lib/images';
-import { formatDimensions } from '../../lib/format';
+import { formatDimensions, paintingTitle, mediumLabel } from '../../lib/format';
 import { site } from '../../lib/site';
 
 export function getStaticPaths() {
@@ -26,7 +26,9 @@ const m = getMessages(lang);
 const featured = paintings.filter((p) => p.featured);
 const hero = featured[0] ?? paintings[0];
 const heroImg = hero ? getPaintingImage(hero.image) : undefined;
-const heroDims = hero ? formatDimensions(hero) : null;
+const heroDims = hero ? formatDimensions(hero, lang) : null;
+const heroTitle = hero ? paintingTitle(hero, lang) : '';
+const heroMedium = hero ? mediumLabel(hero, lang, m.common.medium[hero.medium]) : '';
 const selected = (featured.length ? featured : paintings).slice(0, 6);
 const news = getFeaturedUpdates().slice(0, 3);
 const mailto = `mailto:${site.email}?subject=${encodeURIComponent(m.common.inquireEmailSubject)}`;
@@ -37,7 +39,7 @@ const portraitImg = getUpdateImage('artist-portrait.webp');
 
 <section class="hero-full" id="hero">
     {heroImg && (
-        <Image src={heroImg} alt={`${hero.title}, ${m.common.medium[hero.medium]}, ${hero.year}`} widths={[900, 1400, 1920, 2400]} sizes="100vw" loading="eager" fetchpriority="high" class="hero-full-image" />
+        <Image src={heroImg} alt={`${heroTitle}, ${heroMedium}, ${hero.year}`} widths={[900, 1400, 1920, 2400]} sizes="100vw" loading="eager" fetchpriority="high" class="hero-full-image" />
     )}
     <div class="hero-full-overlay"></div>
     <div class="container hero-full-content">
@@ -52,8 +54,8 @@ const portraitImg = getUpdateImage('artist-portrait.webp');
     {hero && (
         <a href={`/${lang}/portfolio/${hero.slug}`} class="hero-full-caption">
             <span class="hero-caption-label">{m.home.hero.featuredLabel}</span>
-            <strong>{hero.title}</strong>
-            <span>{m.common.medium[hero.medium]}{heroDims ? ` · ${heroDims}` : ''} · {hero.year}</span>
+            <strong>{heroTitle}</strong>
+            <span>{heroMedium}{heroDims ? ` · ${heroDims}` : ''} · {hero.year}</span>
         </a>
     )}
 </section>
@@ -106,6 +108,7 @@ const portraitImg = getUpdateImage('artist-portrait.webp');
                 <h2>{m.home.about.heading}</h2>
                 <p>{m.home.about.p1}</p>
                 <p>{m.home.about.p2}</p>
+                <p>{m.home.about.p3}</p>
                 <div class="about-links">
                     <a href={localizedHref(lang, 'press')} aria-label={m.home.about.pressAria}>{m.nav.press}</a>
                     <a href={localizedHref(lang, 'exhibitions')} aria-label={m.home.about.exhibitionsAria}>{m.nav.exhibitions}</a>

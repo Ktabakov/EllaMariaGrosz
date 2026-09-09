@@ -51,7 +51,7 @@
     "instagramAria": "Instagram",
     "studio": "Atelier",
     "emailAria": "E-Mail senden",
-    "tagline": "Surreale figurative Ölgemälde. Originalwerke."
+    "tagline": "Figurative Ölgemälde. Originalwerke."
   },
   "home": {
     "title": "Ella Maria Grosz | Surreale figurative Ölgemälde",
@@ -59,7 +59,7 @@
     "hero": {
       "kicker": "Zeitgenössische figurative Malerin",
       "heading": "Ella Maria Grosz",
-      "subheading": "Surreale Ölgemälde von leeren Schwimmbädern, traumhaften Interieurs und Figuren, die sich in Farbe und Licht auflösen.",
+      "subheading": "Ölgemälde zwischen Sichtbarem und Erinnertem, Erlebtem und Erdachtem.",
       "cta": "Bilder ansehen",
       "ctaSecondary": "Anfragen",
       "featuredLabel": "Ausgewähltes Werk"
@@ -73,9 +73,10 @@
       "cta": "Alle Ausstellungen ansehen"
     },
     "about": {
-      "heading": "Traumhafte Interieurs, in Öl gemalt.",
-      "p1": "Ella Maria Grosz schafft eindringliche, surreale figurative Malerei. Leere Schwimmbäder, Badezimmer und Schlafzimmer werden zu Bühnen, auf denen Figuren in goldener Flüssigkeit zerfließen, Fliesen glühen und gewöhnliche Räume ins Traumhafte kippen.",
-      "p2": "Ausgebildet an der HfBK Dresden und der Accademia di Belle Arti di Roma, bewegt sie sich zwischen vollendeten Ölgemälden, Sepia-Untermalungen und schnellen Studien auf Papier. Ihre Arbeiten wurden in ganz Deutschland sowie in Rom und Paris gezeigt. Jedes Bild ist ein Original und direkt von der Künstlerin erhältlich.",
+      "heading": "Zwischen Wahrnehmung, Erinnerung und Vorstellung.",
+      "p1": "Ella Maria Groszs Malerei bewegt sich im Spannungsfeld zwischen Wahrnehmung, Erinnerung und Vorstellung, wobei die weibliche Figur oft im Zentrum ihrer Bildwelten steht. Ihre Arbeiten entstehen im Raum zwischen dem Sichtbaren und dem Erinnerten, dem Erlebten und dem Imaginierten – dort, wo Wirklichkeit, Traum und Vorstellung ineinander übergehen. Ihr Interesse gilt dabei nicht der Symbolik der Träume, sondern ihrem prozesshaften Charakter: der ständigen Transformation von Bildern, Bedeutungen und inneren Zuständen. Grenzen zwischen Innen und Außen, Körper und Umgebung, Subjekt und Welt beginnen sich aufzulösen und öffnen neue Möglichkeitsräume.",
+      "p2": "Grosz begreift das Bild nicht als Dokument eines festen Zustands, sondern als einen lebendigen, durchlässigen Raum, in dem sich Erinnerung, Wahrnehmung und Vorstellung fortwährend begegnen und neu verhandeln. So entstehen Bildwelten, die das Flüchtige und Wandelbare spürbar machen und den oft stillen Prozessen innerer Bewegung eine sichtbare Form verleihen.",
+      "p3": "Ausgebildet an der HfBK Dresden, bewegt sie sich zwischen vollendeten Ölgemälden, Sepia-Untermalungen und schnellen Studien auf Papier. Ihre Arbeiten wurden in Deutschland, sowie in Rom und Paris gezeigt.",
       "portraitAlt": "Ella Maria Grosz vor einem ihrer Bilder",
       "studioAlt": "Im Atelier",
       "pressAria": "Presse und Publikationen lesen",
