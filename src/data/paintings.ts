@@ -56,7 +56,7 @@ export const paintings: Painting[] = [
     medium: 'oil',
     width: 140,
     height: 180,
-    status: 'available',
+    status: 'sold',
   },
   {
     slug: 'capita-flammea',
